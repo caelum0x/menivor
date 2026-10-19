@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "description": "Menivor original narrator characters (M2.3). Art is drawn procedurally by app/domains/characters/narrator_art.py from the 'look' block (free generation, no paid model). sheets.lock.json locks each character's reference sheet hash and <id>/sheet.png is the contact sheet for review; tests/reelforge/test_m2_3_narrators.py fails if the art drifts. art_status stays 'pending_owner_approval' until the owner approves the art and names (O9).",
+  "art_status": "pending_owner_approval",
+  "characters": [
+    {
+      "id": "pip",
+      "name": "Pip Marlow",
+      "personality": "Curious and upbeat. Asks the question the viewer is thinking, then answers it fast.",
+      "voice": "kokoro:af_heart",
+      "fallback_voice": "en-US-AriaNeural-Female",
+      "look": {"body": "round", "skin": "#F4B860", "accent": "#E4572E", "backdrop": "#1F2A44", "eyes": "dot", "top": "tuft"}
+    },
+    {
+      "id": "otto",
+      "name": "Otto Quill",
+      "personality": "Dry, calm explainer. Short sentences, one fact at a time, a small smile at the end.",
+      "voice": "kokoro:am_michael",
+      "fallback_voice": "en-US-GuyNeural-Male",
+      "look": {"body": "tall", "skin": "#8FB8DE", "accent": "#2E4057", "backdrop": "#F3E9D2", "eyes": "glasses", "top": "cap"}
+    },
+    {
+      "id": "mira",
+      "name": "Mira Fennick",
+      "personality": "Warm storyteller. Sets the scene, builds to a twist, lands the ending.",
+      "voice": "kokoro:bf_emma",
+      "fallback_voice": "en-GB-SoniaNeural-Female",
+      "look": {"body": "pear", "skin": "#C9A0DC", "accent": "#5B2A86", "backdrop": "#FFE8D6", "eyes": "oval", "top": "bun"}
+    },
+    {
+      "id": "rook",
+      "name": "Rook Ambry",
+      "personality": "Deadpan skeptic. Tests every claim out loud before he believes it.",
+      "voice": "kokoro:bm_george",
+      "fallback_voice": "en-GB-RyanNeural-Male",
+      "look": {"body": "square", "skin": "#9CC5A1", "accent": "#1B4332", "backdrop": "#2B2D42", "eyes": "dot", "top": "beanie"}
+    },
+    {
+      "id": "tansy",
+      "name": "Tansy Vale",
+      "personality": "Fast and funny. Lists, countdowns and quick comparisons.",
+      "voice": "kokoro:af_bella",
+      "fallback_voice": "en-US-JennyNeural-Female",
+      "look": {"body": "round", "skin": "#FF9B85", "accent": "#FFD23F", "backdrop": "#3D348B", "eyes": "oval", "top": "antenna"}
+    },
+    {
+      "id": "cato",
+      "name": "Cato Plume",
+      "personality": "Gentle mentor. Explains how things work with everyday comparisons.",
+      "voice": "kokoro:am_adam",
+      "fallback_voice": "en-US-ChristopherNeural-Male",
+      "look": {"body": "tall", "skin": "#E9C46A", "accent": "#264653", "backdrop": "#E0FBFC", "eyes": "glasses", "top": "none"}
+    },
+    {
+      "id": "wren",
+      "name": "Wren Oakhurst",
+      "personality": "Bright field reporter. Describes what she sees as if she is on location.",
+      "voice": "kokoro:bf_isabella",
+      "fallback_voice": "en-GB-LibbyNeural-Female",
+      "look": {"body": "pear", "skin": "#A8DADC", "accent": "#E63946", "backdrop": "#1D3557", "eyes": "dot", "top": "bun"}
+    },
+    {
+      "id": "bex",
+      "name": "Bex Tallow",
+      "personality": "Blunt coach. Tells you the mistake, then the fix, no filler.",
+      "voice": "kokoro:bm_lewis",
+      "fallback_voice": "en-GB-ThomasNeural-Male",
+      "look": {"body": "square", "skin": "#F6BD60", "accent": "#84A59D", "backdrop": "#F7EDE2", "eyes": "oval", "top": "cap"}
+    }
+  ]
+}

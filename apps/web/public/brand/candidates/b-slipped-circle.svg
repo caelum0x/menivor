@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <clipPath id="ul"><path d="M-20-20H81L-20 81Z"/></clipPath>
+    <clipPath id="lr"><path d="M84-17V84H-17Z"/></clipPath>
+  </defs>
+  <g fill="currentColor">
+    <circle cx="32" cy="32" r="24" clip-path="url(#ul)" transform="translate(3 -3)"/>
+    <circle cx="32" cy="32" r="24" clip-path="url(#lr)" fill-opacity=".55" transform="translate(-3 3)"/>
+  </g>
+</svg>

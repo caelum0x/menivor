@@ -1,0 +1,112 @@
+# Keep legacy pip install support; primary deps moved to pyproject.toml / uv.lock.
+moviepy==2.2.1
+streamlit==1.59.1
+streamlit-tour==1.1.0
+edge_tts==7.3.1
+fastapi==0.136.3
+uvicorn==0.32.1
+openai==2.24.0
+faster-whisper==1.1.0
+loguru==0.7.3
+google-genai==2.11.0
+google-auth==2.55.2
+dashscope==1.20.14
+azure-cognitiveservices-speech==1.41.1
+redis==5.2.0
+python-multipart==0.0.27
+pyyaml==6.0.3
+requests==2.33.1
+httpx==0.28.1
+packaging==24.2
+socksio==1.0.0
+pydub==0.25.1
+audioop-lts==0.2.2; python_version >= "3.13"
+litellm==1.86.2
+# ReelForge: orchestration, persistence, object storage, Postgres driver.
+celery[redis]==5.5.3
+sqlalchemy==2.0.43
+alembic==1.16.4
+boto3==1.40.11
+psycopg[binary]==3.2.9
+# ReelForge wallet: BLAKE3 to recompute Mint's canonical settlement receipt hash
+# before accepting a signed ed25519 attestation (declared in pyproject.toml but
+# was missing from this legacy pip manifest, so the api image lacked it and every
+# Mint hold.capture 502'd). Keep in sync with pyproject.toml.
+blake3==1.0.9
+# ReelForge wallet: cryptography for the Ed25519 signature verification that
+# gates every Mint hold-settlement / transfer attestation
+# (app/domains/wallet/hold_settlement_attestation.py, transfer_attestation.py,
+# app/services/crypto_tokens.py). Declared in pyproject.toml and imported
+# DIRECTLY, but was only reaching the image transitively (via celery/redis/
+# litellm/google-auth) — a minor version bump of any of those dropping the
+# cryptography pin would silently break ed25519 verification and 502 the whole
+# settlement path, exactly like the blake3 outage. Pin it directly. Keep in sync
+# with pyproject.toml.
+cryptography==49.0.0
+# M7.1 C2PA Content Credentials: signs and reads the manifest in every final
+# MP4 (app/services/compose/provenance.py). MIT OR Apache-2.0 (contentauth/c2pa-python).
+c2pa-python==0.37.12
+# Wave E M-6: Scribase partner tokens (EdDSA JWT + JWKS) in
+# app/domains/partners/scribase_tokens.py, and the Clerk JWT check in
+# app/core/clerk.py. MIT (jpadilla/pyjwt). Imported directly but only ever
+# reached the image transitively as an optional extra; pin it directly.
+PyJWT==2.15.1
+# ReelForge billing: Stripe (global) + iyzico (TR local cards) SDKs.
+stripe==11.4.0
+iyzipay==1.0.46
+# ReelForge monitoring: Sentry error/perf tracking (NO-OP when dsn unset).
+sentry-sdk[fastapi,celery]==2.42.0
+# ReelForge Enterprise (Access & Governance): pycasbin RBAC decision engine
+# (Apache-2.0, pure-python). The role->permission authorization logic is
+# delegated to Casbin rather than hand-rolled — see app/services/rbac.py.
+casbin==1.43.0
+# ReelForge Enterprise (Billing Platform): OpenFeature SDK (Apache-2.0,
+# pure-python) — a vendor-neutral feature-flag / entitlement layer. Plan->feature
+# entitlement resolution is delegated to OpenFeature (in-process provider backed
+# by the PLAN_ENTITLEMENTS map) rather than hand-rolled — see
+# app/services/entitlements.py. The import is GUARDED: if the SDK is absent the
+# entitlement layer degrades to a direct map read with the same base/free safe
+# default, so the app + full test suite still run without it.
+openfeature-sdk==0.10.0
+# URL capture (website recording). Apache-2.0. The wheel does NOT ship a
+# browser: run `python -m playwright install --with-deps chromium` on the host that
+# runs captures (see apps/api/app/domains/capture/DEMO_MODE.md). Import is lazy;
+# store-listing captures and the rest of the app work without the browser.
+playwright==1.55.0
+# ReelForge Enterprise (Identity & SSO): SAML SP toolkit — OPTIONAL/GUARDED dep,
+# NOT installed by default because it needs the native ``xmlsec`` lib which may
+# be absent. ALL SAML XML parsing + signature/condition validation is delegated
+# to this toolkit (never hand-rolled) — see app/services/sso.py. When it is
+# absent the SSO endpoints degrade to a clean 503 and the full suite still
+# passes (the assertion-processing logic is tested by injecting a validated
+# assertion through the validator seam). scim2-filter-parser (MIT) is an OPTIONAL
+# accelerator for SCIM ``filter=`` parsing; SCIM degrades to an equality match
+# without it. Enable per deployment:
+#   pip install "python3-saml>=1.16.0"        # MIT — imports as onelogin.saml2
+#   pip install "scim2-filter-parser>=0.5.0"  # MIT — optional SCIM filter parsing
+# ReelForge editing-polish suite — OPTIONAL accelerators, NOT installed by default
+# (both passes are import-guarded and degrade to a no-op / the existing chromakey
+# path when absent, so the app + full test suite run WITHOUT them). Enable per
+# pass:
+#   auto_zoom (accelerated scene detection): pip install "scenedetect>=0.6.4"
+#   remove_bg (neural avatar matting):       pip install "rembg[cpu]>=2.0.59"
+# ReelForge clipping platform ingestion ("paste a link -> auto-clip") — OPTIONAL,
+# NOT installed by default. yt-dlp resolves + downloads a bounded MP4 from
+# YouTube/TikTok/Vimeo/Twitch/X. The import is lazy + guarded and the path is
+# fail-closed behind reelforge_clipping_platform_ingest_enabled (default off), so
+# the app + full test suite run WITHOUT it (a platform link degrades to a clean
+# 503 when the flag is on but the dep is absent). Enable per deployment (and set
+# the flag). Keep in sync with the `clipping` extra in pyproject.toml:
+#   pip install "yt-dlp>=2024.12.13"  # Unlicense — track releases (extractors churn)
+# OTT discovery embeddings (Wave Q QM1.4, MV19): qdrant/fastembed, Apache-2.0.
+# BAAI/bge-small-en-v1.5 on CPU through onnxruntime (MIT); the API embeds
+# search queries and the worker reindexes titles every 15 min. The model is
+# fetched once into FASTEMBED_CACHE_PATH. OTT_DISCOVERY_EMBEDDER=hashing keeps
+# the dependency-free fallback.
+fastembed==0.8.1
+# Very ___ Time chest-text check (apps/api/app/domains/film/chest_check.py):
+# RapidOCR, Apache-2.0, with the bundled PP-OCR ONNX models (Apache-2.0) on
+# onnxruntime (MIT). Pulls opencv-python (Apache-2.0; needs libgl1 and
+# libglib2.0-0 in the images), pyclipper (MIT) and shapely (BSD-3-Clause).
+# Without it the check is skipped ("unchecked"), never a failed render.
+rapidocr-onnxruntime==1.4.4

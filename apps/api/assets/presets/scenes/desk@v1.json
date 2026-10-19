@@ -1,0 +1,11 @@
+{
+  "id": "desk",
+  "version": 1,
+  "name": "At the desk",
+  "blurb": "Talking from a tidy desk, laptop to the side.",
+  "look": "seated at a tidy desk, laptop to one side, soft office light",
+  "layout": "pip",
+  "aspect": "9:16",
+  "needs_product": false,
+  "disclosure": "This video was created with AI."
+}

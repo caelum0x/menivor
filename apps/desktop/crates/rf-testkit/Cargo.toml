@@ -1,0 +1,13 @@
+[package]
+name = "rf-testkit"
+description = "ReelForge desktop shared test fixtures for the rf-* engine crates"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]
+rf-project = { path = "../rf-project" }
+rf-clipfarm = { path = "../rf-clipfarm" }

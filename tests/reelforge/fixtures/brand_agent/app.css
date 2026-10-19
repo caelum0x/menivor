@@ -1,0 +1,7 @@
+@font-face{font-family:__Fraunces_eaa818;src:url(/_next/static/media/f.woff2) format("woff2")}
+@font-face{font-family:__Instrument_Sans_3d9088;src:url(/_next/static/media/i.woff2) format("woff2")}
+:root{--background:40 33% 97%;--brand:239 44% 43%;--brand-foreground:40 40% 98%;--accent:18 70% 59%}
+.dark{--brand:238 76% 78%}
+body{font-family:__Instrument_Sans_3d9088,ui-sans-serif,system-ui,sans-serif}
+.font-display{font-family:__Fraunces_eaa818,serif}
+code{font-family:var(--font-mono),ui-monospace,monospace}

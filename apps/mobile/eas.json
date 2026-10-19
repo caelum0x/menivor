@@ -1,0 +1,92 @@
+{
+  "cli": {
+    "version": ">= 7.1.0",
+    "appVersionSource": "local"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "environment": "development",
+      "ios": {
+        "simulator": true
+      },
+      "channel": "development",
+      "env": {
+        "EXPO_PUBLIC_API_BASE": "https://api.menivor.com/api/v1"
+      }
+    },
+    "preview": {
+      "distribution": "internal",
+      "environment": "preview",
+      "ios": {
+        "simulator": false,
+        "resourceClass": "m-medium"
+      },
+      "android": {
+        "buildType": "apk"
+      },
+      "channel": "preview",
+      "env": {
+        "EXPO_PUBLIC_API_BASE": "https://api.menivor.com/api/v1",
+        "EXPO_PUBLIC_REVENUECAT_IOS_API_KEY": "YOUR_REVENUECAT_IOS_PUBLIC_KEY"
+      }
+    },
+    "production": {
+      "distribution": "store",
+      "environment": "production",
+      "autoIncrement": true,
+      "ios": {
+        "resourceClass": "m-medium",
+        "image": "latest"
+      },
+      "android": {
+        "buildType": "app-bundle"
+      },
+      "env": {
+        "NODE_ENV": "production",
+        "EXPO_PUBLIC_API_BASE": "https://api.menivor.com/api/v1",
+        "EXPO_PUBLIC_WAITLIST_MODE": "0",
+        "EXPO_PUBLIC_REVENUECAT_IOS_API_KEY": "YOUR_REVENUECAT_IOS_PUBLIC_KEY",
+        "EXPO_PUBLIC_SUPPORT_URL": "mailto:hello@menivor.com"
+      },
+      "channel": "production"
+    },
+    "simulator": {
+      "extends": "production",
+      "ios": {
+        "simulator": true
+      }
+    }
+  },
+  "submit": {
+    "production": {
+      "ios": {
+        "ascApiKeyPath": "./secrets/AuthKey_YOUR_KEY_ID.p8",
+        "ascApiKeyId": "YOUR_ASC_API_KEY_ID",
+        "ascApiKeyIssuerId": "YOUR_ASC_ISSUER_ID",
+        "ascAppId": "YOUR_APP_STORE_CONNECT_APP_ID",
+        "appleTeamId": "YOUR_APPLE_TEAM_ID"
+      },
+      "android": {
+        "serviceAccountKeyPath": "./secrets/google-play-service-account.json",
+        "track": "internal",
+        "releaseStatus": "draft"
+      }
+    },
+    "preview": {
+      "ios": {
+        "ascApiKeyPath": "./secrets/AuthKey_YOUR_KEY_ID.p8",
+        "ascApiKeyId": "YOUR_ASC_API_KEY_ID",
+        "ascApiKeyIssuerId": "YOUR_ASC_ISSUER_ID",
+        "ascAppId": "YOUR_APP_STORE_CONNECT_APP_ID",
+        "appleTeamId": "YOUR_APPLE_TEAM_ID"
+      },
+      "android": {
+        "serviceAccountKeyPath": "./secrets/google-play-service-account.json",
+        "track": "internal",
+        "releaseStatus": "draft"
+      }
+    }
+  }
+}

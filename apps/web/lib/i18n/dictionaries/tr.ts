@@ -1,0 +1,351 @@
+import type { Messages } from "./en";
+import { FREE_FIRST_REEL } from "@/lib/offer";
+
+/**
+ * Turkish message catalog. Typed against `Messages`, so it must mirror the
+ * English key structure exactly.
+ */
+export const tr: Messages = {
+  common: {
+    menivor: "Menivor",
+    signIn: "Giriş yap",
+    myReels: "Reel'lerim",
+    wallet: "Cüzdan",
+    tryAgain: "Tekrar dene",
+    loading: "Yükleniyor…",
+  },
+  languageSwitcher: {
+    label: "Dil",
+  },
+  nav: {
+    howItWorks: "Nasıl çalışır",
+    captions: "Altyazılar",
+    pricing: "Fiyatlandırma",
+    freeTools: "Ücretsiz araçlar",
+    showcase: "Vitrin",
+    styles: "Stiller",
+    editor: "Editör",
+    joinWaitlist: "Bekleme listesine katıl",
+    signIn: "Giriş yap",
+    makeReelFree: "Ücretsiz reel oluştur",
+    startFree: "İlk videomu yap",
+    requestAccess: "Erken erişim iste",
+    goToReels: "Reel'lerime git",
+    openMenu: "Menüyü aç",
+    closeMenu: "Menüyü kapat",
+    homeAria: "Menivor ana sayfa",
+  },
+  footer: {
+    howItWorks: "Nasıl çalışır",
+    captions: "Altyazılar",
+    pricing: "Fiyatlandırma",
+    platforms: "Platforma göre",
+    make: "Ne yapmalı",
+    tools: "Araçlar",
+    guides: "Rehberler",
+    features: "Özellikler",
+    providers: "Sağlayıcılar",
+    turkish: "Türkçe",
+    waitlist: "Bekleme listesi",
+    signIn: "Giriş yap",
+    terms: "Kullanım şartları",
+    privacy: "Gizlilik",
+    refunds: "İade politikası",
+    contact: "İletişim",
+    tagline: "ekran kaydı → bitmiş reel",
+  },
+  landing: {
+    heroKicker: "ekran kaydı → bitmiş reel",
+    heroTitle: "Ekran kaydını yapay zekâ destekli UGC videoya dönüştür.",
+    heroBody:
+      "Menivor ham ekran kaydını alır ve tüm kurguyu yapar: kanca odaklı bir senaryo yazar, doğal bir yapay zekâ sesiyle seslendirir, kelime kelime karaoke altyazıları ekler ve TikTok, Reels ve Shorts için hazır bir 9:16 video oluşturur.",
+    heroWaitlistNote:
+      "Menivor, render kapasitesi devreye girerken kapalı bir pilot aşamasında. E-postanı bırak, sıranı açalım.",
+    heroMakeReelFree: "Ücretsiz reel oluştur",
+    heroSeePricing: "Fiyatları gör",
+    heroFreeNote: FREE_FIRST_REEL
+      ? "İlk reel ücretsiz, kart gerekmez. Sonra 1 $ kart doğrulaması 3 reel daha açar."
+      : "Ücretsiz kaydol. 1 $ kart doğrulaması 3 ücretsiz reel açar.",
+    howKicker: "üretim hattı",
+    howTitle: "Bir kayıt girer. Bitmiş bir reel çıkar.",
+    step1Label: "kaydet",
+    step1Title: "Herhangi bir ekran kaydıyla başla",
+    step1Body:
+      "Ürününü, demo akışını veya iş sürecini kaydet. Elindeki bir dosyayı yükleyebilir ya da Menivor'un masaüstü kaydedicisini kullanabilirsin: pencere veya tam ekran kaydı, mikrofon ve sistem sesi, resim içinde resim webcam görüntüsü.",
+    step2Label: "üret",
+    step2Title: "Üretim hattı kurguyu çalıştırır",
+    step2Body:
+      "Menivor kanca odaklı bir senaryo yazar, görüntünün üzerinde doğal bir yapay zekâ sesiyle seslendirir ve kelime kelime karaoke altyazıları ekler — Türkçe veya İngilizce.",
+    step3Label: "yayınla",
+    step3Title: "9:16 render al ve paylaş",
+    step3Body:
+      "Bitmiş dikey video TikTok, Reels ve Shorts için hazır çıkar — indir ya da hesaplarını bağladıktan sonra doğrudan yayınla.",
+    ctaKicker: "erken erişim",
+    ctaTitle: "Üretim açıldığında ilk giren sen ol.",
+    ctaWaitlistBody:
+      "Menivor, sağlayıcı kapasitesi devreye girerken kapalı bir pilot aşamasında. Bekleme listesine katıl; sıran açıldığında tek bir e-posta al — başka hiçbir şey yok.",
+    ctaLiveBody: "Bir sonraki ekran kaydını paylaşmaya değer bir reel'e dönüştür.",
+    ctaCreateFirst: "İlk reel'ini oluştur",
+    ctaComparePlans: "Planları karşılaştır",
+    publicKicker: "şimdi açık",
+    publicTitle: "İlk reel'ini bugün yap.",
+    publicBody: "Menivor ücretsiz katmanda herkese açık. Ücretsiz hesap oluştur, 1 $ kart doğrulamasıyla 3 ücretsiz reel aç ve bugün açık olan formatlarla başla.",
+    startFree: "İlk videomu yap",
+    signupNote:
+      "Google veya Apple ile tek tıkla kaydol. 1 $ kart doğrulaması 3 ücretsiz reel açar; 1 $ da 1 reel kredisi olarak hesabına eklenir.",
+    openNowLabel: "Ücretsiz katmanda şimdi açık:",
+    updatesTitle: "Lansman haberlerini al",
+    updatesBody: "Ücretli paketler ve sosyal platformlarda yayınlama açıldığında tek bir e-posta.",
+    updatesSubmit: "Lansman haberlerini al",
+    updatesSuccess: "Teşekkürler. Ücretli paketler ve yayınlama açıldığında sana e-posta göndereceğiz.",
+  },
+  pricing: {
+    kicker: "fiyatlandırma",
+    title: "Aylık plan ya da tek seferlik paket, reel başına fiyat.",
+    intro:
+      "Her ay bir planla reel üret ya da bir kez kredi paketi al ve ihtiyacın olduğunda kullan. Paket kredileri süresiz geçerlidir ve başarısız bir render asla kredi harcamaz.",
+    howHeading: "Menivor kredileri nasıl çalışır",
+    howPara1:
+      "Bir kredi bir bitmiş reel'in bedelidir. Menivor render başladığında krediyi rezerve eder ve video başarılı olduktan sonra tahsil eder. Başarısız bir render rezervasyonu bakiyene geri bırakır. Satın alınan krediler süresiz geçerlidir, böylece aylık bir abonelik tutmadan lansmanlar ve kampanyalar çevresinde render alabilirsin.",
+    howPara2:
+      "Yeni hesaplar 1 $ kart doğrulamasıyla üç ücretsiz reel açar; o 1 $ da dördüncü reele dönüşür. Kredi paketleri senaryo, seslendirme, karaoke altyazıları ve son 9:16 kompozisyonunu tek renderda kapsar. Paket seçici, satın almadan önce kredi sayısını ve ödeme fiyatını gösterir. Daha fazla hacme ihtiyaç duyan ekipler daha büyük bir tahsis için bize ulaşabilir.",
+    howPara3:
+      "Kampanyanda kaç bitmiş reel gerektiğine göre paketini seç, ardından alternatif kancalar veya düzenler için küçük bir pay ayır. Bir taslağı yeniden render almak yeni bir bitmiş video ürettiği için bir kredi daha kullanır. Önlenebilir revizyonlara kredi harcamamak için render başlatmadan önce senaryoyu ve kaynak kaydı gözden geçir.",
+    volumeQuestion: "Hacim fiyatlandırması hakkında soruların mı var? E-posta gönder",
+    waitlistCtaLabel: "Erken erişimle açılır",
+    waitlistKicker: "erken erişim",
+    waitlistBody:
+      "Ödeme, hesabın açıldığında açılır. Bekleme listesine katıl, sana bir kez e-posta gönderelim — ücretsiz reel'lerin diğer tarafta seni bekliyor.",
+  },
+  create: {
+    navFromTemplate: "Şablondan",
+    navGuidedWizard: "Rehberli sihirbaz",
+    navMyReels: "Reel'lerim",
+    navWallet: "Cüzdan",
+    title: "Video oluştur",
+    subtitle:
+      "Bir sesli notu altyazılı 9:16 reel'e dönüştür ya da metin isteminden veya tek bir görselden yapay zekâ videosu üret. İlk kredilerin ücretsiz, hesap gerekmez.",
+    tabNarrationLabel: "Seslendirme reel'i",
+    tabNarrationHint: "Kendi sesin + altyazılar — ücretsiz",
+    tabAiVideoLabel: "Yapay zekâ videosu",
+    tabAiVideoHint: "Metin veya görsel → video — 3 kredi",
+    tablistLabel: "Oluşturma modu",
+  },
+  newReel: {
+    title: "Yeni bir reel oluştur",
+    subtitle:
+      "Bir ekran kaydı yükle; senaryosunu yazalım, seslendirelim ve karaoke altyazıları basalım — ardından paylaşmaya hazır bir 9:16 video render alalım.",
+  },
+  library: {
+    title: "Reel kütüphanesi",
+    subtitleFallback: "Ürettiğin her reel, canlı render durumuyla birlikte.",
+    subtitleCount: "{count} reel · {email} olarak giriş yapıldı",
+    subtitleCountOne: "{count} reel · {email} olarak giriş yapıldı",
+    calendar: "Takvim",
+    scheduled: "Zamanlanmış",
+    newReel: "Yeni reel",
+    credits: "kredi",
+    creditsTitle: "Kullanılabilir krediler",
+    loadError: "Reel'lerin yüklenemedi.",
+    loadErrorTitle: "Reel'lerin yüklenemedi",
+    emptyTitle: "Henüz reel yok",
+    emptyBody: "İlk reel'ini oluştur, burada görünsün.",
+    noMatchTitle: "Filtrelerine uyan reel yok",
+    noMatchBody: "Farklı bir durum dene veya aramanı temizle.",
+    showAll: "Tüm reel'leri göster",
+  },
+  discover: {
+    title: "Keşfet",
+    subtitle:
+      "Trend olan sesler, yükselen hashtag'ler, viral formatlar ve önerilen şablonlar — dalga zirveye ulaşmadan önce içerik üretmek için fırsat puanına göre sıralandı.",
+    refresh: "Yenile",
+    risingNow: "Şu an yükselişte",
+    risingNowDesc:
+      "Tüm türlerde en yüksek fırsatlı trendler — hız ve doygunluğa göre puanlandı.",
+    noTrends: "Henüz canlı trend yok. Yakında tekrar kontrol et.",
+    buildNow: "şimdi üret",
+    sounds: "Trend sesler",
+    soundsDesc: "Yükselen hıza ve düşük doygunluğa sahip sesler — dalga zirveye ulaşmadan kullan.",
+    hashtags: "Yükselen hashtag'ler",
+    hashtagsDesc: "İvme kazanan hashtag'ler — doygunlaşmadan önce kullan.",
+    viralFormats: "Viral formatlar",
+    viralFormatsDesc:
+      "Üretim hattının hazır reel'e dönüştürebileceği kanıtlanmış çekim şablonu türleri.",
+    explorerCta: "Kendi trend verilerini sıralamak ister misin?",
+    explorerCtaLink: "Trend gezginini aç",
+    explorerCtaTail: "herhangi bir sayı serisini yapıştır ve puanla.",
+    backToDiscover: "Keşfet'e dön",
+    opportunityScore: "Fırsat",
+    phaseLabel: "Aşama",
+    saturationLabel: "Doygunluk",
+    buildNowLabel: "Şimdi üret",
+    noDataSoon: "Henüz veri yok — yakında tekrar kontrol et.",
+    soundsPageTitle: "Trend sesler",
+    soundsPageSubtitle:
+      "Yükselen hıza ve düşük doygunluğa sahip sesler. Dalga zirveye ulaşmadan reeline ekle.",
+    soundsEmpty: "Şu an trend ses yok. Yakında tekrar kontrol et.",
+    hashtagsPageTitle: "Yükselen hashtag'ler",
+    hashtagsPageSubtitle:
+      "Şu an ivme kazanan hashtag'ler — akışı doygunlaşmadan içeriğinde kullan.",
+    hashtagsEmpty: "Şu an trend hashtag yok. Yakında tekrar kontrol et.",
+    formatsPageTitle: "Yükselen formatlar",
+    formatsPageSubtitle:
+      "İvme kazanan viral format kalıpları ve çekim şablonları — API'nin sunduğu yükselen yaratıcı sinyaline en yakın veri.",
+    formatsSignalNote:
+      "Bu sayfa, canlı akıştaki format türü trendleri ve viral çekim şablonlarını gösterir. İçerik üreticisi bazında bir analitik uç noktası henüz yok; format sinyali şu an elimizdeki en yakın göstergedir.",
+    formatsEmpty: "Şu an yükselen format yok. Yakında tekrar kontrol et.",
+    trendingTemplates: "Trend şablonlar",
+    trendingTemplatesDesc:
+      "Bir sonraki reeline hazır hale getirilebilecek viral çekim şablonu türleri.",
+  },
+  showcase: {
+    title: "Vitrin",
+    subtitle:
+      "Viral çekim şablonlarını ve tamamlanmış reel'lerini incele.",
+    templatesHeading: "Şablon galerisi",
+    templatesDesc:
+      "Üretim hattının hazır reel'e dönüştürebileceği kanıtlanmış tür formatları.",
+    myReelsHeading: "Tamamlanmış reel'lerin",
+    myReelsDesc:
+      "Render aldığın reel'ler — görmek için giriş yap.",
+    signInPrompt: "Tamamlanmış reel'lerini görmek için giriş yap.",
+    noTemplates: "Şablon mevcut değil.",
+    noReels:
+      "Henüz tamamlanmış reel yok. İlk reel'ini oluştur.",
+    useTemplate: "Şablonu kullan",
+    previewReel: "Reel'i önizle",
+    slots: "slot",
+  },
+  analyticsDeep: {
+    views: {
+      title: "Görüntüleme dağılımı",
+      subtitle:
+        "Seçilen pencerede kompozisyon düzeni ve dile göre iş sayıları.",
+      byLayout: "Düzene göre",
+      byLanguage: "Dile göre",
+      noData: "Bu pencere için görüntüleme verisi yok.",
+    },
+    retention: {
+      title: "Tutma ve dönüşüm hunisi",
+      subtitle:
+        "Tamamlanma oranı, başarısız işler, render süresi yüzdelikleri ve huni ilerlemesi.",
+      created: "Oluşturuldu",
+      completed: "Tamamlandı",
+      failed: "Başarısız",
+      published: "Yayınlandı",
+      completionRate: "Tamamlanma oranı",
+      failRate: "Başarısızlık oranı",
+      renderTime: "Render süresi",
+      p50: "p50",
+      p90: "p90",
+      avg: "ort.",
+      samples: "ölçülen örnek",
+      noData: "Bu pencere için huni verisi yok.",
+    },
+    hooks: {
+      title: "En çok kullanılan kancalar",
+      subtitle:
+        "En sık kullandığın açılış satırları ve şablonlar — analitik servisinden tüm zamanlara ait veriler.",
+      hooksHeading: "Kancalar",
+      templatesHeading: "Şablonlar",
+      noData: "Henüz veri yok. En çok hangi açılışları kullandığını görmek için reel render al.",
+    },
+  },
+  apiDocs: {
+    title: "API referansı",
+    subtitle:
+      "Menivor genel uç noktaları — reel'ler, şablonlar, trendler ve analitik.",
+    authNote:
+      "Kimlik doğrulama: API anahtarını x-api-key istek başlığı olarak gönder.",
+    requestLabel: "Örnek istek",
+    paramsLabel: "Parametreler",
+    responseLabel: "Yanıt yapısı",
+    required: "zorunlu",
+    optional: "isteğe bağlı",
+    backToOverview: "Genel bakış",
+  },
+  editor: {
+    title: "Reel editörü",
+    backAria: "Kaynak işe geri dön",
+    loadingTitle: "Kaynak reel yükleniyor",
+    jobLabel: "İş {id}",
+    loadErrorTitle: "Kaynak reel yüklenemedi",
+    renderFailedTitle: "Bu render başarısız oldu",
+    renderNotReadyTitle: "Render hazır değil",
+    pauseAria: "Önizlemeyi duraklat",
+    playAria: "Seçili aralığı oynat",
+    cutRangeHeading: "Kesim aralığı",
+    cutRangeHelp:
+      "Başlangıç ve bitiş noktalarını ayarla, ardından yalnızca o bölümü önizle. Orijinal render değişmez.",
+    inPoint: "Başlangıç noktası",
+    outPoint: "Bitiş noktası",
+    selected: "Seçili",
+    source: "Kaynak",
+    previewCut: "Kesimi önizle",
+    resetRange: "Aralığı sıfırla",
+    copyCutValues: "Kesim değerlerini kopyala",
+    copied: "Kopyalandı",
+    exportSelection: "Seçimi dışa aktar",
+    queuingExport: "Dışa aktarma sıraya alınıyor",
+    exportFailedFallback: "Dışa aktarma render işçisinde başarısız oldu.",
+    downloadExportedCut: "Dışa aktarılan kesimi indir",
+    downloadSource: "Kaynağı indir",
+    timeline: "Zaman çizelgesi",
+    seekAria: "Zaman çizelgesinde gez",
+    advancedHeading: "Gelişmiş — çok klipli zaman çizelgesi",
+    loadingDuration:
+      "Zaman çizelgesi düzenlemeleri açılmadan önce kaynak süresi yükleniyor…",
+    noSourceTitle: "Tamamlanmış bir reel seç",
+    noSourceDetail:
+      "Render'ını düzenleyiciye yüklemek için aşağıdan tamamlanmış bir reel seç.",
+    openJobs: "Reel'i aç",
+    openLibrary: "Reel kütüphanesini aç",
+    openExportedReel: "Dışa aktarılan reel'i aç",
+  },
+  studioCatalog: {
+    brollTitle: "B-roll kütüphanesi",
+    brollSubtitle:
+      "Yapay zekâyla üretilen B-roll kliplerin: duruma göre filtrele, bir reel'de kullan veya indir.",
+    brollGenerate: "B-roll oluştur",
+    captionsTitle: "Altyazılar",
+    captionsSubtitle:
+      "Platforma göre altyazı güvenli bölgeleri ve araçları; üretim hattının kullandığı oluşturucudan gelir.",
+    captionStyles: "Altyazı stilleri",
+    voicesTitle: "Sesler",
+    voicesSubtitle:
+      "Anlatıcı sesler ve dudak senkronu sağlayıcıları: bir ses seç ve hangi motorun üreteceğini gör.",
+    myVoices: "Seslerim",
+    avatarsTitle: "Avatarlar",
+    avatarsSubtitle:
+      "Sağlayıcı avatarları ve kimlik kilitli karakterlerin — bir sunucu seç veya bir karakteri filmde kilitle.",
+    characters: "Karakterler",
+    clipsTitle: "Klipler",
+    clipsSubtitle:
+      "Uzun videodan kısa klip çıkarma işleri: üretilen klipleri görüntüle ve herhangi bir klibi reel taslağına dönüştür.",
+    newReel: "Yeni reel",
+    refresh: "Yenile",
+    promoteToReel: "Reel'e dönüştür",
+    openDraft: "Taslağı aç",
+    safezoneTitle: "Platform bazlı güvenli bölgeler",
+    safezoneSubtitle:
+      "Oluşturucunun her platform yüzeyine uyguladığı altyazı yerleşimi.",
+    captionTools: "Altyazı araçları",
+    voicesLipsync: "Dudak senkronu sağlayıcıları",
+    voicesNarrator: "Anlatıcı sesler",
+    avatarsProvider: "Avatarlar",
+    avatarsCharacters: "Karakterler",
+    clippingJobs: "Kırpma işleri",
+    clipPromoted: "Klip reel taslağına dönüştürüldü",
+    noVoices: "Kullanılabilir ses yok. API yapılandırmanı kontrol et.",
+    noAvatars: "Şu anda kullanılabilir avatar yok. Daha sonra tekrar dene.",
+    noCharacters: "Henüz kayıtlı karakter yok. Çekimler arasında bir kimliği kilitlemek için bir tane oluştur.",
+    noClips: "Henüz kırpma işi yok. Uzun bir kayıt veya URL'den birini başlat.",
+    noSafezones: "Güvenli bölge verisi döndürülmedi.",
+    createCharacter: "Karakter oluştur",
+    manageCharacters: "Karakterleri yönet",
+    createClippingJob: "Kırpma işi oluştur",
+    useVoice: "Sesi kullan",
+    useAvatar: "Avatarı kullan",
+    useInFilm: "Filmde kullan",
+  },
+};

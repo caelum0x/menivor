@@ -1,0 +1,33 @@
+# Packages the Menivor dub path actually imports (pyvideotrans v4.13 `cli.py --task vtv`
+# with faster-whisper recognition, Google or OpenAI-compatible (Relay) translation,
+# edge-tts or ElevenLabs voices, soft subtitles). Versions are constrained by the
+# pins in upstream's pyproject.toml (constraints.txt is generated from it at build).
+# The full upstream set (TF/keras, diffusers, f5-tts, funasr, modelscope, pyannote,
+# gradio, transformers, ...) is ~6-8 GB and serves engines Menivor never selects.
+faster-whisper
+ctranslate2
+ten-vad
+scipy
+zhconv
+numpy
+edge-tts
+elevenlabs
+openai
+# Free-path fallback pyvideotrans uses when Google's web endpoint answers 429
+# (it does from datacenter IPs); prod translates through Relay instead.
+googletrans
+aiohttp
+httpx[socks]
+httpcore
+requests[socks]
+urllib3
+certifi
+tenacity
+tqdm
+huggingface-hub
+hf-xet
+pydub
+pyrubberband
+soundfile
+psutil
+pyside6-essentials

@@ -1,0 +1,11 @@
+[package]
+name = "rf-clipfarm"
+description = "ReelForge desktop clipfarm fan-out — Rust mirror of app/domains/series/fanout"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]

@@ -1,0 +1,61 @@
+# ReelForge curated voice catalog (CTO plan §4 / §5.2).
+#
+# Served by GET /v1/voices as the default, human-friendly voice list.
+#
+# NOTE ON THE VOICE IDs BELOW
+# ---------------------------
+# These are well-known *public* ElevenLabs demo voice IDs (Rachel, Adam,
+# Antoni, Bella, Domi, Elli). They are provided as sensible DEFAULTS ONLY and
+# should be curated / verified against your own ElevenLabs workspace before
+# production use. Every id here is OVERRIDABLE: replace the `id` values (or the
+# whole file) with voices from your account. If this file is missing or invalid
+# the API falls back to listing voices live from the ElevenLabs account.
+#
+# The three multilingual voices are Turkish-capable via the ElevenLabs
+# multilingual v2 model; the three English voices are tuned for en-US delivery.
+#
+# Schema (each entry):
+#   id:          ElevenLabs voice_id
+#   name:        human-friendly display name
+#   language:    one of 'tr' | 'en' | 'multi'
+#   gender:      'male' | 'female'
+#   description: short blurb shown in the UI
+
+voices:
+  # --- Turkish-capable (multilingual v2) ------------------------------------
+  - id: "ErXwobaYiN019PkySvjV"
+    name: "Antoni"
+    language: "multi"
+    gender: "male"
+    description: "Warm, well-rounded male voice; Turkish-capable (multilingual v2). Curated default — verify/override."
+
+  - id: "EXAVITQu4vr4xnSDxMaL"
+    name: "Bella"
+    language: "multi"
+    gender: "female"
+    description: "Soft, expressive female voice; Turkish-capable (multilingual v2). Curated default — verify/override."
+
+  - id: "AZnzlk1XvdvUeBnXmlld"
+    name: "Domi"
+    language: "multi"
+    gender: "female"
+    description: "Confident, energetic female voice; Turkish-capable (multilingual v2). Curated default — verify/override."
+
+  # --- English (en-US) ------------------------------------------------------
+  - id: "21m00Tcm4TlvDq8ikWAM"
+    name: "Rachel"
+    language: "en"
+    gender: "female"
+    description: "Calm, natural American female voice. Curated default — verify/override."
+
+  - id: "pNInz6obpgDQGcFmaJgB"
+    name: "Adam"
+    language: "en"
+    gender: "male"
+    description: "Deep, narration-friendly American male voice. Curated default — verify/override."
+
+  - id: "MF3mGyEYCl7XYWbV9V6O"
+    name: "Elli"
+    language: "en"
+    gender: "female"
+    description: "Youthful, clear American female voice. Curated default — verify/override."

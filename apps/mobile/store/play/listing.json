@@ -1,0 +1,25 @@
+{
+  "packageName": "com.menivor.app",
+  "language": "en-US",
+  "title": "Menivor: AI Video Reels",
+  "shortDescription": "Turn a screen recording, a link or a topic into a captioned vertical reel.",
+  "fullDescription": "Menivor turns what you already have into short vertical videos for TikTok, Reels and Shorts. Start from a screen recording of your product, a link or a topic, and Menivor writes the hooks, adds a voice and captions, and renders a finished 9:16 reel.\n\nONE FLOW TO A FINISHED REEL\nType a topic or paste a link and get three hook variants to choose from. Or import a screen recording from your files or photo library, pick a layout, a voice and an avatar, and submit it as a render job. The Jobs tab shows each reel as it moves through the queue, and you can play the finished video when it is ready.\n\nCAPTIONS, VOICES AND AVATARS\nChoose a caption style from the live catalog. Record a short voice sample to create a brand voice, or use a stock voice. Take a selfie to set up an on-screen avatar. Every voice and avatar you create can be viewed and deleted from your account.\n\nB-ROLL AND MEDIA\nGenerate AI B-roll clips, keep your recent ones on the device, and attach a clip to a reel draft. The media gateway creates images, video and audio from one credit balance, and a finished image can be animated into a short clip.\n\nDRAFTS THAT STAY ON YOUR PHONE\nRecord or import a clip for later. Drafts are stored on the device until you choose to upload them.\n\nTEMPLATES AND TEAMS\nBrowse the public template catalog, clone a template into your own library and rate it. Workspaces let a small team share brand settings, roles and approvals.\n\nCREDITS AND PLANS\nMenivor uses a credit balance for generation. Your usage, plan and billing history are visible in the Wallet section.\n\nYOUR DATA\nYou can export your data, manage consent choices and permanently delete your account from Settings > Privacy and data.\n\nPrivacy Policy: https://menivor.com/privacy\nTerms: https://menivor.com/terms\nSupport: hello@menivor.com",
+  "video": "",
+  "contactWebsite": "https://menivor.com/",
+  "contactEmail": "hello@menivor.com",
+  "privacyPolicy": "https://menivor.com/privacy",
+  "category": "VIDEO_PLAYERS",
+  "tags": ["Video editor", "Social media", "AI video"],
+  "images": {
+    "icon": "icon-512.png",
+    "featureGraphic": "feature-graphic-1024x500.png",
+    "phoneScreenshots": [
+      "phone-screenshots/01-create.png",
+      "phone-screenshots/02-hooks.png",
+      "phone-screenshots/03-jobs.png",
+      "phone-screenshots/04-voices.png",
+      "phone-screenshots/05-broll.png"
+    ],
+    "todo": "OWNER/TODO: none of these files exist yet. icon-512.png = assets/icon.png (1024x1024) resized to 512x512 PNG. feature-graphic-1024x500.png has to be made. Phone screenshots: capture 2 to 8 from an Android build, 9:16 or close, longest side at most 2x the shortest (iPhone 1320x2868 captures are over the 2:1 limit). publish.mjs fails until all listed files exist."
+  }
+}

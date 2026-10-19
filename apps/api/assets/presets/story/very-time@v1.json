@@ -1,0 +1,228 @@
+{
+  "id": "very-time",
+  "version": 1,
+  "name": "Very ___ Time",
+  "blurb": "One place word, one everyday ritual and one deadpan line become a 15 second vertical video in five shots.",
+  "frames": 5,
+  "frame_seconds": 3.0,
+  "size": [
+    720,
+    1280
+  ],
+  "default_line": "You met me at a very {place_word} time in my life.",
+  "beats": [
+    {
+      "id": "detail",
+      "seconds": 2.0,
+      "camera": "push_in",
+      "camera_text": "slow push-in triggered by the action",
+      "speaks": false,
+      "direction": "macro detail shot of the ritual",
+      "image_prompt": "Macro close-up of {ritual}, the everyday ritual of a very {place_word} time, hands and objects only, the cuff of {garment} just visible at the edge of frame, real textures, vertical 9:16",
+      "motion_prompt": "One small action of {ritual}: the hands move once, cause then effect, the objects settle",
+      "sfx": "close foley of {ritual}: a small clink, a pour or a rustle, intimate and dry"
+    },
+    {
+      "id": "character",
+      "seconds": 3.0,
+      "camera": "hold",
+      "camera_text": "locked-off medium shot",
+      "speaks": false,
+      "direction": "medium shot of the character doing the ritual",
+      "image_prompt": "Medium shot of the host in the middle of {ritual}, wearing {garment}, the chest embroidery reading \"{chest_text}\" sharp, legible and not covered by arms or hands, calm deadpan face, vertical 9:16",
+      "motion_prompt": "The host carries on with {ritual} calmly, one unhurried gesture, the chest text stays in view",
+      "sfx": "quiet room tone with one soft sound of {ritual}",
+      "chest_region": [
+        0.6,
+        0.45
+      ]
+    },
+    {
+      "id": "insert",
+      "seconds": 2.5,
+      "camera": "push_in",
+      "camera_text": "slow push-in",
+      "speaks": false,
+      "direction": "insert of a second detail or a small reaction",
+      "image_prompt": "Insert shot: a second small detail of {ritual} or a quiet reaction nearby (steam, a cat, a neighbour's hands), the sleeve of {garment} in frame, vertical 9:16",
+      "motion_prompt": "A tiny reaction: steam drifts, a cat blinks or a hand pauses, nothing else moves",
+      "sfx": "one tiny diegetic sound: steam hiss, a cat purr or a spoon on glass"
+    },
+    {
+      "id": "wide",
+      "seconds": 3.0,
+      "camera": "pull_out",
+      "camera_text": "locked-off wide shot",
+      "speaks": false,
+      "direction": "wide shot of the everyday place, character small in frame",
+      "image_prompt": "Wide shot of the ordinary everyday place where {ritual} happens, not a landmark, the host small in frame wearing {garment}, deadpan, vertical 9:16",
+      "motion_prompt": "The place breathes: light flickers or a passer-by crosses far behind, the host stays still and small in frame",
+      "sfx": "street and room ambience of an ordinary everyday place, distant and calm"
+    },
+    {
+      "id": "deadpan",
+      "seconds": 4.5,
+      "camera": "hold",
+      "camera_text": "locked-off close-up, no movement",
+      "speaks": true,
+      "direction": "close-up to camera, deadpan payoff",
+      "image_prompt": "Close-up of the host looking straight into the camera, deadpan, wearing {garment} with the chest embroidery reading \"{chest_text}\" legible at the bottom of frame, vertical 9:16",
+      "motion_prompt": "The host looks into the camera and says the line flat and quiet, then holds the stare for one second of silence",
+      "sfx": "near silence, faint room tone, no music",
+      "chest_region": [
+        0.6,
+        0.88
+      ]
+    }
+  ],
+  "style": "vertical 9:16 composition, same host in every shot, affectionate everyday detail, deadpan tone",
+  "continuity": "same garment ({garment}) with the chest text '{chest_text}' legible and unchanged",
+  "negative": [
+    "watermark",
+    "logo",
+    "extra limbs",
+    "different person",
+    "misspelled text",
+    "extra text",
+    "text on the sleeves",
+    "the chest text repeated",
+    "signs or labels"
+  ],
+  "brand": {
+    "garment": "an oversized oxblood (#4A0E17) button-up shirt with ivory serif embroidery on the chest",
+    "chest_text": "very {place_word} time"
+  },
+  "host": "a calm middle-aged host with a deadpan stare and quiet authority",
+  "looks": {
+    "console": {
+      "name": "Console cutscene",
+      "style": "early-2000s PlayStation 2 era console game cutscene still, realistic proportions, slightly low-poly faces, baked flat lighting, slightly soft low-resolution textures, faint aliasing on edges, gentle bloom, 4:3-era game camera",
+      "negative": [
+        "photorealistic",
+        "sharp 4k detail",
+        "modern game graphics"
+      ],
+      "lut": "console-480",
+      "degrade": "console",
+      "caption_style": "game_yellow"
+    },
+    "flash": {
+      "name": "Flash lookbook",
+      "style": "fashion lookbook photo, direct on-camera flash, grey seamless paper background, hard shadow on the wall, 35 mm film colour, fine grain, deadpan pose",
+      "negative": [
+        "soft studio light",
+        "cartoon",
+        "3d render"
+      ],
+      "lut": "flash-lookbook",
+      "caption_style": "serif_lower_third"
+    },
+    "atelier": {
+      "name": "Atelier film",
+      "style": "atelier film still, soft window light, warm film stock, shallow depth of field, quiet room",
+      "negative": [
+        "hard flash",
+        "cartoon",
+        "3d render"
+      ],
+      "lut": "atelier-film",
+      "caption_style": "serif_lower_third"
+    }
+  },
+  "default_look": "console",
+  "negative_imagery": [
+    "flags",
+    "crescent moon",
+    "sultan",
+    "Ottoman costume",
+    "khan",
+    "steppe warrior",
+    "fez caricature",
+    "famous landmarks as the subject",
+    "mocking caricature"
+  ],
+  "captions": {
+    "mode": "static",
+    "speech_lead_s": 0.2
+  },
+  "banned": {
+    "imagery": [
+      "flag",
+      "national flag",
+      "crescent",
+      "crescent moon",
+      "star and crescent",
+      "sultan",
+      "ottoman",
+      "ottoman costume",
+      "janissary",
+      "khan",
+      "steppe warrior",
+      "fez",
+      "fez caricature",
+      "bayrak",
+      "hilal",
+      "ay yildiz",
+      "padisah",
+      "osmanli",
+      "yeniceri",
+      "fes",
+      "hagia sophia",
+      "ayasofya",
+      "blue mosque",
+      "sultanahmet",
+      "galata tower",
+      "galata kulesi"
+    ],
+    "mocking": [
+      "mocking",
+      "caricature",
+      "stereotype",
+      "slur",
+      "barbarian",
+      "savage",
+      "primitive",
+      "uncivilized",
+      "terrorist",
+      "invader"
+    ],
+    "do_not_copy": [
+      "braided crown grandmother",
+      "braided-crown grandmother",
+      "braided crown",
+      "doner shop man",
+      "doner-shop man",
+      "bauhaus nazar",
+      "bauhaus-nazar",
+      "nazar graphic",
+      "anatolia arc",
+      "console that never existed",
+      "dante",
+      "white-haired dante",
+      "480 inc",
+      "480inc"
+    ]
+  },
+  "frame_model": "ideogram/ideogram-v3",
+  "frames_standard_credits": 1,
+  "animated": {
+    "seconds_from_beat": true,
+    "video_model": "bytedance/seedance-2.0-i2v",
+    "reference_video_model": "bytedance/seedance-2.0-r2v",
+    "tier": "standard"
+  },
+  "end_card": {
+    "seconds": {
+      "10": 1.5,
+      "15": 2.0,
+      "30": 2.5
+    },
+    "background": "#141414",
+    "text": "#F2EEE9"
+  },
+  "durations": [
+    10,
+    15,
+    30
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "relight",
+  "version": 1,
+  "name": "Relight",
+  "blurb": "Change the lighting of a photo: golden hour, studio, neon or soft window light.",
+  "input": {
+    "kind": "image_choice",
+    "label": "Photo",
+    "choices": [
+      "golden hour",
+      "clean studio",
+      "neon night",
+      "soft window light"
+    ]
+  },
+  "runner": "image_edit",
+  "edit": {
+    "prompts": [
+      "Relight this image with {text} lighting. Keep the subject, pose and composition identical."
+    ]
+  },
+  "price": {
+    "credit_kind": "ai_video",
+    "per_image_usd": 0.04,
+    "source": "https://fal.ai/models/fal-ai/flux-pro/kontext",
+    "date": "2026-09-30"
+  },
+  "preview": "presets/apps/relight.mp4"
+}

@@ -1,0 +1,16 @@
+{
+ "id": "petal-burst",
+ "version": 1,
+ "kind": "model",
+ "name": "Petal burst",
+ "blurb": "Your subject bursts into a cloud of petals.",
+ "credit_kind": "ai_video",
+ "preset_sku": "animate_image",
+ "tier": "draft",
+ "seconds": 5,
+ "inputs": [
+  "subject",
+  "image"
+ ],
+ "prompt_template": "The {subject} bursts into a soft cloud of flower petals that drift toward the camera"
+}

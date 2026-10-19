@@ -1,0 +1,29 @@
+{
+  "channel": "stable",
+  "version": "0.2.0",
+  "published_at": "2026-09-01T12:00:00Z",
+  "notes_url": "https://menivor.com/releases/0.2.0",
+  "artifacts": [
+    {
+      "platform": "macos",
+      "arch": "aarch64",
+      "kind": "pkg",
+      "url": "https://downloads.menivor.com/0.2.0/Menivor-aarch64.pkg",
+      "path": "../../../../target/release/Menivor-aarch64.pkg"
+    },
+    {
+      "platform": "windows",
+      "arch": "x86_64",
+      "kind": "msi",
+      "url": "https://downloads.menivor.com/0.2.0/Menivor-x86_64.msi",
+      "path": "../../../../target/release/Menivor-x86_64.msi"
+    },
+    {
+      "platform": "linux",
+      "arch": "x86_64",
+      "kind": "appimage",
+      "url": "https://downloads.menivor.com/0.2.0/Menivor-x86_64.AppImage",
+      "path": "../../../../target/release/Menivor-x86_64.AppImage"
+    }
+  ]
+}

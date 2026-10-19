@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "live": {
+    "before-after": "showcase/kitchen-before-after.mp4",
+    "click-to-ad": "showcase/serum-morning.mp4",
+    "meme": "showcase/sneaker-meme.mp4"
+  },
+  "note": "app id -> uploaded preview loop key; filled by tools/ops/apps_previews.py --record after the upload"
+}

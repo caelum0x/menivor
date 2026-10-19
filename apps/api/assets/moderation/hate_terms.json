@@ -1,0 +1,47 @@
+{
+  "id": "hate-terms",
+  "version": "2026-10-05",
+  "purpose": "Ethnic, racial and homophobic slurs and hate symbols refused by the Very ___ Time guard-rail (every user text field). Base forms only: matching is whole-word, Turkish-aware and allows common English/Turkish suffixes.",
+  "maintenance": "Run apps/api/tools/moderation/refresh_hate_terms.py to diff against the upstream lists; a person reviews every addition (upstream mixes slurs with general profanity, which this list does not want). Bump version on change.",
+  "sources": [
+    {
+      "name": "LDNOOBW: List of Dirty, Naughty, Obscene and Otherwise Bad Words",
+      "url": "https://github.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words",
+      "licence": "CC-BY-4.0",
+      "commit": "5faf2ba42d7b1c0977169ec3611df25a3c08eb13",
+      "files": ["en", "tr", "de"],
+      "use": "slur subset only (categories ethnic_slurs and homophobic_slurs marked upstream:true)"
+    },
+    {
+      "name": "Menivor curated hate symbols and regional slurs",
+      "url": "internal",
+      "licence": "project",
+      "use": "hate symbols and slurs aimed at Turks, Kurds, Armenians, Roma and Arabs that the upstream lists miss"
+    }
+  ],
+  "categories": {
+    "ethnic_slurs": {
+      "upstream": ["beaner", "coon", "darkie", "honkey", "jigaboo", "jiggaboo", "jiggerboo", "kike", "nigga", "nigger",
+                   "nig nog", "paki", "pikey", "raghead", "slanteye", "spic", "towelhead", "wetback",
+                   "cingene", "kanake", "neger"],
+      "curated": ["kanacke", "kummelturke", "kuemmeltuerke", "turkenschwein", "tuerkenschwein", "knoblauchfresser",
+                  "gavur", "kiro", "ermeni dolu", "pis arap", "pis kurt", "sand nigger"]
+    },
+    "homophobic_slurs": {
+      "upstream": ["fag", "faggot", "bulldyke", "carpet muncher", "carpetmuncher", "tranny", "schwuchtel", "kampflesbe"],
+      "curated": ["ibne", "dyke"]
+    },
+    "hate_symbols": {
+      "upstream": ["swastika", "white power", "neonazi"],
+      "curated": ["nazi", "hakenkreuz", "gamali hac", "sieg heil", "heil hitler", "1488", "fourteen words",
+                  "ku klux klan", "kkk", "ss bolts", "sig runes", "totenkopf", "wolfsangel", "black sun",
+                  "schwarze sonne", "white pride", "grey wolves salute", "bozkurt isareti", "iron cross flag"]
+    }
+  },
+  "excluded_from_upstream": {
+    "negro": "also the plain colour word in Spanish and Portuguese (cafe negro); would refuse ordinary rituals",
+    "mong": "ambiguous short form; refuses Hmong and Mongolian place words",
+    "poof": "also an everyday sound word (the steam goes poof)",
+    "general profanity and sexual terms": "out of scope for this list; the prompt denylist and the provider moderation cover them"
+  }
+}

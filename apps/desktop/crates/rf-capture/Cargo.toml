@@ -1,0 +1,12 @@
+[package]
+name = "rf-capture"
+description = "ReelForge desktop native screen/camera capture — ffmpeg argv builder"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]
+rf-hardware = { path = "../rf-hardware" }

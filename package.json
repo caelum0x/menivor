@@ -1,0 +1,39 @@
+{
+  "name": "reelforge-monorepo",
+  "private": true,
+  "packageManager": "npm@10",
+  "workspaces": [
+    "apps/web",
+    "apps/mobile",
+    "packages/*"
+  ],
+  "scripts": {
+    "web:dev": "npm --workspace reelforge-web run dev",
+    "web:build": "npm --workspace reelforge-web run build",
+    "web:typecheck": "npm --workspace reelforge-web run typecheck",
+    "mobile:start": "npm --workspace reelforge-mobile run start",
+    "mobile:typecheck": "npm --workspace reelforge-mobile run typecheck",
+    "sdk:ts:build": "npm --workspace @menivor/sdk run build",
+    "shared:build": "npm --workspace @reelforge/api-contract run build && npm --workspace @reelforge/caption-engine run build && npm --workspace @reelforge/comfy-workflow-schema run build && npm --workspace @reelforge/effects-core run build && npm --workspace @reelforge/eventbus-types run build && npm --workspace @reelforge/growth-analytics run build && npm --workspace @reelforge/provider-adapter-kit run build && npm --workspace @reelforge/publishing-connectors run build && npm --workspace @reelforge/render-core run build && npm --workspace @reelforge/shot-template-schema run build && npm --workspace @reelforge/trends-schema run build && npm --workspace @reelforge/ui-kit run build && npm --workspace @menivor/sdk run build",
+    "contract:export": "npm --workspace @reelforge/api-contract run contract:export",
+    "contract:check": "npm --workspace @reelforge/api-contract run contract:check",
+    "contract:breaking": "npm --workspace @reelforge/api-contract run contract:breaking",
+    "contract:baseline": "npm --workspace @reelforge/api-contract run contract:baseline",
+    "architecture:check": "python3 apps/api/tools/check_architecture_boundaries.py",
+    "lint": "make lint && npm run web:lint",
+    "test": "make test",
+    "build": "npm run shared:build && npm run web:build && cargo check --workspace",
+    "smoke": "make smoke"
+  },
+  "devDependencies": {
+    "ajv": "^8.17.1"
+  },
+  "overrides": {
+    "eslint": {
+      "ajv": "^6.12.4"
+    },
+    "@eslint/eslintrc": {
+      "ajv": "^6.12.4"
+    }
+  }
+}

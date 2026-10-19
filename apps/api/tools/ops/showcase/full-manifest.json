@@ -1,0 +1,43 @@
+{
+ "description": "The full showcase reels with sound (Wave P PM1.1). render_full.py renders every key whose staged full/<key>-full.mp4 is missing or fails checks.py --full. Keys must match sources.json; a drift stops the job.",
+ "count": 27,
+ "width": 720,
+ "height": 1280,
+ "lufs_target": -15.0,
+ "lufs_window": [
+  -16.0,
+  -14.0
+ ],
+ "staging": "public-samples-staging/full/<key>-full.mp4",
+ "private_object": "marketing/showcase/<key>-full.mp4",
+ "public_object": "showcase/<key>-full.mp4",
+ "keys": [
+  "serum-morning",
+  "ring-pov",
+  "sneaker-meme",
+  "pasta-weeknight",
+  "smoothie-split",
+  "burger-pov",
+  "latte-cafe",
+  "cooking-narrator",
+  "gym-split",
+  "trail-story",
+  "island-drone",
+  "tokyo-meme",
+  "hike-pov",
+  "house-tour",
+  "kitchen-before-after",
+  "saas-inbox",
+  "barber-meme",
+  "bakery-morning",
+  "car-before-after",
+  "dog-groom-split",
+  "florist-story",
+  "power-wash",
+  "candle-split",
+  "paint-meme",
+  "cleaning-before-after",
+  "menivor-pov",
+  "scribase-split"
+ ]
+}

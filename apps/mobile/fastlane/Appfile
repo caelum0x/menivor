@@ -1,0 +1,2 @@
+app_identifier("com.arhansuba.menivor")
+team_id("947G2G2JXJ") # Apple Developer Portal team (auth happens via the ASC API key)

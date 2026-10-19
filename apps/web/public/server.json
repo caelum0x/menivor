@@ -1,0 +1,30 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+  "name": "com.menivor/menivor",
+  "title": "Menivor",
+  "description": "Create short-form vertical reels and ads, check pricing, and get your finished MP4 from Menivor.",
+  "version": "1.0.0",
+  "websiteUrl": "https://menivor.com/mcp",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://menivor.com/api/mcp",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Bearer followed by your personal Menivor API key from https://menivor.com/account/api-keys",
+          "value": "Bearer {menivor_api_key}",
+          "isRequired": true,
+          "isSecret": true,
+          "variables": {
+            "menivor_api_key": {
+              "description": "Personal Menivor API key",
+              "isRequired": true,
+              "isSecret": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

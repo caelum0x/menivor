@@ -1,0 +1,17 @@
+{
+  "locale": "en-US",
+  "name": "Menivor: AI Video Maker",
+  "subtitle": "Prompt or link to a reel",
+  "keywords": "reel,shorts,captions,subtitles,ugc,voiceover,b-roll,hook,script,dub,vertical,ads,creator,clip,edit",
+  "promotionalText": "Type an idea or paste a link. Menivor writes three hooks, voices them, cuts b-roll and burns in word-by-word captions. Pick the winner, edit it, export it.",
+  "description": "Menivor turns an idea into a finished vertical video. Type a topic, paste a link or bring your own footage, and Menivor writes the hook, adds a voice, cuts b-roll and burns in word-by-word captions.\n\nFROM A PROMPT OR A LINK\nDescribe what the video is about, or paste a product page or article. Menivor drafts three different hooks and renders each as its own 9:16 reel, so you can watch them side by side and keep the best one.\n\nYOUR OWN FOOTAGE\nImport a clip or screen recording from your library, trim it, and Menivor narrates and captions it. Long recordings can be cut into several short clips, each scored on how strong its opening is.\n\nEDIT ON A TIMELINE\nReorder and trim segments, change speed, add text overlays and export the result as a new reel.\n\nCAPTIONS THAT HOLD ATTENTION\nChoose a caption style, use bold one or two word punch captions, check safe zones so nothing hides under app buttons, and get a hook score before you post.\n\nVOICE, PRESENTER AND LANGUAGES\nPick a narrator voice or record a short sample to create your own. Take a selfie to make an on-screen presenter. Dub a finished video into another language with subtitle files.\n\nB-ROLL AND BRAND\nGenerate b-roll clips for any scene, set a brand watermark, and start from templates when you want a proven structure.\n\nTRACK EVERY RENDER\nThe Reels tab shows each video as it moves through script, voice, captions and compose, and tells you when it is ready to save or share.\n\nCREDITS AND MENIVOR PRO\nRenders use credits. Credit packs and Menivor Pro are sold through the App Store at the price shown in the app. Failed renders are refunded automatically and credits do not expire. Menivor Pro is an auto-renewing subscription that unlocks exporting and saving your reels; cancel anytime in your App Store account settings.\n\nYOUR DATA\nAn account is needed so your videos follow you across devices. You can export your data or delete your account at any time from Account > Privacy and data.\n\nTerms of Use: https://menivor.com/terms\nPrivacy Policy: https://menivor.com/privacy",
+  "supportUrl": "https://menivor.com/contact",
+  "marketingUrl": "https://menivor.com/",
+  "privacyPolicyUrl": "https://menivor.com/privacy",
+  "whatsNew": null,
+  "_notes": {
+    "url_checks_2026-10-06": "menivor.com 200, /privacy 200, /terms 200, /support 308 -> /contact 200 (so supportUrl uses /contact).",
+    "locales": "English only: the app UI has no Turkish strings, so no tr metadata is written.",
+    "lengths": "name 23/30, subtitle 24/30, promotionalText 155/170, keywords 98/100"
+  }
+}

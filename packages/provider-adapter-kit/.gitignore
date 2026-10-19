@@ -1,0 +1,4 @@
+node_modules/
+dist/
+__pycache__/
+!test/test_execution.py

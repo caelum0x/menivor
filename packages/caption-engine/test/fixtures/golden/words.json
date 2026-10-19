@@ -1,0 +1,32 @@
+[
+  {
+    "text": "make",
+    "start": 0.0,
+    "end": 0.32
+  },
+  {
+    "text": "your",
+    "start": 0.32,
+    "end": 0.58
+  },
+  {
+    "text": "first",
+    "start": 0.58,
+    "end": 0.91
+  },
+  {
+    "text": "viral",
+    "start": 0.91,
+    "end": 1.4
+  },
+  {
+    "text": "reel",
+    "start": 1.4,
+    "end": 1.85
+  },
+  {
+    "text": "today",
+    "start": 1.85,
+    "end": 2.4
+  }
+]

@@ -1,0 +1,16 @@
+{
+ "id": "product-spin",
+ "version": 1,
+ "kind": "model",
+ "name": "Product spin",
+ "blurb": "A clean 360 turn of your product on a plinth.",
+ "credit_kind": "ai_video",
+ "preset_sku": "animate_image",
+ "tier": "draft",
+ "seconds": 5,
+ "inputs": [
+  "subject",
+  "image"
+ ],
+ "prompt_template": "The {subject} turns a full circle on a clean white plinth, soft studio light, seamless background"
+}

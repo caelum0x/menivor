@@ -1,0 +1,17 @@
+[package]
+name = "rf-compose"
+description = "ReelForge desktop compose step — turns an rf-plan RenderPlan into an FFmpeg filtergraph via rf-ffmpeg (pure)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]
+rf-plan = { path = "../rf-plan" }
+rf-ffmpeg = { path = "../rf-ffmpeg" }
+
+[dev-dependencies]
+rf-shots = { path = "../rf-shots" }
+rf-captions = { path = "../rf-captions" }

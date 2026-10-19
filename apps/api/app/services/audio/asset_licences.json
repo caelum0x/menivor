@@ -1,0 +1,276 @@
+{
+  "schema": 1,
+  "description": "Licence record for every audio file under apps/api/assets (M2.4). cleared_for_output is true only for a verified licence. tests/reelforge/test_m2_4_captions_audio.py fails when an audio file has no record or its hash changed.",
+  "assets": [
+    {
+      "path": "bgm/default.mp3",
+      "sha256": "08a85710941b19b7bf88d8edb752bf647df63939ee4f23efacc5f99130daf5c0",
+      "source": "Bundled default BGM. ID3 tags: 'Final Fantasy 9 MelodiesofLife Arranged OC ReMix' by McVaffe (OC ReMix OCR00152), composer Nobuo Uematsu, copyright Squaresoft.",
+      "licence": "third-party copyrighted composition (fan remix)",
+      "cleared_for_output": false,
+      "note": "A game-music fan remix. Not cleared for commercial output.",
+      "integrated_lufs": -17.4
+    },
+    {
+      "path": "resource/songs/output000.mp3",
+      "sha256": "9bae80da9326e87d4e0c96b08f0f1ee4911c1697ef9b5237ef51351a44453e49",
+      "source": "MoneyPrinterTurbo upstream bundle (resource/songs). The upstream README says these tracks come from YouTube videos.",
+      "licence": "unknown",
+      "cleared_for_output": false,
+      "note": "No verifiable licence. Do not treat as royalty-free until the owner replaces or clears it.",
+      "integrated_lufs": -19.8
+    },
+    {
+      "path": "resource/songs/output001.mp3",
+      "sha256": "bcdfed1366cfbcf146b99c9f303b8d699ff78e78b0d2b2a406ef07a0a4894741",
+      "source": "MoneyPrinterTurbo upstream bundle (resource/songs). The upstream README says these tracks come from YouTube videos.",
+      "licence": "unknown",
+      "cleared_for_output": false,
+      "note": "No verifiable licence. Do not treat as royalty-free until the owner replaces or clears it.",
+      "integrated_lufs": -21.1
+    },
+    {
+      "path": "resource/songs/output002.mp3",
+      "sha256": "31d03c64eac3c3c5417d33851372013c7ef15ca6780767618166f87c186ee9ee",
+      "source": "MoneyPrinterTurbo upstream bundle (resource/songs). The upstream README says these tracks come from YouTube videos.",
+      "licence": "unknown",
+      "cleared_for_output": false,
+      "note": "No verifiable licence. Do not treat as royalty-free until the owner replaces or clears it.",
+      "integrated_lufs": -23.0
+    },
+    {
+      "path": "resource/songs/output003.mp3",
+      "sha256": "dceba4a2c5fcf7d0f75e838391bc2e775c4d14f945ac7a4df38fb61ffd035e31",
+      "source": "MoneyPrinterTurbo upstream bundle (resource/songs). The upstream README says these tracks come from YouTube videos.",
+      "licence": "unknown",
+      "cleared_for_output": false,
+      "note": "No verifiable licence. Do not treat as royalty-free until the owner replaces or clears it.",
+      "integrated_lufs": -22.7
+    },
+    {
+      "path": "resource/songs/output004.mp3",
+      "sha256": "5673e7f136905078ae9e618bc6bea7f1fa1c7b4614f9d205c4a38698d9e9f5a7",
+      "source": "MoneyPrinterTurbo upstream bundle (resource/songs). The upstream README says these tracks come from YouTube videos.",
+      "licence": "unknown",
+      "cleared_for_output": false,
+      "note": "No verifiable licence. Do not treat as royalty-free until the owner replaces or clears it.",
+      "integrated_lufs": -19.7
+    },
+    {
+      "path": "resource/songs/output005.mp3",
+      "sha256": "bf9d13168502a8f390dc5b1802aec4bab13ad3bffc121c54e5c0fd573d28defb",
+      "source": "MoneyPrinterTurbo upstream bundle (resource/songs). The upstream README says these tracks come from YouTube videos.",
+      "licence": "unknown",
+      "cleared_for_output": false,
+      "note": "No verifiable licence. Do not treat as royalty-free until the owner replaces or clears it.",
+      "integrated_lufs": -21.9
+    },
+    {
+      "path": "resource/songs/output006.mp3",
+      "sha256": "b311af495773569f035ed5668e6e5330c927cbcdb8fd26986ce45c7a69e32783",
+      "source": "MoneyPrinterTurbo upstream bundle (resource/songs). The upstream README says these tracks come from YouTube videos.",
+      "licence": "unknown",
+      "cleared_for_output": false,
+      "note": "No verifiable licence. Do not treat as royalty-free until the owner replaces or clears it.",
+      "integrated_lufs": -23.5
+    },
+    {
+      "path": "resource/songs/output007.mp3",
+      "sha256": "a77ca1bebde4904aee56b30d97745842b0472488b13457aa270154a8c09ba446",
+      "source": "MoneyPrinterTurbo upstream bundle (resource/songs). The upstream README says these tracks come from YouTube videos.",
+      "licence": "unknown",
+      "cleared_for_output": false,
+      "note": "No verifiable licence. Do not treat as royalty-free until the owner replaces or clears it.",
+      "integrated_lufs": -21.1
+    },
+    {
+      "path": "resource/songs/output008.mp3",
+      "sha256": "fc288f070b9c27fb1e4f332e8f57b63290e6ac31f355059e695e565184f47f3c",
+      "source": "MoneyPrinterTurbo upstream bundle (resource/songs). The upstream README says these tracks come from YouTube videos.",
+      "licence": "unknown",
+      "cleared_for_output": false,
+      "note": "No verifiable licence. Do not treat as royalty-free until the owner replaces or clears it.",
+      "integrated_lufs": -20.2
+    },
+    {
+      "path": "resource/songs/output009.mp3",
+      "sha256": "99103c97bd4647683ec2115ee2177a3e83ddd9466fddb96af430d3958fdf66c8",
+      "source": "MoneyPrinterTurbo upstream bundle (resource/songs). The upstream README says these tracks come from YouTube videos.",
+      "licence": "unknown",
+      "cleared_for_output": false,
+      "note": "No verifiable licence. Do not treat as royalty-free until the owner replaces or clears it.",
+      "integrated_lufs": -22.2
+    },
+    {
+      "path": "resource/songs/output010.mp3",
+      "sha256": "711720c4dca1b8db0128c8c4fd62adb1db1cb00709f276f639483e6ec0ef09a7",
+      "source": "MoneyPrinterTurbo upstream bundle (resource/songs). The upstream README says these tracks come from YouTube videos.",
+      "licence": "unknown",
+      "cleared_for_output": false,
+      "note": "No verifiable licence. Do not treat as royalty-free until the owner replaces or clears it.",
+      "integrated_lufs": -23.9
+    },
+    {
+      "path": "resource/songs/output011.mp3",
+      "sha256": "060d34b687f4be9f7a364a2fe0135e977af4c3a8820a176b98e9417a63d4bf93",
+      "source": "MoneyPrinterTurbo upstream bundle (resource/songs). The upstream README says these tracks come from YouTube videos.",
+      "licence": "unknown",
+      "cleared_for_output": false,
+      "note": "No verifiable licence. Do not treat as royalty-free until the owner replaces or clears it.",
+      "integrated_lufs": -20.0
+    },
+    {
+      "path": "resource/songs/output012.mp3",
+      "sha256": "647c4718d8110def2b63f0a1990e85d0307529f16b5ad04d3a0cf8586e6f9f7a",
+      "source": "MoneyPrinterTurbo upstream bundle (resource/songs). The upstream README says these tracks come from YouTube videos.",
+      "licence": "unknown",
+      "cleared_for_output": false,
+      "note": "No verifiable licence. Do not treat as royalty-free until the owner replaces or clears it.",
+      "integrated_lufs": -20.9
+    },
+    {
+      "path": "resource/songs/output013.mp3",
+      "sha256": "a323b2b618b65f3ee08364551d35df29ebd0eb6267b0976c559147f453ab55b5",
+      "source": "MoneyPrinterTurbo upstream bundle (resource/songs). The upstream README says these tracks come from YouTube videos.",
+      "licence": "unknown",
+      "cleared_for_output": false,
+      "note": "No verifiable licence. Do not treat as royalty-free until the owner replaces or clears it.",
+      "integrated_lufs": -22.6
+    },
+    {
+      "path": "resource/songs/output014.mp3",
+      "sha256": "90c8e9f381d31d14ff68bb8889cf7cb61e9db0b58904074645d70c207a5e4206",
+      "source": "MoneyPrinterTurbo upstream bundle (resource/songs). The upstream README says these tracks come from YouTube videos.",
+      "licence": "unknown",
+      "cleared_for_output": false,
+      "note": "No verifiable licence. Do not treat as royalty-free until the owner replaces or clears it.",
+      "integrated_lufs": -23.1
+    },
+    {
+      "path": "resource/songs/output015.mp3",
+      "sha256": "c9a2b3c6ec47e3e4cb53a0e36515bb41b83153cf5bd06625c634d724a0ef96c1",
+      "source": "MoneyPrinterTurbo upstream bundle (resource/songs). The upstream README says these tracks come from YouTube videos.",
+      "licence": "unknown",
+      "cleared_for_output": false,
+      "note": "No verifiable licence. Do not treat as royalty-free until the owner replaces or clears it.",
+      "integrated_lufs": -19.9
+    },
+    {
+      "path": "resource/songs/output016.mp3",
+      "sha256": "74c808294b89c349911a2781e33e83e3f37855c82bea831da1ba570d092fce98",
+      "source": "MoneyPrinterTurbo upstream bundle (resource/songs). The upstream README says these tracks come from YouTube videos.",
+      "licence": "unknown",
+      "cleared_for_output": false,
+      "note": "No verifiable licence. Do not treat as royalty-free until the owner replaces or clears it.",
+      "integrated_lufs": -21.5
+    },
+    {
+      "path": "resource/songs/output017.mp3",
+      "sha256": "53d3681058a3b3d2fec4a00e19e9b6eaee368538d815c3d68a503f2b94fd220e",
+      "source": "MoneyPrinterTurbo upstream bundle (resource/songs). The upstream README says these tracks come from YouTube videos.",
+      "licence": "unknown",
+      "cleared_for_output": false,
+      "note": "No verifiable licence. Do not treat as royalty-free until the owner replaces or clears it.",
+      "integrated_lufs": -23.2
+    },
+    {
+      "path": "resource/songs/output018.mp3",
+      "sha256": "4224198e1286869b8ac93deb988540a69878b0982e2d2d9b151eb73f386aca01",
+      "source": "MoneyPrinterTurbo upstream bundle (resource/songs). The upstream README says these tracks come from YouTube videos.",
+      "licence": "unknown",
+      "cleared_for_output": false,
+      "note": "No verifiable licence. Do not treat as royalty-free until the owner replaces or clears it.",
+      "integrated_lufs": -22.0
+    },
+    {
+      "path": "resource/songs/output019.mp3",
+      "sha256": "eed14b0acd9e5e29f194443d8b960713c74a1bf1907825852af65262798adec2",
+      "source": "MoneyPrinterTurbo upstream bundle (resource/songs). The upstream README says these tracks come from YouTube videos.",
+      "licence": "unknown",
+      "cleared_for_output": false,
+      "note": "No verifiable licence. Do not treat as royalty-free until the owner replaces or clears it.",
+      "integrated_lufs": -19.9
+    },
+    {
+      "path": "resource/songs/output020.mp3",
+      "sha256": "345f6bd4ab0cbe93840e13c4a26042693b0aa54233ca47c22dbcb414910b3e55",
+      "source": "MoneyPrinterTurbo upstream bundle (resource/songs). The upstream README says these tracks come from YouTube videos.",
+      "licence": "unknown",
+      "cleared_for_output": false,
+      "note": "No verifiable licence. Do not treat as royalty-free until the owner replaces or clears it.",
+      "integrated_lufs": -21.9
+    },
+    {
+      "path": "resource/songs/output021.mp3",
+      "sha256": "226898a0c9ff75527687e95367e57dd14d1b35e241f5d756b4c0ba63e9d55bdf",
+      "source": "MoneyPrinterTurbo upstream bundle (resource/songs). The upstream README says these tracks come from YouTube videos.",
+      "licence": "unknown",
+      "cleared_for_output": false,
+      "note": "No verifiable licence. Do not treat as royalty-free until the owner replaces or clears it.",
+      "integrated_lufs": -23.7
+    },
+    {
+      "path": "resource/songs/output022.mp3",
+      "sha256": "03fae7a69a5e4b47d807cf81a03cc7dbcc7a0de9e7240ca23853e9eafe483baa",
+      "source": "MoneyPrinterTurbo upstream bundle (resource/songs). The upstream README says these tracks come from YouTube videos.",
+      "licence": "unknown",
+      "cleared_for_output": false,
+      "note": "No verifiable licence. Do not treat as royalty-free until the owner replaces or clears it.",
+      "integrated_lufs": -20.5
+    },
+    {
+      "path": "resource/songs/output023.mp3",
+      "sha256": "92b1649064d9291cd55d7403329053cda6b70e2fe43a5c4433cb27b55b32a434",
+      "source": "MoneyPrinterTurbo upstream bundle (resource/songs). The upstream README says these tracks come from YouTube videos.",
+      "licence": "unknown",
+      "cleared_for_output": false,
+      "note": "No verifiable licence. Do not treat as royalty-free until the owner replaces or clears it.",
+      "integrated_lufs": -20.6
+    },
+    {
+      "path": "resource/songs/output024.mp3",
+      "sha256": "2982fe163dacddbfb4d278b626e56eaa33b97460de603ac0c3639388dd82d13b",
+      "source": "MoneyPrinterTurbo upstream bundle (resource/songs). The upstream README says these tracks come from YouTube videos.",
+      "licence": "unknown",
+      "cleared_for_output": false,
+      "note": "No verifiable licence. Do not treat as royalty-free until the owner replaces or clears it.",
+      "integrated_lufs": -22.2
+    },
+    {
+      "path": "resource/songs/output025.mp3",
+      "sha256": "dfe361932841c7cd37ef4794ed17961533e2cbf8b387f237a7614d24265fcc00",
+      "source": "MoneyPrinterTurbo upstream bundle (resource/songs). The upstream README says these tracks come from YouTube videos.",
+      "licence": "unknown",
+      "cleared_for_output": false,
+      "note": "No verifiable licence. Do not treat as royalty-free until the owner replaces or clears it.",
+      "integrated_lufs": -24.3
+    },
+    {
+      "path": "resource/songs/output027.mp3",
+      "sha256": "b07290cdb8396d7586aef5583acf1f67a899b905adad6be88bdce9dc6039094f",
+      "source": "MoneyPrinterTurbo upstream bundle (resource/songs). The upstream README says these tracks come from YouTube videos.",
+      "licence": "unknown",
+      "cleared_for_output": false,
+      "note": "No verifiable licence. Do not treat as royalty-free until the owner replaces or clears it.",
+      "integrated_lufs": -21.1
+    },
+    {
+      "path": "resource/songs/output028.mp3",
+      "sha256": "563c7e8a294b53c58e124bfd5d3ff9fa740f89a7a608600751603cb00d99a6f6",
+      "source": "MoneyPrinterTurbo upstream bundle (resource/songs). The upstream README says these tracks come from YouTube videos.",
+      "licence": "unknown",
+      "cleared_for_output": false,
+      "note": "No verifiable licence. Do not treat as royalty-free until the owner replaces or clears it.",
+      "integrated_lufs": -22.9
+    },
+    {
+      "path": "resource/songs/output029.mp3",
+      "sha256": "ebd57c86be424c3e958ceed39f431cec05ae79ef90190fb1af43ae73c37f8deb",
+      "source": "MoneyPrinterTurbo upstream bundle (resource/songs). The upstream README says these tracks come from YouTube videos.",
+      "licence": "unknown",
+      "cleared_for_output": false,
+      "note": "No verifiable licence. Do not treat as royalty-free until the owner replaces or clears it.",
+      "integrated_lufs": -24.4
+    }
+  ]
+}

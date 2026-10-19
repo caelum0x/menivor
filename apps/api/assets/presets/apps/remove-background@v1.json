@@ -1,0 +1,18 @@
+{
+  "id": "remove-background",
+  "version": 1,
+  "name": "Remove background",
+  "blurb": "A clean cut-out of your subject on a transparent background.",
+  "input": {
+    "kind": "image",
+    "label": "Photo"
+  },
+  "runner": "local",
+  "local": "remove_bg",
+  "price": {
+    "credit_kind": "standard",
+    "credits": 0,
+    "daily_cap": 20
+  },
+  "preview": "presets/apps/remove-background.mp4"
+}

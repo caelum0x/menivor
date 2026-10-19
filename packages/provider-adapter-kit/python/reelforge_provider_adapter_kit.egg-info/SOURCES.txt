@@ -1,0 +1,14 @@
+README.md
+pyproject.toml
+python/reelforge_provider_adapter/__init__.py
+python/reelforge_provider_adapter/deprecation.py
+python/reelforge_provider_adapter/envelope.py
+python/reelforge_provider_adapter/execution.py
+python/reelforge_provider_adapter/license.py
+python/reelforge_provider_adapter/py.typed
+python/reelforge_provider_adapter_kit.egg-info/PKG-INFO
+python/reelforge_provider_adapter_kit.egg-info/SOURCES.txt
+python/reelforge_provider_adapter_kit.egg-info/dependency_links.txt
+python/reelforge_provider_adapter_kit.egg-info/top_level.txt
+test/test_execution.py
+test/test_parity.py

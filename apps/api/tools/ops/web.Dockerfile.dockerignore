@@ -1,0 +1,31 @@
+# Context trim for ops/web.Dockerfile (BuildKit uses <dockerfile>.dockerignore in
+# preference to the context-root .dockerignore). The web image only needs web/**,
+# so exclude everything heavy from the repo-root build context: the Python app,
+# virtualenvs, git history, node_modules (npm ci reinstalls from the lockfile),
+# storage artifacts, and local env files.
+.git/
+.venv/
+venv/
+__pycache__/
+*.pyc
+node_modules/
+web/node_modules/
+web/.next/
+storage/
+.pytest_cache/
+.ruff_cache/
+.coverage
+*.db
+.env
+.env.*
+app/
+migrations/
+tests/
+test/
+docs/
+mobile/
+desktop/
+resource/
+webui/
+docker/
+*.log

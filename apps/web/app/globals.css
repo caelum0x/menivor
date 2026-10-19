@@ -1,0 +1,339 @@
+@import "./reelforge-tokens.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/**
+ * Menivor "dark glass" theme.
+ *
+ * Ink near-black canvas lit by a few fixed, low-opacity ambient light blobs
+ * (brand yellow, violet, teal), with frosted translucent panels floating over
+ * it. Warm off-white type and exactly one signal color: the #FFD93D
+ * caption-highlight yellow used by the product's own `hormozi` caption preset
+ * (packages/caption-engine/src/style.ts). Neumorphic depth is reserved for
+ * controls (buttons, inputs, toggles), never text-heavy cards. Values are HSL
+ * channels consumed as `hsl(var(--token))` in tailwind.config.ts.
+ *
+ * Surface utilities (see @layer components below):
+ *   .glass          frosted panel with backdrop blur (nav bars, hero boxes)
+ *   .glass-strong   denser frosted panel (menus, dialogs, auth card)
+ *   .glass-subtle   translucent panel WITHOUT blur (cards, lists, grids)
+ *   .neu-raised     soft raised control      .neu-pressed  pressed/inset
+ *   .neu-primary    raised brand-yellow CTA  .neu-inset    input well
+ * Accessibility: prefers-reduced-transparency and missing backdrop-filter
+ * support fall back to solid surfaces; prefers-reduced-motion drops the
+ * press/lift transforms and animations.
+ */
+@layer base {
+  :root {
+    /* Native stacks keep production builds deterministic and avoid a network
+       dependency on Google Fonts during Cloudflare deployment. */
+    --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", sans-serif;
+    --font-display: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+      "Liberation Mono", monospace;
+
+    --background: 240 5% 4%;
+    --foreground: 40 12% 92%;
+
+    --card: 240 4% 6%;
+    --card-foreground: 40 12% 92%;
+
+    /* #FFD93D — the hormozi caption-highlight yellow. */
+    --primary: 48 100% 62%;
+    --primary-foreground: 240 6% 7%;
+
+    --secondary: 240 4% 11%;
+    --secondary-foreground: 40 12% 92%;
+
+    --muted: 240 4% 10%;
+    --muted-foreground: 40 4% 62%;
+
+    --accent: 48 100% 62%;
+    --accent-foreground: 240 6% 7%;
+
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 0 0% 98%;
+
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 98%;
+
+    --border: 240 4% 16%;
+    --input: 240 4% 14%;
+    --ring: 48 100% 62%;
+
+    --radius: 0.75rem;
+
+    /* Glass + depth tokens. Alpha lives in the token so the fallbacks can
+       swap to solid surfaces in one place. */
+    --glass-fill: 240 8% 12% / 0.5;
+    --glass-fill-strong: 240 8% 9% / 0.78;
+    --glass-fill-subtle: 240 8% 13% / 0.42;
+    --glass-solid: 240 5% 8%;
+    --glass-border: 40 30% 96% / 0.09;
+    --glass-border-strong: 40 40% 96% / 0.13;
+    --glass-highlight: 0 0% 100% / 0.07;
+    --shadow-soft: 0 1px 2px hsl(0 0% 0% / 0.35),
+      0 12px 32px -14px hsl(0 0% 0% / 0.65);
+    --shadow-float: 0 1px 2px hsl(0 0% 0% / 0.4),
+      0 24px 60px -20px hsl(0 0% 0% / 0.75);
+
+    /* Ambient light blobs (brand-tinted, low opacity). */
+    --blob-yellow: 48 100% 62% / 0.11;
+    --blob-violet: 258 85% 64% / 0.17;
+    --blob-teal: 176 70% 45% / 0.11;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  /* Ambient light blobs: one fixed, non-interactive layer behind every page.
+     Painted once (fixed + no blur filter), so scrolling stays cheap. */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(42rem 34rem at 10% -4%, hsl(var(--blob-yellow)), transparent 70%),
+      radial-gradient(46rem 38rem at 94% 12%, hsl(var(--blob-violet)), transparent 70%),
+      radial-gradient(44rem 36rem at 18% 106%, hsl(var(--blob-teal)), transparent 70%);
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
+    min-height: 100dvh;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Headings use the display face (Space Grotesk), set tight for the editorial
+     scale. The var() fallbacks guarantee a sans face even if the font variable
+     is ever missing — never the browser's serif default. */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display, var(--font-sans, ui-sans-serif)), ui-sans-serif,
+      system-ui, sans-serif;
+    letter-spacing: -0.03em;
+  }
+
+  ::selection {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+}
+
+@layer components {
+  /* ---------- Glass surfaces ---------- */
+  .glass,
+  .glass-strong,
+  .glass-subtle {
+    border: 1px solid hsl(var(--glass-border));
+    box-shadow:
+      inset 0 1px 0 hsl(var(--glass-highlight)),
+      var(--shadow-soft);
+  }
+
+  .glass {
+    background-color: hsl(var(--glass-fill));
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    backdrop-filter: blur(14px) saturate(140%);
+  }
+
+  .glass-strong {
+    background-color: hsl(var(--glass-fill-strong));
+    border-color: hsl(var(--glass-border-strong));
+    -webkit-backdrop-filter: blur(22px) saturate(150%);
+    backdrop-filter: blur(22px) saturate(150%);
+    box-shadow:
+      inset 0 1px 0 hsl(var(--glass-highlight)),
+      var(--shadow-float);
+  }
+
+  /* No backdrop blur: safe for cards in long lists and grids. */
+  .glass-subtle {
+    background-image: linear-gradient(
+      180deg,
+      hsl(0 0% 100% / 0.035),
+      hsl(0 0% 100% / 0.01)
+    );
+    background-color: hsl(var(--glass-fill-subtle));
+  }
+
+  /* Hairline top edge for glass bars (sticky navs, headers). */
+  .glass-bar {
+    background-color: hsl(var(--background) / 0.62);
+    border-color: hsl(var(--glass-border));
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    backdrop-filter: blur(14px) saturate(140%);
+  }
+
+  /* ---------- Neumorphic controls (sparingly) ---------- */
+  /* Depth comes from overlay gradients + shadows layered on the element's
+     own background-color, so a caller's bg-* utility still wins on color. */
+  .neu-raised {
+    background-color: hsl(240 5% 13%);
+    background-image: linear-gradient(180deg, hsl(0 0% 100% / 0.05), hsl(0 0% 100% / 0) 70%);
+    border: 1px solid hsl(var(--glass-border));
+    box-shadow:
+      inset 0 1px 0 hsl(0 0% 100% / 0.07),
+      -2px -2px 6px hsl(0 0% 100% / 0.025),
+      3px 4px 10px hsl(0 0% 0% / 0.5);
+  }
+
+  .neu-pressed,
+  .neu-raised:active:not(:disabled) {
+    background-color: hsl(240 5% 9.5%);
+    background-image: none;
+    box-shadow:
+      inset 2px 3px 6px hsl(0 0% 0% / 0.55),
+      inset -1px -1px 2px hsl(0 0% 100% / 0.035);
+  }
+
+  .neu-primary {
+    background-color: hsl(var(--primary));
+    background-image: linear-gradient(
+      180deg,
+      hsl(0 0% 100% / 0.2),
+      hsl(0 0% 100% / 0) 55%,
+      hsl(30 100% 30% / 0.1)
+    );
+    box-shadow:
+      inset 0 1px 0 hsl(0 0% 100% / 0.5),
+      inset 0 -2px 0 hsl(38 90% 38% / 0.25),
+      0 1px 2px hsl(0 0% 0% / 0.45),
+      0 10px 24px -10px hsl(var(--primary) / 0.55);
+  }
+
+  .neu-primary:hover:not(:disabled) {
+    filter: brightness(1.05);
+  }
+
+  .neu-primary:active:not(:disabled) {
+    background-image: linear-gradient(180deg, hsl(30 100% 30% / 0.12), hsl(0 0% 100% / 0));
+    box-shadow:
+      inset 0 2px 5px hsl(38 90% 28% / 0.45),
+      0 1px 1px hsl(0 0% 0% / 0.4);
+  }
+
+  /* Recessed well for text inputs, selects and segmented-control tracks. */
+  .neu-inset {
+    background-color: hsl(240 6% 5% / 0.62);
+    border: 1px solid hsl(var(--glass-border));
+    box-shadow:
+      inset 0 2px 5px hsl(0 0% 0% / 0.5),
+      inset 0 -1px 0 hsl(0 0% 100% / 0.04);
+  }
+
+  .press-sink {
+    transition-property: color, background-color, background-image,
+      border-color, box-shadow, transform, filter;
+    transition-duration: 150ms;
+    transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  .press-sink:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+}
+
+/* Solid fallbacks: no backdrop-filter support, or the user asked for less
+   transparency. Panels become opaque; the ambient blobs switch off. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass,
+  .glass-strong,
+  .glass-bar {
+    background-color: hsl(var(--glass-solid));
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  body::before {
+    display: none;
+  }
+
+  .glass,
+  .glass-strong,
+  .glass-subtle,
+  .glass-bar {
+    background-color: hsl(var(--glass-solid));
+    background-image: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .neu-inset {
+    background-color: hsl(240 6% 5%);
+  }
+}
+
+/* Keep page content clear of the mobile bottom tab bar (PrimaryTabBar). */
+@media (max-width: 639px) {
+  body:has([data-app-tabbar]) {
+    padding-bottom: calc(4rem + env(safe-area-inset-bottom));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  .press-sink:active:not(:disabled) {
+    transform: none;
+  }
+
+  .press-sink {
+    transition-duration: 0.01ms;
+  }
+
+  /* Decorative motion only; loading spinners keep turning so progress
+     stays perceivable. */
+  .animate-fade-in,
+  .animate-shimmer,
+  .after\:animate-shimmer::after {
+    animation: none !important;
+  }
+}
+
+@media (forced-colors: active) {
+  .glass,
+  .glass-strong,
+  .glass-subtle,
+  .glass-bar,
+  .neu-raised,
+  .neu-inset {
+    border: 1px solid CanvasText;
+  }
+}
+
+@layer utilities {
+  /* Timecode-style kicker label, e.g. "01 / RECORD". Mono, uppercase, wide
+     tracking — the editorial replacement for icon badges. */
+  .kicker {
+    font-family: var(--font-mono, ui-monospace), ui-monospace, SFMono-Regular,
+      Menlo, monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+}

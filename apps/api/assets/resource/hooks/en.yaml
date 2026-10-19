@@ -1,0 +1,17 @@
+# ReelForge UGC hook templates — English (native).
+# Used as few-shot examples in build_ugc_script_prompt. The optional {subject}
+# placeholder is filled with the video subject before being shown to the model.
+language: en
+hooks:
+  - "I wish someone told me this about {subject} sooner."
+  - "I tried {subject} for 7 days and here is what actually happened."
+  - "Nobody talks about this, but here is how {subject} really works."
+  - "Stop doing this if you actually want {subject} to work."
+  - "Here is what everyone gets wrong about {subject}."
+  - "POV: you just found the {subject} hack you have been missing."
+  - "This one thing changed everything about {subject} for me."
+  - "Do not buy {subject} until you watch this all the way through."
+  - "Here is the tiny {subject} detail no one ever mentions."
+  - "I am about to save you hours on {subject} in 30 seconds."
+  - "The {subject} secret nobody wants you to know about."
+  - "Watch this before you make any decision about {subject}."

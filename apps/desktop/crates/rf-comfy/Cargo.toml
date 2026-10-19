@@ -1,0 +1,11 @@
+[package]
+name = "rf-comfy"
+description = "ReelForge desktop local ComfyUI/Wan bridge — VRAM budgeting + warm pool"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]

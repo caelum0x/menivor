@@ -1,0 +1,110 @@
+{
+  "ad_safe": {
+    "clean": {
+      "ad_safe": true,
+      "sound": {
+        "explicit": false,
+        "licensed": true
+      }
+    },
+    "explicit": {
+      "ad_safe": false,
+      "sound": {
+        "explicit": true,
+        "licensed": true
+      }
+    },
+    "unlicensed": {
+      "ad_safe": false,
+      "sound": {
+        "explicit": false,
+        "licensed": false
+      }
+    }
+  },
+  "scores": {
+    "empty": {
+      "score": {
+        "decay": 0.0,
+        "opportunity": 0.5,
+        "saturation": 0.0,
+        "velocity": 0.0
+      },
+      "series": []
+    },
+    "explosive": {
+      "score": {
+        "decay": 0.0,
+        "opportunity": 0.6,
+        "saturation": 1.0,
+        "velocity": 0.291667
+      },
+      "series": [
+        1,
+        2,
+        4,
+        8,
+        16,
+        32,
+        64
+      ]
+    },
+    "flat": {
+      "score": {
+        "decay": 0.0,
+        "opportunity": 0.1,
+        "saturation": 1.0,
+        "velocity": 0.0
+      },
+      "series": [
+        20,
+        20,
+        20,
+        20
+      ]
+    },
+    "peaked": {
+      "score": {
+        "decay": 0.583333,
+        "opportunity": 0.275,
+        "saturation": 0.416667,
+        "velocity": -0.194444
+      },
+      "series": [
+        10,
+        30,
+        60,
+        58,
+        40,
+        25
+      ]
+    },
+    "rising": {
+      "score": {
+        "decay": 0.0,
+        "opportunity": 0.6,
+        "saturation": 1.0,
+        "velocity": 0.258333
+      },
+      "series": [
+        2,
+        5,
+        9,
+        15,
+        24,
+        40
+      ]
+    },
+    "single": {
+      "score": {
+        "decay": 0.0,
+        "opportunity": 0.1,
+        "saturation": 1.0,
+        "velocity": 0.0
+      },
+      "series": [
+        7
+      ]
+    }
+  }
+}

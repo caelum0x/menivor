@@ -1,0 +1,20 @@
+{
+  "id": "click-to-ad",
+  "version": 1,
+  "name": "Click to ad",
+  "blurb": "Paste a product link and get a finished vertical ad written for it.",
+  "input": {
+    "kind": "link",
+    "label": "Product link"
+  },
+  "runner": "plan",
+  "plan": {
+    "route": "jobs",
+    "style": ""
+  },
+  "price": {
+    "credit_kind": "standard",
+    "via": "jobs"
+  },
+  "preview": "presets/apps/click-to-ad.mp4"
+}

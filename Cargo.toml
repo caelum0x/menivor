@@ -1,0 +1,23 @@
+[workspace]
+members = [
+    "apps/desktop",
+    # Glob so new engine crates under crates/ register automatically.
+    "apps/desktop/crates/*",
+]
+# apps/relay is its OWN standalone cargo workspace (async/axum stack, no gpui).
+# Exclude it defensively so no member glob or `cargo build --workspace` from the
+# repo root ever pulls it into the desktop GPUI/Metal build graph.
+exclude = []  # rail apps moved to ../railyard; desktop is the only member here
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+
+[workspace.dependencies]
+gpui = "0.2.2"
+serde = { version = "1.0.228", features = ["derive"] }
+serde_json = "1.0.149"
+ureq = { version = "3.3.0", features = ["json"] }
+unicode-segmentation = "1.13.3"

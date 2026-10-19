@@ -1,0 +1,16 @@
+{
+ "id": "melt-away",
+ "version": 1,
+ "kind": "model",
+ "name": "Melt away",
+ "blurb": "Your product slowly melts into glossy liquid.",
+ "credit_kind": "ai_video",
+ "preset_sku": "animate_image",
+ "tier": "draft",
+ "seconds": 5,
+ "inputs": [
+  "subject",
+  "image"
+ ],
+ "prompt_template": "The {subject} slowly melts into glossy liquid under warm studio light, macro detail, smooth motion"
+}

@@ -1,0 +1,29 @@
+[package]
+name = "rf-runtime"
+description = "ReelForge desktop runtime facade — composes the rf-* engine crates for the GUI"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]
+rf-jobs = { path = "../rf-jobs" }
+rf-render = { path = "../rf-render" }
+rf-comfy = { path = "../rf-comfy" }
+rf-sync = { path = "../rf-sync" }
+rf-clipfarm = { path = "../rf-clipfarm" }
+rf-project = { path = "../rf-project" }
+rf-plan = { path = "../rf-plan" }
+rf-render-cmd = { path = "../rf-render-cmd" }
+rf-hardware = { path = "../rf-hardware" }
+rf-gateway = { path = "../rf-gateway" }
+serde = { workspace = true }
+serde_json = { workspace = true }
+sha2 = "0.10.9"
+
+[dev-dependencies]
+rf-testkit = { path = "../rf-testkit" }
+rf-shots = { path = "../rf-shots" }
+rf-captions = { path = "../rf-captions" }

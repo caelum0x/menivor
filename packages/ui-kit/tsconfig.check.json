@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "ES2020", "module": "ESNext", "moduleResolution": "Bundler",
+    "jsx": "react-jsx", "noEmit": true, "strict": true, "skipLibCheck": true,
+    "esModuleInterop": true, "baseUrl": ".",
+    "paths": {
+      "react": ["../../apps/web/node_modules/@types/react"],
+      "react/jsx-runtime": ["../../apps/web/node_modules/@types/react/jsx-runtime"],
+      "@reelforge/growth-analytics": ["../growth-analytics/dist/index.d.ts"]
+    }
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx"]
+}

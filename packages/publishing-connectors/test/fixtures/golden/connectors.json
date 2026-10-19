@@ -1,0 +1,191 @@
+{
+  "caps": {
+    "instagram": {
+      "aspects": [
+        "9:16",
+        "1:1",
+        "4:5"
+      ],
+      "caption_max": 2200,
+      "daily_cap": 50,
+      "formats": [
+        "mp4",
+        "mov"
+      ],
+      "max_duration_s": 90,
+      "min_duration_s": 3
+    },
+    "tiktok": {
+      "aspects": [
+        "9:16"
+      ],
+      "caption_max": 2200,
+      "daily_cap": 15,
+      "formats": [
+        "mp4"
+      ],
+      "max_duration_s": 600,
+      "min_duration_s": 3
+    },
+    "x": {
+      "aspects": [
+        "9:16",
+        "16:9",
+        "1:1"
+      ],
+      "caption_max": 280,
+      "daily_cap": 1000,
+      "formats": [
+        "mp4"
+      ],
+      "max_duration_s": 140,
+      "min_duration_s": 1
+    },
+    "youtube": {
+      "aspects": [
+        "9:16"
+      ],
+      "caption_max": 100,
+      "daily_cap": 100,
+      "formats": [
+        "mp4",
+        "mov"
+      ],
+      "max_duration_s": 180,
+      "min_duration_s": 1
+    }
+  },
+  "oauth": {
+    "instagram": {
+      "auth_url": "https://www.facebook.com/v19.0/dialog/oauth",
+      "pkce": false,
+      "scopes": [
+        "instagram_basic",
+        "instagram_content_publish",
+        "pages_show_list"
+      ],
+      "token_url": "https://graph.facebook.com/v19.0/oauth/access_token"
+    },
+    "tiktok": {
+      "auth_url": "https://www.tiktok.com/v2/auth/authorize/",
+      "pkce": true,
+      "scopes": [
+        "user.info.basic",
+        "video.publish",
+        "video.upload"
+      ],
+      "token_url": "https://open.tiktokapis.com/v2/oauth/token/"
+    },
+    "x": {
+      "auth_url": "https://twitter.com/i/oauth2/authorize",
+      "pkce": true,
+      "scopes": [
+        "tweet.read",
+        "tweet.write",
+        "users.read",
+        "offline.access"
+      ],
+      "token_url": "https://api.twitter.com/2/oauth2/token"
+    },
+    "youtube": {
+      "auth_url": "https://accounts.google.com/o/oauth2/v2/auth",
+      "pkce": true,
+      "scopes": [
+        "https://www.googleapis.com/auth/youtube.upload"
+      ],
+      "token_url": "https://oauth2.googleapis.com/token"
+    }
+  },
+  "oauth_derived": {
+    "instagram": {
+      "pkce": false,
+      "scope_string": "instagram_basic instagram_content_publish pages_show_list"
+    },
+    "tiktok": {
+      "pkce": true,
+      "scope_string": "user.info.basic video.publish video.upload"
+    },
+    "x": {
+      "pkce": true,
+      "scope_string": "tweet.read tweet.write users.read offline.access"
+    },
+    "youtube": {
+      "pkce": true,
+      "scope_string": "https://www.googleapis.com/auth/youtube.upload"
+    }
+  },
+  "remaining": {
+    "tiktok_10": 5,
+    "tiktok_20": 0
+  },
+  "validate": {
+    "ig_bad_aspect": {
+      "args": [
+        "instagram",
+        30,
+        "21:9",
+        50,
+        "mp4"
+      ],
+      "errors": [
+        "instagram: aspect 21:9 not in ['9:16', '1:1', '4:5']"
+      ]
+    },
+    "tiktok_ok": {
+      "args": [
+        "tiktok",
+        30,
+        "9:16",
+        100,
+        "mp4"
+      ],
+      "errors": []
+    },
+    "x_caption_over": {
+      "args": [
+        "x",
+        30,
+        "9:16",
+        500,
+        "mp4"
+      ],
+      "errors": [
+        "x: caption 500 chars over max 280"
+      ]
+    },
+    "yt_too_long": {
+      "args": [
+        "youtube",
+        200,
+        "9:16",
+        50,
+        "mp4"
+      ],
+      "errors": [
+        "youtube: duration 200s over max 180s"
+      ]
+    }
+  },
+  "watermark": {
+    "instagram<-none": {
+      "allowed": true,
+      "reason": ""
+    },
+    "instagram<-tiktok": {
+      "allowed": false,
+      "reason": "tiktok watermark is suppressed on instagram; re-export a clean version before cross-posting"
+    },
+    "tiktok<-instagram": {
+      "allowed": false,
+      "reason": "instagram watermark is suppressed on tiktok; re-export a clean version before cross-posting"
+    },
+    "x<-tiktok": {
+      "allowed": true,
+      "reason": ""
+    },
+    "youtube<-tiktok": {
+      "allowed": false,
+      "reason": "tiktok watermark is suppressed on youtube; re-export a clean version before cross-posting"
+    }
+  }
+}

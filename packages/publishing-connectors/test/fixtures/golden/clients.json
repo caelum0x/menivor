@@ -1,0 +1,261 @@
+{
+  "analytics": {
+    "instagram": {
+      "requests": [
+        {
+          "body": null,
+          "headers": null,
+          "method": "GET",
+          "token": "ig_access",
+          "url": "https://graph.facebook.com/v19.0/ig_media_1/insights?metric=plays,reach"
+        }
+      ],
+      "result": {
+        "platform": "instagram",
+        "retention_pct": 0,
+        "views": 999,
+        "watch_time_s": 0
+      }
+    },
+    "tiktok": {
+      "requests": [
+        {
+          "body": {
+            "filters": {
+              "video_ids": [
+                "vpub_1"
+              ]
+            }
+          },
+          "headers": null,
+          "method": "POST",
+          "token": "tt_access",
+          "url": "https://open.tiktokapis.com/v2/video/query/?fields=view_count,average_watch_time"
+        }
+      ],
+      "result": {
+        "platform": "tiktok",
+        "retention_pct": 0,
+        "views": 1234,
+        "watch_time_s": 12
+      }
+    },
+    "x": {
+      "requests": [
+        {
+          "body": null,
+          "headers": null,
+          "method": "GET",
+          "token": "x_access",
+          "url": "https://api.twitter.com/2/tweets/tweet_1?tweet.fields=public_metrics"
+        }
+      ],
+      "result": {
+        "platform": "x",
+        "retention_pct": 0,
+        "views": 321,
+        "watch_time_s": 0
+      }
+    },
+    "youtube": {
+      "requests": [
+        {
+          "body": null,
+          "headers": null,
+          "method": "GET",
+          "token": "yt_access",
+          "url": "https://www.googleapis.com/youtube/v3/videos?part=statistics&id=yt_vid_1"
+        }
+      ],
+      "result": {
+        "platform": "youtube",
+        "retention_pct": 0,
+        "views": 4567,
+        "watch_time_s": 0
+      }
+    }
+  },
+  "publish": {
+    "instagram": {
+      "requests": [
+        {
+          "body": {
+            "caption": "Ship your Shorts everywhere",
+            "media_type": "REELS",
+            "video_url": "https://cdn.reelforge.test/r/abc123.mp4"
+          },
+          "headers": null,
+          "method": "POST",
+          "token": "ig_access",
+          "url": "https://graph.facebook.com/v19.0/17841400000000000/media"
+        },
+        {
+          "body": {
+            "creation_id": "cont_1"
+          },
+          "headers": null,
+          "method": "POST",
+          "token": "ig_access",
+          "url": "https://graph.facebook.com/v19.0/17841400000000000/media_publish"
+        }
+      ],
+      "result": {
+        "platform": "instagram",
+        "post_id": "ig_media_1",
+        "url": "https://www.instagram.com/reel/ig_media_1/"
+      }
+    },
+    "tiktok": {
+      "requests": [
+        {
+          "body": {
+            "post_info": {
+              "disable_comment": false,
+              "privacy_level": "SELF_ONLY",
+              "title": "Ship your Shorts everywhere"
+            },
+            "source_info": {
+              "source": "PULL_FROM_URL",
+              "video_url": "https://cdn.reelforge.test/r/abc123.mp4"
+            }
+          },
+          "headers": null,
+          "method": "POST",
+          "token": "tt_access",
+          "url": "https://open.tiktokapis.com/v2/post/publish/video/init/"
+        }
+      ],
+      "result": {
+        "platform": "tiktok",
+        "post_id": "vpub_1",
+        "url": "https://www.tiktok.com/@me/video/vpub_1"
+      }
+    },
+    "x": {
+      "requests": [
+        {
+          "body": {
+            "media": {
+              "media_ids": [
+                "media_55"
+              ]
+            },
+            "text": "Ship your Shorts everywhere"
+          },
+          "headers": null,
+          "method": "POST",
+          "token": "x_access",
+          "url": "https://api.twitter.com/2/tweets"
+        }
+      ],
+      "result": {
+        "platform": "x",
+        "post_id": "tweet_1",
+        "url": "https://x.com/i/status/tweet_1"
+      }
+    },
+    "youtube": {
+      "requests": [
+        {
+          "body": {
+            "snippet": {
+              "categoryId": "22",
+              "title": "Ship your Shorts everywhere"
+            },
+            "status": {
+              "privacyStatus": "private",
+              "selfDeclaredMadeForKids": false
+            }
+          },
+          "headers": {
+            "X-Upload-Content-Type": "video/mp4"
+          },
+          "method": "POST",
+          "token": "yt_access",
+          "url": "https://www.googleapis.com/upload/youtube/v3/videos?uploadType=resumable&part=snippet,status"
+        }
+      ],
+      "result": {
+        "platform": "youtube",
+        "post_id": "yt_vid_1",
+        "url": "https://youtube.com/shorts/yt_vid_1"
+      }
+    }
+  },
+  "refresh": {
+    "instagram": {
+      "requests": [
+        {
+          "body": null,
+          "headers": null,
+          "method": "GET",
+          "token": null,
+          "url": "https://graph.facebook.com/v19.0/refresh_access_token?grant_type=ig_refresh_token&access_token=ig_longlived"
+        }
+      ],
+      "result": {
+        "access_token": "ig_new",
+        "expires_in": 5184000
+      }
+    },
+    "tiktok": {
+      "requests": [
+        {
+          "body": {
+            "grant_type": "refresh_token",
+            "refresh_token": "tt_refresh"
+          },
+          "headers": {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          "method": "POST",
+          "token": null,
+          "url": "https://open.tiktokapis.com/v2/oauth/token/"
+        }
+      ],
+      "result": {
+        "access_token": "tt_new",
+        "expires_in": 86400
+      }
+    },
+    "x": {
+      "requests": [
+        {
+          "body": {
+            "grant_type": "refresh_token",
+            "refresh_token": "x_refresh"
+          },
+          "headers": {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          "method": "POST",
+          "token": null,
+          "url": "https://api.twitter.com/2/oauth2/token"
+        }
+      ],
+      "result": {
+        "access_token": "x_new",
+        "expires_in": 7200
+      }
+    },
+    "youtube": {
+      "requests": [
+        {
+          "body": {
+            "grant_type": "refresh_token",
+            "refresh_token": "yt_refresh"
+          },
+          "headers": null,
+          "method": "POST",
+          "token": null,
+          "url": "https://oauth2.googleapis.com/token"
+        }
+      ],
+      "result": {
+        "access_token": "yt_new",
+        "expires_in": 3599
+      }
+    }
+  },
+  "x_post_cost_micros": 15000
+}

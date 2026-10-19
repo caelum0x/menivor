@@ -1,0 +1,15 @@
+{
+ "id": "tv-spot",
+ "version": 1,
+ "kind": "model",
+ "name": "TV spot",
+ "blurb": "A glossy commercial shot of your product.",
+ "credit_kind": "ai_video",
+ "preset_sku": "text_to_video",
+ "tier": "draft",
+ "seconds": 5,
+ "inputs": [
+  "subject"
+ ],
+ "prompt_template": "A glossy television commercial shot of {subject}, sweeping camera move, bright lifestyle setting"
+}

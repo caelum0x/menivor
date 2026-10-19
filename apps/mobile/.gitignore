@@ -1,0 +1,34 @@
+# Expo / React Native
+node_modules/
+.expo/
+dist/
+web-build/
+expo-env.d.ts.bak
+
+# Native (prebuild-generated) + local build/signing artifacts
+ios/
+android/
+build/
+fastlane/signing/
+fastlane/report.xml
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# Metro
+.metro-health-check*
+
+# Env
+.env
+.env.local
+
+# macOS
+.DS_Store
+
+# Logs
+npm-debug.*
+yarn-debug.*
+yarn-error.*

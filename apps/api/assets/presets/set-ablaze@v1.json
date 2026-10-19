@@ -1,0 +1,16 @@
+{
+ "id": "set-ablaze",
+ "version": 1,
+ "kind": "model",
+ "name": "Set ablaze",
+ "blurb": "Cinematic flames wrap around your subject.",
+ "credit_kind": "ai_video",
+ "preset_sku": "animate_image",
+ "tier": "draft",
+ "seconds": 5,
+ "inputs": [
+  "subject",
+  "image"
+ ],
+ "prompt_template": "The {subject} is wrapped in cinematic flames that flicker and swirl, dark background, dramatic light"
+}

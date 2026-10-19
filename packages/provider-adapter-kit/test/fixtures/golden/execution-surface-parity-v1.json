@@ -1,0 +1,200 @@
+{
+  "fallback_cost_micros": 420000,
+  "valid": [
+    {
+      "name": "video_queued",
+      "result": {
+        "schema": "menivor.provider-result/v1",
+        "handle": {
+          "schema": "menivor.provider-handle/v1",
+          "provider_key": "runway",
+          "model_ref": "gen4_turbo",
+          "run_id": "run_surface_1",
+          "state": "IN_QUEUE",
+          "status_url": "https://api.example/runs/run_surface_1/status",
+          "response_url": "https://api.example/runs/run_surface_1",
+          "opaque": {"attempt": 1}
+        },
+        "cost": {
+          "success": false,
+          "cost_micros": 0,
+          "currency": "USD",
+          "source": "none",
+          "unit": "",
+          "quantity_units": 0,
+          "price_version": ""
+        },
+        "outputs": [],
+        "error": null
+      },
+      "expected": {"status": "queued", "output_url": "", "cost_micros": 420000}
+    },
+    {
+      "name": "video_running",
+      "result": {
+        "schema": "menivor.provider-result/v1",
+        "handle": {
+          "schema": "menivor.provider-handle/v1",
+          "provider_key": "runway",
+          "model_ref": "gen4_turbo",
+          "run_id": "run_surface_1",
+          "state": "IN_PROGRESS",
+          "status_url": "https://api.example/runs/run_surface_1/status",
+          "response_url": "https://api.example/runs/run_surface_1",
+          "opaque": {"attempt": 2}
+        },
+        "cost": {
+          "success": false,
+          "cost_micros": 0,
+          "currency": "USD",
+          "source": "none",
+          "unit": "",
+          "quantity_units": 0,
+          "price_version": ""
+        },
+        "outputs": [],
+        "error": null
+      },
+      "expected": {"status": "running", "output_url": "", "cost_micros": 420000}
+    },
+    {
+      "name": "video_completed_at_zero_cost",
+      "result": {
+        "schema": "menivor.provider-result/v1",
+        "handle": {
+          "schema": "menivor.provider-handle/v1",
+          "provider_key": "runway",
+          "model_ref": "gen4_turbo",
+          "run_id": "run_surface_1",
+          "state": "COMPLETED",
+          "status_url": "https://api.example/runs/run_surface_1/status",
+          "response_url": "https://api.example/runs/run_surface_1",
+          "opaque": {"attempt": 3}
+        },
+        "cost": {
+          "success": true,
+          "cost_micros": 0,
+          "currency": "USD",
+          "source": "provider_reported",
+          "unit": "second",
+          "quantity_units": 5,
+          "price_version": "runway-2026-08"
+        },
+        "outputs": [
+          {
+            "reference": "https://cdn.example/runs/run_surface_1.mp4",
+            "kind": "video",
+            "media_type": "video/mp4"
+          }
+        ],
+        "error": null
+      },
+      "expected": {
+        "status": "completed",
+        "output_url": "https://cdn.example/runs/run_surface_1.mp4",
+        "cost_micros": 0
+      }
+    },
+    {
+      "name": "video_failed_without_charge",
+      "result": {
+        "schema": "menivor.provider-result/v1",
+        "handle": {
+          "schema": "menivor.provider-handle/v1",
+          "provider_key": "runway",
+          "model_ref": "gen4_turbo",
+          "run_id": "run_surface_1",
+          "state": "FAILED",
+          "status_url": "https://api.example/runs/run_surface_1/status",
+          "response_url": "https://api.example/runs/run_surface_1",
+          "opaque": {"attempt": 3}
+        },
+        "cost": {
+          "success": false,
+          "cost_micros": 0,
+          "currency": "USD",
+          "source": "none",
+          "unit": "",
+          "quantity_units": 0,
+          "price_version": ""
+        },
+        "outputs": [],
+        "error": {
+          "phase": "poll",
+          "category": "provider",
+          "retryable": false,
+          "acceptance": "accepted",
+          "message": "provider rejected the generated frame",
+          "provider_code": "CONTENT_POLICY"
+        }
+      },
+      "expected": {"status": "failed", "output_url": "", "cost_micros": 0}
+    }
+  ],
+  "invalid": [
+    {
+      "name": "unknown_state",
+      "result": {
+        "schema": "menivor.provider-result/v1",
+        "handle": {
+          "schema": "menivor.provider-handle/v1",
+          "provider_key": "runway",
+          "model_ref": "gen4_turbo",
+          "run_id": "run_bad_state",
+          "state": "MYSTERY",
+          "status_url": "",
+          "response_url": "",
+          "opaque": {}
+        },
+        "cost": {"success": false, "cost_micros": 0, "currency": "USD", "source": "none"},
+        "outputs": [],
+        "error": null
+      }
+    },
+    {
+      "name": "completed_without_output",
+      "result": {
+        "schema": "menivor.provider-result/v1",
+        "handle": {
+          "schema": "menivor.provider-handle/v1",
+          "provider_key": "runway",
+          "model_ref": "gen4_turbo",
+          "run_id": "run_empty",
+          "state": "COMPLETED",
+          "status_url": "",
+          "response_url": "",
+          "opaque": {}
+        },
+        "cost": {"success": true, "cost_micros": 1, "currency": "USD", "source": "provider_reported"},
+        "outputs": [],
+        "error": null
+      }
+    },
+    {
+      "name": "failed_with_billable_cost",
+      "result": {
+        "schema": "menivor.provider-result/v1",
+        "handle": {
+          "schema": "menivor.provider-handle/v1",
+          "provider_key": "runway",
+          "model_ref": "gen4_turbo",
+          "run_id": "run_billable_failure",
+          "state": "FAILED",
+          "status_url": "",
+          "response_url": "",
+          "opaque": {}
+        },
+        "cost": {"success": true, "cost_micros": 420000, "currency": "USD", "source": "provider_reported"},
+        "outputs": [],
+        "error": {
+          "phase": "poll",
+          "category": "provider",
+          "retryable": false,
+          "acceptance": "accepted",
+          "message": "failed",
+          "provider_code": ""
+        }
+      }
+    }
+  ]
+}

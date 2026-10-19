@@ -1,0 +1,11 @@
+[package]
+name = "rf-theme"
+description = "ReelForge desktop theme — the shared ui-kit palette (tokens.json) as Rust constants"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]

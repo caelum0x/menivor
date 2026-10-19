@@ -1,0 +1,11 @@
+{
+  "id": "podcast",
+  "version": 1,
+  "name": "Podcast",
+  "blurb": "Seated at a microphone, podcast-studio look.",
+  "look": "seated at a podcast microphone, headphones, warm studio light, acoustic panels behind",
+  "layout": "pip",
+  "aspect": "9:16",
+  "needs_product": false,
+  "disclosure": "This video was created with AI."
+}

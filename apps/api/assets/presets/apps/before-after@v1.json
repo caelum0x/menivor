@@ -1,0 +1,20 @@
+{
+  "id": "before-after",
+  "version": 1,
+  "name": "Before and after",
+  "blurb": "A before-and-after video for your product or result.",
+  "input": {
+    "kind": "topic",
+    "label": "Topic or link"
+  },
+  "runner": "plan",
+  "plan": {
+    "route": "jobs",
+    "style": "before_after"
+  },
+  "price": {
+    "credit_kind": "standard",
+    "via": "jobs"
+  },
+  "preview": "presets/apps/before-after.mp4"
+}

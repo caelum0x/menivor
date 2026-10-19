@@ -1,0 +1,191 @@
+{
+ "version": 1,
+ "source": {
+  "url": "https://www.tiktok.com/@santeluca/video/7681123000393010464",
+  "platform": "tiktok",
+  "source_ref": "platform:tiktok:6c42716cfb185cbce2b912e8df3a6486078e6132890d4371158cb289c29a7dc7",
+  "duration_s": 19.066667,
+  "width": 1450,
+  "height": 1080,
+  "language": "en",
+  "avoid_terms": [
+   "childrenofkhan"
+  ]
+ },
+ "hook": {
+  "end_s": 2.0,
+  "pattern": "price_shock",
+  "summary": "medium shot, caption 'eggs are $12'",
+  "framing": "medium"
+ },
+ "beats": [
+  {
+   "index": 0,
+   "start_s": 0.0,
+   "end_s": 2.0,
+   "shot_type": "talking",
+   "framing": "medium",
+   "camera_move": "static",
+   "speaker": "narrator",
+   "line": "Eggs are $12 rents up",
+   "on_screen_text": "eggs are $12",
+   "role": "hook"
+  },
+  {
+   "index": 1,
+   "start_s": 2.0,
+   "end_s": 4.0,
+   "shot_type": "talking",
+   "framing": "wide",
+   "camera_move": "static",
+   "speaker": "narrator",
+   "line": "another 6% this year my",
+   "on_screen_text": "rent's up another 6% this year",
+   "role": "setup"
+  },
+  {
+   "index": 2,
+   "start_s": 4.0,
+   "end_s": 5.5,
+   "shot_type": "talking",
+   "framing": "wide",
+   "camera_move": "static",
+   "speaker": "narrator",
+   "line": "landlord just texted me Hope",
+   "on_screen_text": "my landlord just texted me",
+   "role": "setup"
+  },
+  {
+   "index": 3,
+   "start_s": 5.5,
+   "end_s": 7.5,
+   "shot_type": "talking",
+   "framing": "wide",
+   "camera_move": "static",
+   "speaker": "narrator",
+   "line": "Hope you're doing well before raising it",
+   "on_screen_text": "hope you're doing well;)\" before raising it again",
+   "role": "escalation"
+  },
+  {
+   "index": 4,
+   "start_s": 7.5,
+   "end_s": 9.0,
+   "shot_type": "talking",
+   "framing": "close",
+   "camera_move": "push_in",
+   "speaker": "narrator",
+   "line": "again. God damn, bro",
+   "on_screen_text": "god damn bro",
+   "role": "escalation"
+  },
+  {
+   "index": 5,
+   "start_s": 9.0,
+   "end_s": 11.5,
+   "shot_type": "talking",
+   "framing": "close",
+   "camera_move": "push_in",
+   "speaker": "narrator",
+   "line": "Maybe it's time. I joined the winning team",
+   "on_screen_text": "maybe it's time I join the winning team",
+   "role": "turn"
+  },
+  {
+   "index": 6,
+   "start_s": 11.5,
+   "end_s": 12.933,
+   "shot_type": "talking",
+   "framing": "close",
+   "camera_move": "push_in",
+   "speaker": "narrator",
+   "line": "and become Chinese",
+   "on_screen_text": "and become Chinese",
+   "role": "escalation"
+  },
+  {
+   "index": 7,
+   "start_s": 12.933,
+   "end_s": 15.9,
+   "shot_type": "talking",
+   "framing": "medium",
+   "camera_move": "pull_out",
+   "speaker": "narrator",
+   "line": "You met me at a very Chinese time in my",
+   "on_screen_text": "you met me at a very Chinese time in my life",
+   "role": "payoff"
+  },
+  {
+   "index": 8,
+   "start_s": 15.9,
+   "end_s": 16.5,
+   "shot_type": "talking",
+   "framing": "wide",
+   "camera_move": "static",
+   "speaker": "narrator",
+   "line": "life get",
+   "on_screen_text": "you met me at a very Chinese time in my life",
+   "role": "payoff"
+  },
+  {
+   "index": 9,
+   "start_s": 16.5,
+   "end_s": 18.0,
+   "shot_type": "product_card",
+   "framing": "wide",
+   "camera_move": "static",
+   "speaker": "narrator",
+   "line": "yours at children of Khan calm",
+   "on_screen_text": "Chinese time in my lite.",
+   "role": "cta"
+  },
+  {
+   "index": 10,
+   "start_s": 18.0,
+   "end_s": 19.067,
+   "shot_type": "product_card",
+   "framing": "wide",
+   "camera_move": "static",
+   "speaker": "narrator",
+   "line": "Lincoln bio",
+   "on_screen_text": "www.childrenofkhan.com minese time li",
+   "role": "cta"
+  }
+ ],
+ "pacing": {
+  "shot_count": 5,
+  "avg_shot_s": 3.81,
+  "cuts_per_10s": 2.1,
+  "beat_count": 11,
+  "avg_beat_s": 1.73,
+  "music_bpm": 100.0,
+  "onsets_s": [
+   0.2,
+   0.45,
+   0.85,
+   1.1,
+   1.35,
+   2.2,
+   2.4,
+   2.9,
+   3.1,
+   3.45
+  ]
+ },
+ "caption_style": {
+  "present": true,
+  "position": "bottom",
+  "case": "lower",
+  "words_per_caption": 4.7,
+  "burned_in": true
+ },
+ "transcript": "Eggs are $12 rents up another 6% this year my landlord just texted me Hope you're doing well before raising it again. God damn, bro Maybe it's time. I joined the winning team and become Chinese You met me at a very Chinese time in my life get yours at children of Khan calm Lincoln bio",
+ "setting": "",
+ "keeps": [
+  "hook",
+  "shot structure",
+  "pacing"
+ ],
+ "analysis": "heuristic",
+ "notes": []
+}

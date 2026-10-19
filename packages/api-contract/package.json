@@ -1,0 +1,33 @@
+{
+  "name": "@reelforge/api-contract",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Versioned OpenAPI artifact and shared client contract primitives for ReelForge.",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "openapi"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "contract:export": "python scripts/export_openapi.py && python scripts/generate_types.py",
+    "contract:check": "python scripts/export_openapi.py --check && python scripts/generate_types.py --check && python scripts/check_breaking.py",
+    "contract:breaking": "python scripts/check_breaking.py",
+    "contract:baseline": "python scripts/check_breaking.py --accept"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

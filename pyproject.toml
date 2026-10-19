@@ -1,0 +1,214 @@
+# 说明：
+# 1. 主依赖来源统一收敛到 pyproject.toml。
+# 2. 运行环境通过 uv.lock 固定，避免不同机器解析出不同版本组合。
+[build-system]
+requires = ["hatchling>=1.27.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "moneyprinterturbo"
+version = "1.3.3"
+description = "Generate short videos from prompts, local assets, subtitles, and TTS."
+readme = "README-en.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = [
+    "moviepy==2.2.1",
+    "streamlit==1.59.1",
+    "streamlit-tour==1.1.0",
+    "edge-tts==7.3.1",
+    "fastapi==0.136.3",
+    "uvicorn==0.32.1",
+    "openai==2.24.0",
+    "faster-whisper==1.1.0",
+    "loguru==0.7.3",
+    "dashscope==1.20.14",
+    "azure-cognitiveservices-speech==1.41.1",
+    "redis==5.2.0",
+    "python-multipart==0.0.27",
+    "pyyaml==6.0.3",
+    "requests==2.33.1",
+    "httpx==0.28.1",
+    "packaging==24.2",
+    "socksio==1.0.0",
+    "pydub==0.25.1",
+    "audioop-lts==0.2.2; python_version >= '3.13'",
+    "litellm==1.86.2",
+    "google-genai==2.11.0",
+    # Phase 3 "Connect your store": Google Play Developer API auth (service
+    # account -> bearer token). Already a transitive dep of google-genai; pinned
+    # directly because app/domains/store_connect imports it by name.
+    "google-auth==2.55.2",
+    # ReelForge: Celery/Redis orchestration, SQLAlchemy+Alembic persistence,
+    # Cloudflare R2 (boto3), and the Neon/Postgres driver.
+    "celery[redis]==5.5.3",
+    "sqlalchemy==2.0.43",
+    "alembic==1.16.4",
+    "boto3==1.40.11",
+    "psycopg[binary]==3.2.9",
+    # Verify Mint's pinned Ed25519 transfer attestations at the settlement edge.
+    "cryptography==49.0.0",
+    # M7.1: C2PA Content Credentials in every final MP4 (MIT OR Apache-2.0).
+    "c2pa-python==0.37.12",
+    # Recompute Mint's canonical BLAKE3 operation hash before accepting signed
+    # hold-settlement evidence as a match for Menivor's durable intent.
+    "blake3==1.0.9",
+    # Wave E M-6: Scribase partner tokens (EdDSA JWT + JWKS) and the Clerk JWT
+    # check in app/core/clerk.py. MIT (jpadilla/pyjwt). Mirrors requirements.txt.
+    "PyJWT==2.15.1",
+    # ReelForge billing: Stripe (global) + iyzico (TR local cards) SDKs.
+    "stripe==11.4.0",
+    "iyzipay==1.0.46",
+    # ReelForge monitoring: Sentry error/perf tracking (NO-OP when dsn unset).
+    "sentry-sdk[fastapi,celery]==2.42.0",
+    # ReelForge Enterprise (Access & Governance): pycasbin RBAC decision engine
+    # (Apache-2.0, pure-python). The role->permission authorization logic is
+    # delegated to Casbin rather than hand-rolled — see app/services/rbac.py.
+    "casbin==1.43.0",
+    # ReelForge Enterprise (Billing Platform): OpenFeature SDK (Apache-2.0,
+    # pure-python) — a vendor-neutral feature-flag / entitlement layer. Plan->feature
+    # entitlement resolution is delegated to OpenFeature (in-process provider backed
+    # by the PLAN_ENTITLEMENTS map) rather than hand-rolled — see
+    # app/services/entitlements.py. The import is GUARDED: absence degrades to a
+    # direct map read with the same base/free safe default, so the app + full test
+    # suite still run without it.
+    "openfeature-sdk==0.10.0",
+]
+
+[project.optional-dependencies]
+# Optional yt-dlp (https://github.com/yt-dlp/yt-dlp, Unlicense) — powers the
+# clipping "paste a link -> auto-clip" flow by resolving + downloading a bounded
+# progressive MP4 from YouTube/TikTok/Vimeo/Twitch/X. NOT required: the import is
+# lazy + guarded (see app/domains/clipping/platform_source.py) and the whole path
+# is fail-closed behind `reelforge_clipping_platform_ingest_enabled` (default
+# off), so the app + full test suite run WITHOUT it (a platform link degrades to
+# a clean 503 when the flag is on but the dep is absent). Track releases: platform
+# extractors break often, so prefer a recent pin. Install with
+# `uv sync --extra clipping` (or `pip install "yt-dlp>=2024.12.13"`).
+clipping = [
+    "yt-dlp>=2024.12.13",
+]
+
+# Ad Clone ingest (apps/api/app/domains/adclone): yt-dlp (Unlicense) downloads the winning ad,
+# PySceneDetect (BSD-3) finds the cuts, ocrmac (MIT, macOS only) reads captions on a Mac; Linux
+# images use rapidocr-onnxruntime from the base dependencies. Same pins as requirements-adclone.txt
+# (installed in the API and generation worker images). Install with `uv sync --extra adclone`.
+adclone = [
+    "yt-dlp==2026.8.19",
+    "scenedetect==0.7.1",
+    "ocrmac==1.0.1; sys_platform == 'darwin'",
+]
+
+# Optional TwelveLabs (https://twelvelabs.io) video-understanding/embedding
+# integration. Only needed when `twelvelabs_api_keys` is configured; install
+# with `uv sync --extra twelvelabs`.
+twelvelabs = [
+    "twelvelabs>=1.2.8",
+]
+
+# Optional PySceneDetect (https://github.com/Breakthrough/PySceneDetect, BSD-3)
+# accelerated scene detection for the `auto_zoom` editing pass. NOT required: the
+# pass is import-guarded and falls back to a pure-ffmpeg scene-score detector when
+# absent, so the app + full test suite run WITHOUT it. Install with
+# `uv sync --extra editing` (or `--extra auto_zoom`).
+auto_zoom = [
+    "scenedetect>=0.6.4",
+]
+
+# Optional rembg (https://github.com/danielgatis/rembg, MIT) neural background
+# matting for a cleaner avatar cut-out than chromakey. NOT required: only needed
+# when a job sets `remove_bg`; the app imports + runs WITHOUT it (degrades to the
+# existing chromakey path). Pulls onnxruntime (CPU); numpy/Pillow are already
+# deps. Install with `uv sync --extra matting`.
+matting = [
+    "rembg[cpu]>=2.0.59",
+]
+
+# Convenience aggregate: every optional editing-polish accelerator at once.
+editing = [
+    "scenedetect>=0.6.4",
+    "rembg[cpu]>=2.0.59",
+]
+
+# Optional Enterprise Identity & SSO (Epic 2). NOT required: the SAML validator
+# is import-guarded and the SSO endpoints degrade to a clean 503 when the toolkit
+# (or its native ``xmlsec`` lib) is absent — SCIM, connection-CRUD and the
+# security policy are fully testable without it. ALL SAML XML parsing +
+# signature/condition validation is delegated to python3-saml
+# (SAML-Toolkits/python3-saml, MIT; imports as ``onelogin.saml2``) — never
+# hand-rolled. scim2-filter-parser (MIT) is an optional SCIM ``filter=``
+# accelerator. Install with `uv sync --extra enterprise_sso`.
+enterprise_sso = [
+    "python3-saml>=1.16.0",
+    "scim2-filter-parser>=0.5.0",
+]
+
+[dependency-groups]
+dev = [
+    "coverage==7.15.1",
+    "pytest==9.1.1",
+    "ruff==0.15.21",
+]
+
+[tool.ruff.lint.per-file-ignores]
+# WebUI 需要先把项目根目录加入 sys.path，随后才能导入 app 包。
+"webui/Main.py" = ["E402"]
+
+[tool.coverage.run]
+# 统计分支覆盖率可以识别“代码行执行了，但条件的另一条分支从未验证”的情况，
+# 比只统计行覆盖率更适合作为 CI 质量基线。CLI 和 WebUI 都属于生产入口，
+# 因此与 app 服务层、服务启动入口和面向 Agent 用户发布的 Skill 脚本一起
+# 纳入统计，避免覆盖率只反映局部模块。
+branch = true
+source = ["apps/api/app", "cli", "webui", "main", "docs/skill"]
+# The ReelForge subsystem is a self-contained fork addition with its OWN gate
+# (.github/workflows/reelforge-ci.yml runs tests/reelforge/ against these modules).
+# Exclude it from MPT's coverage denominator so the upstream 70% baseline keeps
+# measuring MPT's own code rather than being diluted by a separately-tested layer.
+omit = [
+    "app/services/script/*",
+    "app/services/tts/*",
+    "app/services/avatar/*",
+    "app/services/captions/*",
+    "app/services/compose/*",
+    "app/services/storage/*",
+    "app/services/billing/*",
+    "app/services/publish.py",
+    "app/services/ratelimit.py",
+    "app/services/reelforge.py",
+    "app/workers/*",
+    "app/telemetry/*",
+    "app/models/db/*",
+    "app/controllers/v1/jobs.py",
+    "app/controllers/v1/billing.py",
+    "app/controllers/v1/studio.py",
+]
+
+[tool.coverage.report]
+# Python 3.11 和 3.13 完整测试的实测分支覆盖率均超过 70.4%。以 70%
+# 作为稳定底线，可以固化失败状态、异步发布恢复和 Redis 原子更新测试，
+# 同时为不同 Python 版本与操作系统的少量分支差异保留余量。
+fail_under = 70
+show_missing = true
+skip_covered = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["apps/api/app"]
+
+[tool.uv]
+# 当前项目以应用运行形态为主，不作为可发布的 Python 包安装。
+package = false
+
+[tool.pytest.ini_options]
+# Make the backend importable as ``app`` (and the engine helpers) without needing
+# an external ``PYTHONPATH`` export, mirroring Makefile.reelforge's invocation.
+# ``packages/provider-adapter-kit/python`` carries the versioned provider
+# execution contract the gateway imports; it is installed in the Docker image
+# (see apps/api/Dockerfile) and exposed here so the suite is self-sufficient.
+pythonpath = ["apps/api", "apps/api/engine", "packages/provider-adapter-kit/python", "."]
+# Never collect tests from vendored `external/` projects or standalone Rust
+# workspaces; those projects own their own dependency environments and gates.
+testpaths = ["tests/reelforge", "apps/api/tests"]
+markers = [
+    "integration: real external tools (ffmpeg) or slower end-to-end checks",
+]

@@ -1,0 +1,11 @@
+{
+  "id": "selfie",
+  "version": 1,
+  "name": "Selfie",
+  "blurb": "Talking to the phone camera at arm's length, casual room behind.",
+  "look": "handheld selfie framing, face centred, soft daylight, casual home background",
+  "layout": "pip",
+  "aspect": "9:16",
+  "needs_product": false,
+  "disclosure": "This video was created with AI."
+}

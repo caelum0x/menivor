@@ -1,0 +1,200 @@
+{
+  "ab": {
+    "three_way": {
+      "result": {
+        "scores": {
+          "A": 0.566667,
+          "B": 0.652,
+          "C": 0.56
+        },
+        "winner": "B"
+      },
+      "variants": [
+        {
+          "avg_watch": 12.0,
+          "completion": 0.5,
+          "id": "A"
+        },
+        {
+          "avg_watch": 18.0,
+          "completion": 0.42,
+          "id": "B"
+        },
+        {
+          "avg_watch": 9.0,
+          "completion": 0.6,
+          "id": "C"
+        }
+      ]
+    }
+  },
+  "dropoff": {
+    "cliff": {
+      "curve": [
+        1.0,
+        0.96,
+        0.24,
+        0.18,
+        0.14
+      ],
+      "dropoff": {
+        "first_3s": 0.733333,
+        "max_drop": 0.72,
+        "max_drop_at": 2
+      }
+    },
+    "decaying": {
+      "curve": [
+        1.0,
+        0.82,
+        0.61,
+        0.54,
+        0.41,
+        0.3
+      ],
+      "dropoff": {
+        "first_3s": 0.81,
+        "max_drop": 0.21,
+        "max_drop_at": 2
+      }
+    },
+    "flat": {
+      "curve": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dropoff": {
+        "first_3s": 1.0,
+        "max_drop": 0.0,
+        "max_drop_at": 0
+      }
+    }
+  },
+  "hook": {
+    "borderline": {
+      "result": {
+        "passes": true,
+        "score": 0.7
+      },
+      "signals": {
+        "audio_onset": 0.7,
+        "contrast": 0.7,
+        "motion": 0.7,
+        "text": 0.7
+      }
+    },
+    "strong": {
+      "result": {
+        "passes": true,
+        "score": 0.815
+      },
+      "signals": {
+        "audio_onset": 0.8,
+        "contrast": 0.8,
+        "motion": 0.9,
+        "text": 0.7
+      }
+    },
+    "weak": {
+      "result": {
+        "passes": false,
+        "score": 0.215
+      },
+      "signals": {
+        "audio_onset": 0.2,
+        "contrast": 0.2,
+        "motion": 0.3,
+        "text": 0.1
+      }
+    }
+  },
+  "reach": {
+    "boosted": {
+      "avg": 0.78,
+      "tier": {
+        "multiplier": 2.2,
+        "tier": "boosted"
+      }
+    },
+    "edge70": {
+      "avg": 0.7,
+      "tier": {
+        "multiplier": 2.2,
+        "tier": "boosted"
+      }
+    },
+    "edge85": {
+      "avg": 0.85,
+      "tier": {
+        "multiplier": 3.0,
+        "tier": "viral"
+      }
+    },
+    "minimal": {
+      "avg": 0.5,
+      "tier": {
+        "multiplier": 1.0,
+        "tier": "minimal"
+      }
+    },
+    "viral": {
+      "avg": 0.9,
+      "tier": {
+        "multiplier": 3.0,
+        "tier": "viral"
+      }
+    }
+  },
+  "retention": {
+    "cliff": {
+      "curve": [
+        1.0,
+        0.96,
+        0.24,
+        0.18,
+        0.14
+      ],
+      "samples": [
+        500,
+        480,
+        120,
+        90,
+        70
+      ]
+    },
+    "decaying": {
+      "curve": [
+        1.0,
+        0.82,
+        0.61,
+        0.54,
+        0.41,
+        0.3
+      ],
+      "samples": [
+        1000,
+        820,
+        610,
+        540,
+        410,
+        300
+      ]
+    },
+    "flat": {
+      "curve": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "samples": [
+        200,
+        200,
+        200,
+        200
+      ]
+    }
+  }
+}

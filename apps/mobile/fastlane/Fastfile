@@ -1,0 +1,139 @@
+# Menivor — iOS release automation (local store builds, no EAS cloud)
+#
+# Builds a signed App Store .ipa locally and uploads it to TestFlight, using the
+# App Store Connect API key for both code signing (cert + sigh) and upload — no
+# Apple ID password or 2FA needed. Distribution cert + App Store profile are
+# fetched/created on this machine automatically (API-key managed signing).
+#
+#
+# This app lives in apps/mobile of an npm workspace (deps hoisted to the repo
+# root) and is Expo SDK 54 (no expo-modules-jsi package → no Swift 6 patch).
+#
+# Prereqs (order matters), run from the repo root then apps/mobile:
+#   npm install                              # (repo root) hoisted install
+#   npx expo prebuild -p ios --no-install    # (apps/mobile) generate/refresh ios/
+#   (cd ios && pod install)
+#
+# Usage (from apps/mobile):
+#   fastlane ios beta                 # next TestFlight build number, build + upload
+#   fastlane ios beta build:7         # force a specific build number
+#   fastlane ios upload_only          # re-upload build/Menivor.ipa (no rebuild)
+#   fastlane ios check_build          # print latest TestFlight build number
+
+default_platform(:ios)
+
+WORKSPACE = "ios/Menivor.xcworkspace"
+SCHEME    = "Menivor"
+APP_ID    = "com.arhansuba.menivor"
+TEAM_ID   = "947G2G2JXJ"
+ASC_KEY_ID     = "98T8ZPPNGD"
+ASC_ISSUER_ID  = "a57e5464-0804-487d-baad-b089a6ef327f"
+ASC_KEY_PATH   = File.expand_path("~/.appstore-keys/AuthKey_98T8ZPPNGD.p8")
+XCODEPROJ      = "ios/Menivor.xcodeproj"
+
+def asc_api_key
+  unless File.file?(ASC_KEY_PATH)
+    UI.user_error!("ASC API key not found at #{ASC_KEY_PATH}")
+  end
+  app_store_connect_api_key(
+    key_id: ASC_KEY_ID,
+    issuer_id: ASC_ISSUER_ID,
+    key_filepath: ASC_KEY_PATH,
+    in_house: false,
+  )
+end
+
+platform :ios do
+  desc "Build a signed App Store build and upload it to TestFlight"
+  lane :beta do |options|
+    api_key = asc_api_key
+
+    # The store is the source of truth for build numbers (EAS used remote
+    # versioning), so derive the next number from TestFlight, not the stale
+    # local project value.
+    next_build =
+      if options[:build]
+        options[:build].to_i
+      else
+        latest = latest_testflight_build_number(
+          api_key: api_key,
+          app_identifier: APP_ID,
+          initial_build_number: 0,
+        )
+        latest.to_i + 1
+      end
+    UI.message("Using build number #{next_build}")
+
+    increment_build_number(
+      xcodeproj: XCODEPROJ,
+      build_number: next_build,
+    )
+
+    # API-key managed signing: pull (or create) an Apple Distribution cert and
+    # an App Store provisioning profile onto this machine.
+    cert(
+      api_key: api_key,
+      output_path: "fastlane/signing",
+    )
+    sigh(
+      api_key: api_key,
+      app_identifier: APP_ID,
+      output_path: "fastlane/signing",
+      adhoc: false,
+    )
+    profile_name = lane_context[SharedValues::SIGH_NAME]
+
+    update_code_signing_settings(
+      path: XCODEPROJ,
+      use_automatic_signing: false,
+      team_id: TEAM_ID,
+      code_sign_identity: "Apple Distribution",
+      bundle_identifier: APP_ID,
+      profile_name: profile_name,
+    )
+
+    build_app(
+      workspace: WORKSPACE,
+      scheme: SCHEME,
+      configuration: "Release",
+      export_method: "app-store",
+      output_directory: "build",
+      output_name: "Menivor.ipa",
+      export_options: {
+        provisioningProfiles: { APP_ID => profile_name },
+      },
+      xcargs: "-allowProvisioningUpdates",
+    )
+
+    upload_to_testflight(
+      api_key: api_key,
+      app_identifier: APP_ID,
+      skip_waiting_for_build_processing: true,
+      skip_submission: true,
+    )
+
+    UI.success("Uploaded build #{next_build} to TestFlight. Select it in App Store Connect once processing finishes.")
+  end
+
+  desc "Upload an already-built IPA to TestFlight (re-run after a dropped upload, no rebuild)"
+  lane :upload_only do
+    upload_to_testflight(
+      api_key: asc_api_key,
+      app_identifier: APP_ID,
+      ipa: "build/Menivor.ipa",
+      skip_waiting_for_build_processing: true,
+      skip_submission: true,
+    )
+    UI.success("Uploaded build/Menivor.ipa to TestFlight.")
+  end
+
+  desc "Print latest TestFlight build number + state"
+  lane :check_build do
+    n = latest_testflight_build_number(
+      api_key: asc_api_key,
+      app_identifier: APP_ID,
+      initial_build_number: 0,
+    )
+    UI.success("LATEST_TF_BUILD=#{n}")
+  end
+end

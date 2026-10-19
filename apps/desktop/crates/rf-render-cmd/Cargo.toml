@@ -1,0 +1,19 @@
+[package]
+name = "rf-render-cmd"
+description = "ReelForge desktop render-command assembly — stitches rf-compose + rf-audio into the full ffmpeg argv (pure)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]
+rf-plan = { path = "../rf-plan" }
+rf-compose = { path = "../rf-compose" }
+rf-audio = { path = "../rf-audio" }
+rf-hardware = { path = "../rf-hardware" }
+
+[dev-dependencies]
+rf-shots = { path = "../rf-shots" }
+rf-captions = { path = "../rf-captions" }

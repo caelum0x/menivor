@@ -1,0 +1,14 @@
+Menivor is an AI video maker. A prompt, a link or your own footage becomes a finished vertical video with a hook, voiceover, b-roll and word-by-word captions.
+
+HOW TO REVIEW
+1. Launch the app and tap "Continue with Apple" (Sign in with Apple). An account is required because renders run on our servers and follow the user across devices. There is no guest mode.
+2. The Create tab opens. Type a topic (for example "3 knife cuts every home cook needs") or paste a link, then tap the create button. Menivor writes three hooks and renders three variants; progress is shown on the results screen and in the Reels tab (second tab).
+3. Open a finished reel to play it, export or share it, generate a cover, dub it, or open it in the timeline editor.
+4. Third tab: b-roll generation. Fourth tab: account, credits, Menivor Pro, notifications, privacy (data export and account deletion), support and legal links.
+5. In-app purchases: credit packs (consumable) and Menivor Pro (auto-renewing subscription). Prices are loaded from the App Store; Restore Purchases is on the Pro sheet and on the account card. Account deletion: fourth tab > Privacy and data > Delete account.
+
+OWNER TO FILL BEFORE SUBMITTING
+- If new accounts start with zero credits, renders need a sandbox purchase. Either grant review credits server-side for the reviewer's account or state here which credit pack to buy in the sandbox.
+
+WHAT MAKES MENIVOR ORIGINAL (4.3(a))
+Menivor is a single product built around one pipeline: prompt or link to three hook variants, rendered, captioned and voiced on our own backend (api.menivor.com), with a timeline editor, caption tools, voice and presenter creation and dubbing. Its interface is its own: an ink-and-gold design matching menivor.com, a film-strip tab bar, code-drawn moving reel art on the sign-in screen, and its own Pro sheet. It does not use a shared template for sign-in, paywall or navigation. Developer and internal tools are not included in the App Store build.

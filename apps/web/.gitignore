@@ -1,0 +1,33 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# cloudflare pages / next-on-pages
+/.vercel
+/.wrangler
+
+# env — never commit real secrets
+.env
+.env*.local
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# misc
+.DS_Store
+*.log
+
+# Apple Sign in with Apple private keys — never commit
+*.p8
+AuthKey_*.p8
+.open-next/
+.open-next/

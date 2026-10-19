@@ -1,0 +1,138 @@
+{
+  "deprecation": {
+    "kwaivgi/kling-v1.6": {
+      "2026-06-01": {
+        "model": "kwaivgi/kling-v1.6",
+        "replacement": "kwaivgi/kling-v2-master",
+        "should_migrate": true,
+        "status": "deprecating"
+      },
+      "2026-08-01": {
+        "model": "kwaivgi/kling-v1.6",
+        "replacement": "kwaivgi/kling-v2-master",
+        "should_migrate": true,
+        "status": "deprecating"
+      },
+      "2026-10-01": {
+        "model": "kwaivgi/kling-v1.6",
+        "replacement": "kwaivgi/kling-v2-master",
+        "should_migrate": true,
+        "status": "deprecating"
+      }
+    },
+    "openai/sora-2": {
+      "2026-06-01": {
+        "model": "openai/sora-2",
+        "replacement": "google/veo-3.1",
+        "should_migrate": true,
+        "status": "deprecating"
+      },
+      "2026-08-01": {
+        "model": "openai/sora-2",
+        "replacement": "google/veo-3.1",
+        "should_migrate": true,
+        "status": "deprecating"
+      },
+      "2026-10-01": {
+        "model": "openai/sora-2",
+        "replacement": "google/veo-3.1",
+        "should_migrate": true,
+        "status": "sunset"
+      }
+    },
+    "runwayml/gen-3a": {
+      "2026-06-01": {
+        "model": "runwayml/gen-3a",
+        "replacement": "runwayml/gen-4",
+        "should_migrate": true,
+        "status": "deprecating"
+      },
+      "2026-08-01": {
+        "model": "runwayml/gen-3a",
+        "replacement": "runwayml/gen-4",
+        "should_migrate": true,
+        "status": "sunset"
+      },
+      "2026-10-01": {
+        "model": "runwayml/gen-3a",
+        "replacement": "runwayml/gen-4",
+        "should_migrate": true,
+        "status": "sunset"
+      }
+    }
+  },
+  "envelope": {
+    "": {
+      "state": "IN_PROGRESS",
+      "terminal": false
+    },
+    "DREAMING": {
+      "state": "IN_PROGRESS",
+      "terminal": false
+    },
+    "Fail": {
+      "state": "IN_PROGRESS",
+      "terminal": false
+    },
+    "RUNNING": {
+      "state": "IN_PROGRESS",
+      "terminal": false
+    },
+    "canceled": {
+      "state": "CANCELLED",
+      "terminal": true
+    },
+    "queued": {
+      "state": "IN_QUEUE",
+      "terminal": false
+    },
+    "succeeded": {
+      "state": "COMPLETED",
+      "terminal": true
+    },
+    "weird": {
+      "state": "IN_PROGRESS",
+      "terminal": false
+    }
+  },
+  "license": {
+    "SWivid/f5-tts": "non-commercial",
+    "THUDM/cogvideox-5b": "territorial",
+    "black-forest-labs/flux-dev": "non-commercial",
+    "black-forest-labs/flux-schnell": "commercial-safe",
+    "coqui/xtts-v2": "non-commercial",
+    "genmo/mochi-1": "commercial-safe",
+    "kwaivgi/kling-v1.6": "commercial-safe",
+    "lightricks/ltx-video": "commercial-safe",
+    "stabilityai/stable-video-diffusion": "non-commercial",
+    "tencent/hunyuan-video": "territorial",
+    "unknown/model": "territorial",
+    "wan/wan-2.2": "commercial-safe"
+  },
+  "paid": {
+    "SWivid/f5-tts": false,
+    "THUDM/cogvideox-5b": false,
+    "black-forest-labs/flux-dev": false,
+    "black-forest-labs/flux-schnell": true,
+    "coqui/xtts-v2": false,
+    "genmo/mochi-1": true,
+    "kwaivgi/kling-v1.6": true,
+    "lightricks/ltx-video": true,
+    "stabilityai/stable-video-diffusion": false,
+    "tencent/hunyuan-video": false,
+    "unknown/model": false,
+    "wan/wan-2.2": true
+  },
+  "usage": {
+    "fail": {
+      "cost_micros": 0,
+      "success": false,
+      "units": 5.0
+    },
+    "ok": {
+      "cost_micros": 420000,
+      "success": true,
+      "units": 5.0
+    }
+  }
+}

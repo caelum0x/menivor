@@ -1,0 +1,101 @@
+{
+ "description": "Preview loops for the preset shelf (MH2). A tile is shown only when its preview entry exists and is published (or PRESET_PREVIEWS_LIVE=1 after the deploy upload). Model previews are paid from the owner promo budget (item M1) and are never placeholder art.",
+ "previews": {
+  "crane-reveal": {
+   "loop": "presets/crane-reveal.mp4",
+   "poster": "presets/crane-reveal.jpg",
+   "status": "staged",
+   "rendered_at": "2026-09-29",
+   "spend_usd": 0.0,
+   "source": "Pexels License stock, video 37522009"
+  },
+  "crash-zoom": {
+   "loop": "presets/crash-zoom.mp4",
+   "poster": "presets/crash-zoom.jpg",
+   "status": "staged",
+   "rendered_at": "2026-09-29",
+   "spend_usd": 0.0,
+   "source": "Pexels License stock, video 29892299"
+  },
+  "dreamy-push": {
+   "loop": "presets/dreamy-push.mp4",
+   "poster": "presets/dreamy-push.jpg",
+   "status": "staged",
+   "rendered_at": "2026-09-29",
+   "spend_usd": 0.0,
+   "source": "Pexels License stock, video 8131891"
+  },
+  "drone-rush": {
+   "loop": "presets/drone-rush.mp4",
+   "poster": "presets/drone-rush.jpg",
+   "status": "staged",
+   "rendered_at": "2026-09-29",
+   "spend_usd": 0.0,
+   "source": "Pexels License stock, video 28615730"
+  },
+  "dutch-drama": {
+   "loop": "presets/dutch-drama.mp4",
+   "poster": "presets/dutch-drama.jpg",
+   "status": "staged",
+   "rendered_at": "2026-09-29",
+   "spend_usd": 0.0,
+   "source": "Pexels License stock, video 7697102"
+  },
+  "glitch-punch": {
+   "loop": "presets/glitch-punch.mp4",
+   "poster": "presets/glitch-punch.jpg",
+   "status": "staged",
+   "rendered_at": "2026-09-29",
+   "spend_usd": 0.0,
+   "source": "Pexels License stock, video 34124550"
+  },
+  "handheld-vlog": {
+   "loop": "presets/handheld-vlog.mp4",
+   "poster": "presets/handheld-vlog.jpg",
+   "status": "staged",
+   "rendered_at": "2026-09-29",
+   "spend_usd": 0.0,
+   "source": "Pexels License stock, video 31921071"
+  },
+  "orbit": {
+   "loop": "presets/orbit.mp4",
+   "poster": "presets/orbit.jpg",
+   "status": "staged",
+   "rendered_at": "2026-09-29",
+   "spend_usd": 0.0,
+   "source": "Pexels License stock, video 31992241"
+  },
+  "rack-focus": {
+   "loop": "presets/rack-focus.mp4",
+   "poster": "presets/rack-focus.jpg",
+   "status": "staged",
+   "rendered_at": "2026-09-29",
+   "spend_usd": 0.0,
+   "source": "Pexels License stock, video 6748362"
+  },
+  "speed-ramp": {
+   "loop": "presets/speed-ramp.mp4",
+   "poster": "presets/speed-ramp.jpg",
+   "status": "staged",
+   "rendered_at": "2026-09-29",
+   "spend_usd": 0.0,
+   "source": "Pexels License stock, video 6289336"
+  },
+  "vintage-film": {
+   "loop": "presets/vintage-film.mp4",
+   "poster": "presets/vintage-film.jpg",
+   "status": "staged",
+   "rendered_at": "2026-09-29",
+   "spend_usd": 0.0,
+   "source": "Pexels License stock, video 34601858"
+  },
+  "whip-pan": {
+   "loop": "presets/whip-pan.mp4",
+   "poster": "presets/whip-pan.jpg",
+   "status": "staged",
+   "rendered_at": "2026-09-29",
+   "spend_usd": 0.0,
+   "source": "Pexels License stock, video 35291926"
+  }
+ }
+}

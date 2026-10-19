@@ -1,0 +1,15 @@
+[package]
+name = "rf-encode"
+description = "ReelForge desktop encode — ffmpeg argv builder over rf-hardware encoder selection"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]
+rf-hardware = { path = "../rf-hardware" }
+rf-project = { path = "../rf-project" }
+rf-ffmpeg = { path = "../rf-ffmpeg" }
+rf-effects = { path = "../rf-effects" }

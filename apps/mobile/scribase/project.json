@@ -1,0 +1,104 @@
+{
+  "version": 1,
+  "app": "menivor",
+  "display_name": "Menivor",
+  "status": "migrate",
+  "repo": "~/products/videogen",
+  "bundle_id": "com.arhansuba.menivor",
+  "organization": "ereboslab",
+  "project": "menivor",
+  "environment": "production",
+  "region": "aws-eu-central-1",
+  "data_mode": "snapshot",
+  "engine": "postgres-cow",
+  "engine_alternatives": [
+    "neon-local",
+    "neon-cloud"
+  ],
+  "engine_reason": "auth + profiles, no realtime",
+  "source": {
+    "supabase_project_ref": null,
+    "note": "the old Supabase project is gone (NXDOMAIN); schema ported from the repo, no data import"
+  },
+  "client_env": {
+    "format": "expo",
+    "key": "anon",
+    "url_var": "EXPO_PUBLIC_SUPABASE_URL",
+    "key_var": "EXPO_PUBLIC_SUPABASE_ANON_KEY",
+    "files": [
+      "EAS environment variables (production, preview, development)",
+      "apps/mobile/.env.local",
+      "(optional override) apps/mobile/app.json expo.extra.auth"
+    ]
+  },
+  "server_env": {
+    "where": "Menivor API on box 1: /etc/products/menivor.env (infra-box stacks/menivor/neon.env.example)",
+    "vars": {
+      "SUPABASE_URL": "this environment's public URL; the API requires the token issuer <SUPABASE_URL>/auth/v1",
+      "SUPABASE_JWT_SECRET": "this environment's JWT secret (GET api-keys?reveal=jwt_secret, owner or admin with MFA); project auth signs HS256 with it"
+    },
+    "why": "POST /api/v1/auth/device verifies the mobile access token (core/supabase_auth.verify_supabase_jwt) and re-links existing accounts by verified email (MN9)"
+  },
+  "db_schemas": [
+    "public",
+    "graphql_public"
+  ],
+  "auth": {
+    "site_url": "menivor://",
+    "uri_allow_list": [
+      "menivor://**"
+    ],
+    "disable_signup": false,
+    "external_email_enabled": true,
+    "external_anonymous_users_enabled": false,
+    "mailer_autoconfirm": null,
+    "site_name": null,
+    "mailer_sender_address": "no-reply@menivor.com",
+    "mailer_otp_length": null,
+    "mailer_otp_exp": null,
+    "providers": {
+      "apple": {
+        "enabled": true,
+        "bundle_ids": [
+          "com.arhansuba.menivor"
+        ],
+        "services_id": null,
+        "secret_env": null,
+        "notes": "Native signInWithIdToken: the iOS bundle id is the aud; no Services ID or .p8 secret needed."
+      },
+      "google": {
+        "enabled": false,
+        "ios_client_id": null,
+        "web_client_id": null,
+        "android_client_id": null,
+        "secret_env": null,
+        "notes": "Google sign-in is OFF in the app until Menivor gets its OWN OAuth client (never reuse another product's client ids). Set ios_client_id + web_client_id and enabled=true when it exists."
+      }
+    }
+  },
+  "smtp": {
+    "enabled": true,
+    "use_platform": true,
+    "why": "Email one-time-code sign-in (the sign-in that works on Android and any device) sends a 6-digit code from no-reply@menivor.com. The magic-link/OTP email template must include {{ .Token }} so the mail carries the code the app asks for. The app shows email sign-in only when app.json expo.extra.auth.email is true (or EXPO_PUBLIC_EMAIL_SIGNIN=1).",
+    "host_env": "SCRIBASE_SMTP_HOST",
+    "port_env": "SCRIBASE_SMTP_PORT",
+    "user_env": "SCRIBASE_SMTP_USER",
+    "pass_env": "SCRIBASE_SMTP_PASS",
+    "sender_env": "SCRIBASE_SMTP_SENDER",
+    "sender": "Menivor <no-reply@menivor.com>"
+  },
+  "todo": [
+    "Menivor Google OAuth client (iOS + web client ids) does not exist yet; Google stays disabled",
+    "Verify menivor.com as a Scribase Mail sending domain and put {{ .Token }} in the magic-link email template, smoke-test a code, then set apps/mobile/app.json expo.extra.auth.email=true"
+  ],
+  "notes": [
+    "Sign-in: Apple (iOS) + email one-time code (all devices, behind expo.extra.auth.email) ; Google waits for Menivor's own OAuth client. No password UI.",
+    "Dedicated project: public schema (the menivor schema existed only to share the old cipher project). Account erasure: Menivor API POST /me/erase, then the app calls delete_own_account() to remove the sign-in identity. No edge functions.",
+    "Switch order: (1) scribase-move-apps.sh --only menivor; (2) set server_env on the API box and restart it (owner); (3) ship a build with the new EAS env. Runbook: videogen docs/runbooks/mobile-auth-scribase.md.",
+    "The API trusts one issuer (<SUPABASE_URL>/auth/v1)."
+  ],
+  "app_root": "apps/mobile",
+  "migrations_dir": "scribase/migrations",
+  "functions_dir": null,
+  "function_secrets": []
+}

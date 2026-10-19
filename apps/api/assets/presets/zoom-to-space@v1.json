@@ -1,0 +1,16 @@
+{
+ "id": "zoom-to-space",
+ "version": 1,
+ "kind": "model",
+ "name": "Zoom out to space",
+ "blurb": "The camera pulls back from your scene to orbit.",
+ "credit_kind": "ai_video",
+ "preset_sku": "animate_image",
+ "tier": "draft",
+ "seconds": 5,
+ "inputs": [
+  "subject",
+  "image"
+ ],
+ "prompt_template": "The camera pulls back from the {subject} through the clouds until the whole planet is in view"
+}

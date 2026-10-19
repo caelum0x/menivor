@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>CFBundleName</key><string>Menivor</string>
+  <key>CFBundleDisplayName</key><string>Menivor</string>
+  <key>CFBundleIdentifier</key><string>dev.reelforge.desktop</string>
+  <key>CFBundleExecutable</key><string>reelforge-desktop</string>
+  <key>CFBundleVersion</key><string>0.1.0</string>
+  <key>CFBundleShortVersionString</key><string>0.1.0</string>
+  <key>CFBundlePackageType</key><string>APPL</string>
+  <key>CFBundleIconFile</key><string>Menivor.icns</string>
+  <key>LSMinimumSystemVersion</key><string>12.0</string>
+  <key>LSApplicationCategoryType</key><string>public.app-category.video</string>
+  <key>NSHighResolutionCapable</key><true/>
+  <key>NSSupportsAutomaticGraphicsSwitching</key><true/>
+  <!-- Capture app: the OS shows these strings when requesting permission. -->
+  <key>NSCameraUsageDescription</key><string>Menivor records your camera for talking-head clips.</string>
+  <key>NSMicrophoneUsageDescription</key><string>Menivor records narration and voiceovers.</string>
+  <key>NSScreenCaptureUsageDescription</key><string>Menivor captures your screen to record product demos.</string>
+  <key>NSDesktopFolderUsageDescription</key><string>Menivor imports and exports videos you choose.</string>
+  <!-- "Open With" / Finder double-click: source videos open in the editor and
+       .menivor files reopen a saved editor project (app_requests.rs). -->
+  <key>CFBundleDocumentTypes</key>
+  <array>
+    <dict>
+      <key>CFBundleTypeName</key><string>Video</string>
+      <key>CFBundleTypeRole</key><string>Editor</string>
+      <key>LSHandlerRank</key><string>Alternate</string>
+      <key>LSItemContentTypes</key>
+      <array>
+        <string>public.mpeg-4</string>
+        <string>com.apple.quicktime-movie</string>
+        <string>com.apple.m4v-video</string>
+        <string>org.webmproject.webm</string>
+      </array>
+    </dict>
+    <dict>
+      <key>CFBundleTypeName</key><string>Menivor Project</string>
+      <key>CFBundleTypeRole</key><string>Editor</string>
+      <key>LSHandlerRank</key><string>Owner</string>
+      <key>LSItemContentTypes</key>
+      <array>
+        <string>com.menivor.editor-project</string>
+      </array>
+    </dict>
+  </array>
+  <key>UTExportedTypeDeclarations</key>
+  <array>
+    <dict>
+      <key>UTTypeIdentifier</key><string>com.menivor.editor-project</string>
+      <key>UTTypeDescription</key><string>Menivor Project</string>
+      <key>UTTypeConformsTo</key>
+      <array>
+        <string>public.json</string>
+      </array>
+      <key>UTTypeTagSpecification</key>
+      <dict>
+        <key>public.filename-extension</key>
+        <array>
+          <string>menivor</string>
+        </array>
+      </dict>
+    </dict>
+  </array>
+</dict>
+</plist>

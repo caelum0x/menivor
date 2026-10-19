@@ -1,0 +1,20 @@
+{
+  "id": "meme",
+  "version": 1,
+  "name": "Meme",
+  "blurb": "A meme-caption video about your topic or product, captioned and voiced.",
+  "input": {
+    "kind": "topic",
+    "label": "Topic or link"
+  },
+  "runner": "plan",
+  "plan": {
+    "route": "jobs",
+    "style": "meme_hook"
+  },
+  "price": {
+    "credit_kind": "standard",
+    "via": "jobs"
+  },
+  "preview": "presets/apps/meme.mp4"
+}

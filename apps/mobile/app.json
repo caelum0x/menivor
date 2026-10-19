@@ -1,0 +1,164 @@
+{
+  "expo": {
+    "name": "Menivor",
+    "slug": "menivor",
+    "version": "1.0",
+    "description": "Menivor turns an idea into a finished vertical video. Type a topic, paste a link or bring your own footage, and Menivor writes the hook, adds a voice, cuts b-roll and burns in word-by-word captions.",
+    "privacyPolicyUrl": "https://menivor.com/privacy",
+    "icon": "./assets/icon.png",
+    "orientation": "portrait",
+    "scheme": "menivor",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": false,
+    "ios": {
+      "icon": "./assets/icon.png",
+      "supportsTablet": false,
+      "bundleIdentifier": "com.arhansuba.menivor",
+      "usesAppleSignIn": true,
+      "config": {
+        "usesNonExemptEncryption": false
+      },
+      "infoPlist": {
+        "NSPhotoLibraryUsageDescription": "Menivor opens your photo library so you can pick the clips and images you want to turn into a reel.",
+        "NSMicrophoneUsageDescription": "Menivor uses the microphone to record a short voice sample that narrates your reels in your own voice.",
+        "NSCameraUsageDescription": "Menivor uses the camera so you can take a selfie for your on-screen presenter."
+      },
+      "buildNumber": "2",
+      "associatedDomains": [
+        "applinks:menivor.com"
+      ],
+      "privacyManifests": {
+        "NSPrivacyTracking": false,
+        "NSPrivacyTrackingDomains": [],
+        "NSPrivacyAccessedAPITypes": [
+          {
+            "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryUserDefaults",
+            "NSPrivacyAccessedAPITypeReasons": [
+              "CA92.1"
+            ]
+          },
+          {
+            "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryFileTimestamp",
+            "NSPrivacyAccessedAPITypeReasons": [
+              "C617.1"
+            ]
+          },
+          {
+            "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategorySystemBootTime",
+            "NSPrivacyAccessedAPITypeReasons": [
+              "35F9.1"
+            ]
+          },
+          {
+            "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryDiskSpace",
+            "NSPrivacyAccessedAPITypeReasons": [
+              "E174.1"
+            ]
+          }
+        ]
+      }
+    },
+    "android": {
+      "package": "com.menivor.app",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0a0a0b"
+      },
+      "permissions": [
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.READ_MEDIA_VIDEO",
+        "android.permission.READ_MEDIA_AUDIO",
+        "android.permission.RECORD_AUDIO",
+        "android.permission.MODIFY_AUDIO_SETTINGS"
+      ],
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "autoVerify": true,
+          "data": [
+            {
+              "scheme": "https",
+              "host": "menivor.com",
+              "pathPrefix": "/r/"
+            },
+            {
+              "scheme": "https",
+              "host": "menivor.com",
+              "pathPrefix": "/invite/"
+            }
+          ],
+          "category": [
+            "BROWSABLE",
+            "DEFAULT"
+          ]
+        }
+      ]
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "single",
+      "favicon": "./assets/favicon.png"
+    },
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0a0a0b"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-secure-store",
+        {
+          "faceIDPermission": "Menivor uses Face ID to keep your signed-in session secure on this device."
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Menivor opens your photo library so you can pick the clips and images you want to turn into a reel.",
+          "cameraPermission": "Menivor uses the camera so you can take a selfie for your on-screen presenter."
+        }
+      ],
+      [
+        "expo-document-picker",
+        {
+          "iCloudContainerEnvironment": "Production"
+        }
+      ],
+      [
+        "expo-av",
+        {
+          "microphonePermission": "Menivor uses the microphone to record a short voice sample that narrates your reels in your own voice."
+        }
+      ],
+      "expo-apple-authentication",
+      "expo-web-browser",
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/icon.png",
+          "color": "#0a0a0b"
+        }
+      ],
+      [
+        "./plugins/withAndroidUploadSigning",
+        {
+          "keyDir": "menivor"
+        }
+      ]
+    ],
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "79893b07-95ca-4a15-a5b0-478bc476266e"
+      },
+      "auth": {
+        "provider": "scribase",
+        "url": "",
+        "anonKey": "",
+        "email": false
+      }
+    },
+    "owner": "arhansuba"
+  }
+}

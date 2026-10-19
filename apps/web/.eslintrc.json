@@ -1,0 +1,28 @@
+{
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "no-restricted-imports": [
+      "error",
+      {
+        "paths": [
+          {
+            "name": "@clerk/nextjs",
+            "message": "Import Clerk hooks/components from \"@/components/auth/clerk-safe\" instead: raw @clerk/nextjs crashes when no Clerk key is configured."
+          }
+        ]
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "components/auth/clerk-safe.tsx",
+        "app/layout.tsx",
+        "**/*.test.ts",
+        "**/*.test.tsx",
+        "**/__tests__/**"
+      ],
+      "rules": { "no-restricted-imports": "off" }
+    }
+  ]
+}

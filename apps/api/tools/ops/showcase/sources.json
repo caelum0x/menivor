@@ -1,0 +1,910 @@
+{
+ "generated": "2026-09-28",
+ "render_lane": "bulk",
+ "total_spend_usd": 0.0,
+ "reels": [
+  {
+   "key": "serum-morning",
+   "niche": "Skincare brand",
+   "style": "voiceover (classic)",
+   "footage": [
+    {
+     "source": "Pexels",
+     "id": "8131891",
+     "url": "https://www.pexels.com/video/8131891/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "7607767",
+     "url": "https://www.pexels.com/video/7607767/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "7305465",
+     "url": "https://www.pexels.com/video/7305465/",
+     "license": "Pexels License"
+    }
+   ],
+   "loop": null,
+   "voice": {
+    "engine": "edge-tts (free)",
+    "name": "en-US-AriaNeural"
+   },
+   "script_words": 70,
+   "spend_usd": 0.0
+  },
+  {
+   "key": "ring-pov",
+   "niche": "Jewelry shop",
+   "style": "pov_text",
+   "footage": [
+    {
+     "source": "Pexels",
+     "id": "31992241",
+     "url": "https://www.pexels.com/video/31992241/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "6262797",
+     "url": "https://www.pexels.com/video/6262797/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "6805433",
+     "url": "https://www.pexels.com/video/6805433/",
+     "license": "Pexels License"
+    }
+   ],
+   "loop": {
+    "source": "bundled original loop",
+    "file": "marble-run-2.mp4",
+    "license": "first-party"
+   },
+   "voice": {
+    "engine": "edge-tts (free)",
+    "name": "en-US-EmmaNeural"
+   },
+   "script_words": 65,
+   "spend_usd": 0.0
+  },
+  {
+   "key": "sneaker-meme",
+   "niche": "Sneaker brand",
+   "style": "meme_hook",
+   "footage": [
+    {
+     "source": "Pexels",
+     "id": "29892299",
+     "url": "https://www.pexels.com/video/29892299/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "31732972",
+     "url": "https://www.pexels.com/video/31732972/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "4941597",
+     "url": "https://www.pexels.com/video/4941597/",
+     "license": "Pexels License"
+    }
+   ],
+   "loop": {
+    "source": "bundled original loop",
+    "file": "block-runner-3.mp4",
+    "license": "first-party"
+   },
+   "voice": {
+    "engine": "edge-tts (free)",
+    "name": "en-US-BrianNeural"
+   },
+   "script_words": 65,
+   "spend_usd": 0.0
+  },
+  {
+   "key": "pasta-weeknight",
+   "niche": "Weeknight recipes",
+   "style": "voiceover (classic)",
+   "footage": [
+    {
+     "source": "Pexels",
+     "id": "6289336",
+     "url": "https://www.pexels.com/video/6289336/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "12691875",
+     "url": "https://www.pexels.com/video/12691875/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "6222558",
+     "url": "https://www.pexels.com/video/6222558/",
+     "license": "Pexels License"
+    }
+   ],
+   "loop": null,
+   "voice": {
+    "engine": "edge-tts (free)",
+    "name": "en-US-ChristopherNeural"
+   },
+   "script_words": 68,
+   "spend_usd": 0.0
+  },
+  {
+   "key": "smoothie-split",
+   "niche": "Smoothie recipes",
+   "style": "satisfying_split",
+   "footage": [
+    {
+     "source": "Pexels",
+     "id": "7930764",
+     "url": "https://www.pexels.com/video/7930764/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "8802325",
+     "url": "https://www.pexels.com/video/8802325/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "7930810",
+     "url": "https://www.pexels.com/video/7930810/",
+     "license": "Pexels License"
+    }
+   ],
+   "loop": {
+    "source": "Pexels",
+    "id": "7467273",
+    "url": "https://www.pexels.com/video/7467273/",
+    "license": "Pexels License"
+   },
+   "voice": {
+    "engine": "edge-tts (free)",
+    "name": "en-US-AvaNeural"
+   },
+   "script_words": 64,
+   "spend_usd": 0.0
+  },
+  {
+   "key": "burger-pov",
+   "niche": "Burger grill",
+   "style": "pov_text",
+   "footage": [
+    {
+     "source": "Pexels",
+     "id": "34803863",
+     "url": "https://www.pexels.com/video/34803863/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "31176159",
+     "url": "https://www.pexels.com/video/31176159/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "34697259",
+     "url": "https://www.pexels.com/video/34697259/",
+     "license": "Pexels License"
+    }
+   ],
+   "loop": {
+    "source": "bundled original loop",
+    "file": "sand-slice-2.mp4",
+    "license": "first-party"
+   },
+   "voice": {
+    "engine": "edge-tts (free)",
+    "name": "en-US-GuyNeural"
+   },
+   "script_words": 61,
+   "spend_usd": 0.0
+  },
+  {
+   "key": "latte-cafe",
+   "niche": "Corner cafe",
+   "style": "voiceover (classic)",
+   "footage": [
+    {
+     "source": "Pexels",
+     "id": "34601858",
+     "url": "https://www.pexels.com/video/34601858/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "38694343",
+     "url": "https://www.pexels.com/video/38694343/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "29296613",
+     "url": "https://www.pexels.com/video/29296613/",
+     "license": "Pexels License"
+    }
+   ],
+   "loop": null,
+   "voice": {
+    "engine": "edge-tts (free)",
+    "name": "en-GB-SoniaNeural"
+   },
+   "script_words": 61,
+   "spend_usd": 0.0
+  },
+  {
+   "key": "cooking-narrator",
+   "niche": "Cooking class",
+   "style": "character_story",
+   "footage": [
+    {
+     "source": "Pexels",
+     "id": "4252801",
+     "url": "https://www.pexels.com/video/4252801/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "6281198",
+     "url": "https://www.pexels.com/video/6281198/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "6286101",
+     "url": "https://www.pexels.com/video/6286101/",
+     "license": "Pexels License"
+    }
+   ],
+   "loop": {
+    "source": "footage montage"
+   },
+   "voice": {
+    "engine": "edge-tts (free)",
+    "name": "en-US-RogerNeural"
+   },
+   "script_words": 66,
+   "spend_usd": 0.0
+  },
+  {
+   "key": "gym-split",
+   "niche": "Fitness coach",
+   "style": "gameplay_split",
+   "footage": [
+    {
+     "source": "Pexels",
+     "id": "35585700",
+     "url": "https://www.pexels.com/video/35585700/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "35585591",
+     "url": "https://www.pexels.com/video/35585591/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "4686178",
+     "url": "https://www.pexels.com/video/4686178/",
+     "license": "Pexels License"
+    }
+   ],
+   "loop": {
+    "source": "bundled original loop",
+    "file": "block-runner-2.mp4",
+    "license": "first-party"
+   },
+   "voice": {
+    "engine": "edge-tts (free)",
+    "name": "en-GB-RyanNeural"
+   },
+   "script_words": 59,
+   "spend_usd": 0.0
+  },
+  {
+   "key": "trail-story",
+   "niche": "Running club",
+   "style": "story_gameplay",
+   "footage": [
+    {
+     "source": "Pexels",
+     "id": "31921071",
+     "url": "https://www.pexels.com/video/31921071/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "36578163",
+     "url": "https://www.pexels.com/video/36578163/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "35799015",
+     "url": "https://www.pexels.com/video/35799015/",
+     "license": "Pexels License"
+    }
+   ],
+   "loop": {
+    "source": "footage montage"
+   },
+   "voice": {
+    "engine": "edge-tts (free)",
+    "name": "en-AU-WilliamMultilingualNeural"
+   },
+   "script_words": 63,
+   "spend_usd": 0.0
+  },
+  {
+   "key": "island-drone",
+   "niche": "Island travel guide",
+   "style": "voiceover (classic)",
+   "footage": [
+    {
+     "source": "Pexels",
+     "id": "28615730",
+     "url": "https://www.pexels.com/video/28615730/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "32022379",
+     "url": "https://www.pexels.com/video/32022379/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "38005764",
+     "url": "https://www.pexels.com/video/38005764/",
+     "license": "Pexels License"
+    }
+   ],
+   "loop": null,
+   "voice": {
+    "engine": "edge-tts (free)",
+    "name": "en-AU-NatashaNeural"
+   },
+   "script_words": 56,
+   "spend_usd": 0.0
+  },
+  {
+   "key": "tokyo-meme",
+   "niche": "City night tours",
+   "style": "meme_hook",
+   "footage": [
+    {
+     "source": "Pexels",
+     "id": "35291926",
+     "url": "https://www.pexels.com/video/35291926/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "31397167",
+     "url": "https://www.pexels.com/video/31397167/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "32287884",
+     "url": "https://www.pexels.com/video/32287884/",
+     "license": "Pexels License"
+    }
+   ],
+   "loop": {
+    "source": "bundled original loop",
+    "file": "marble-run.mp4",
+    "license": "first-party"
+   },
+   "voice": {
+    "engine": "edge-tts (free)",
+    "name": "en-US-AndrewNeural"
+   },
+   "script_words": 71,
+   "spend_usd": 0.0
+  },
+  {
+   "key": "hike-pov",
+   "niche": "Hiking tours",
+   "style": "pov_text",
+   "footage": [
+    {
+     "source": "Pexels",
+     "id": "34700249",
+     "url": "https://www.pexels.com/video/34700249/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "28185282",
+     "url": "https://www.pexels.com/video/28185282/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "31640241",
+     "url": "https://www.pexels.com/video/31640241/",
+     "license": "Pexels License"
+    }
+   ],
+   "loop": {
+    "source": "bundled original loop",
+    "file": "sand-slice-3.mp4",
+    "license": "first-party"
+   },
+   "voice": {
+    "engine": "edge-tts (free)",
+    "name": "en-US-MichelleNeural"
+   },
+   "script_words": 56,
+   "spend_usd": 0.0
+  },
+  {
+   "key": "house-tour",
+   "niche": "Real estate agent",
+   "style": "voiceover (classic)",
+   "footage": [
+    {
+     "source": "Pexels",
+     "id": "37522009",
+     "url": "https://www.pexels.com/video/37522009/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "38413576",
+     "url": "https://www.pexels.com/video/38413576/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "37674129",
+     "url": "https://www.pexels.com/video/37674129/",
+     "license": "Pexels License"
+    }
+   ],
+   "loop": null,
+   "voice": {
+    "engine": "edge-tts (free)",
+    "name": "en-US-EricNeural"
+   },
+   "script_words": 63,
+   "spend_usd": 0.0
+  },
+  {
+   "key": "kitchen-before-after",
+   "niche": "Interior designer",
+   "style": "before_after",
+   "footage": [
+    {
+     "source": "Pexels",
+     "id": "38413548",
+     "url": "https://www.pexels.com/video/38413548/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "36842451",
+     "url": "https://www.pexels.com/video/36842451/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "38413575",
+     "url": "https://www.pexels.com/video/38413575/",
+     "license": "Pexels License"
+    }
+   ],
+   "loop": null,
+   "voice": {
+    "engine": "edge-tts (free)",
+    "name": "en-US-JennyNeural"
+   },
+   "script_words": 63,
+   "spend_usd": 0.0
+  },
+  {
+   "key": "saas-inbox",
+   "niche": "Help desk software",
+   "style": "gameplay_split",
+   "footage": [
+    {
+     "source": "Pexels",
+     "id": "34124550",
+     "url": "https://www.pexels.com/video/34124550/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "34771072",
+     "url": "https://www.pexels.com/video/34771072/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "8480685",
+     "url": "https://www.pexels.com/video/8480685/",
+     "license": "Pexels License"
+    }
+   ],
+   "loop": {
+    "source": "bundled original loop",
+    "file": "block-runner-5.mp4",
+    "license": "first-party"
+   },
+   "voice": {
+    "engine": "edge-tts (free)",
+    "name": "en-US-SteffanNeural"
+   },
+   "script_words": 64,
+   "spend_usd": 0.0
+  },
+  {
+   "key": "barber-meme",
+   "niche": "Barber shop",
+   "style": "meme_hook",
+   "footage": [
+    {
+     "source": "Pexels",
+     "id": "7697102",
+     "url": "https://www.pexels.com/video/7697102/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "7697084",
+     "url": "https://www.pexels.com/video/7697084/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "7697071",
+     "url": "https://www.pexels.com/video/7697071/",
+     "license": "Pexels License"
+    }
+   ],
+   "loop": {
+    "source": "bundled original loop",
+    "file": "block-runner-4.mp4",
+    "license": "first-party"
+   },
+   "voice": {
+    "engine": "edge-tts (free)",
+    "name": "en-IE-ConnorNeural"
+   },
+   "script_words": 56,
+   "spend_usd": 0.0
+  },
+  {
+   "key": "bakery-morning",
+   "niche": "Bakery",
+   "style": "voiceover (classic)",
+   "footage": [
+    {
+     "source": "Pexels",
+     "id": "5757797",
+     "url": "https://www.pexels.com/video/5757797/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "5757795",
+     "url": "https://www.pexels.com/video/5757795/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "5877787",
+     "url": "https://www.pexels.com/video/5877787/",
+     "license": "Pexels License"
+    }
+   ],
+   "loop": null,
+   "voice": {
+    "engine": "edge-tts (free)",
+    "name": "en-GB-LibbyNeural"
+   },
+   "script_words": 55,
+   "spend_usd": 0.0
+  },
+  {
+   "key": "car-before-after",
+   "niche": "Car detailing",
+   "style": "before_after",
+   "footage": [
+    {
+     "source": "Pexels",
+     "id": "32010552",
+     "url": "https://www.pexels.com/video/32010552/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "32010530",
+     "url": "https://www.pexels.com/video/32010530/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "32010555",
+     "url": "https://www.pexels.com/video/32010555/",
+     "license": "Pexels License"
+    }
+   ],
+   "loop": null,
+   "voice": {
+    "engine": "edge-tts (free)",
+    "name": "en-CA-LiamNeural"
+   },
+   "script_words": 57,
+   "spend_usd": 0.0
+  },
+  {
+   "key": "dog-groom-split",
+   "niche": "Pet grooming",
+   "style": "satisfying_split",
+   "footage": [
+    {
+     "source": "Pexels",
+     "id": "6132712",
+     "url": "https://www.pexels.com/video/6132712/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "6132713",
+     "url": "https://www.pexels.com/video/6132713/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "6131720",
+     "url": "https://www.pexels.com/video/6131720/",
+     "license": "Pexels License"
+    }
+   ],
+   "loop": {
+    "source": "Pexels",
+    "id": "12681572",
+    "url": "https://www.pexels.com/video/12681572/",
+    "license": "Pexels License"
+   },
+   "voice": {
+    "engine": "edge-tts (free)",
+    "name": "en-US-AnaNeural"
+   },
+   "script_words": 59,
+   "spend_usd": 0.0
+  },
+  {
+   "key": "florist-story",
+   "niche": "Flower shop",
+   "style": "story_gameplay",
+   "footage": [
+    {
+     "source": "Pexels",
+     "id": "6912181",
+     "url": "https://www.pexels.com/video/6912181/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "4621363",
+     "url": "https://www.pexels.com/video/4621363/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "6911314",
+     "url": "https://www.pexels.com/video/6911314/",
+     "license": "Pexels License"
+    }
+   ],
+   "loop": {
+    "source": "footage montage"
+   },
+   "voice": {
+    "engine": "edge-tts (free)",
+    "name": "en-GB-MaisieNeural"
+   },
+   "script_words": 56,
+   "spend_usd": 0.0
+  },
+  {
+   "key": "power-wash",
+   "niche": "Exterior cleaning",
+   "style": "voiceover (classic)",
+   "footage": [
+    {
+     "source": "Pexels",
+     "id": "6160411",
+     "url": "https://www.pexels.com/video/6160411/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "8242982",
+     "url": "https://www.pexels.com/video/8242982/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "6160418",
+     "url": "https://www.pexels.com/video/6160418/",
+     "license": "Pexels License"
+    }
+   ],
+   "loop": null,
+   "voice": {
+    "engine": "edge-tts (free)",
+    "name": "en-NZ-MitchellNeural"
+   },
+   "script_words": 59,
+   "spend_usd": 0.0
+  },
+  {
+   "key": "candle-split",
+   "niche": "Handmade candles",
+   "style": "satisfying_split",
+   "footage": [
+    {
+     "source": "Pexels",
+     "id": "6748362",
+     "url": "https://www.pexels.com/video/6748362/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "8271971",
+     "url": "https://www.pexels.com/video/8271971/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "7234571",
+     "url": "https://www.pexels.com/video/7234571/",
+     "license": "Pexels License"
+    }
+   ],
+   "loop": {
+    "source": "Pexels",
+    "id": "9736574",
+    "url": "https://www.pexels.com/video/9736574/",
+    "license": "Pexels License"
+   },
+   "voice": {
+    "engine": "edge-tts (free)",
+    "name": "en-NZ-MollyNeural"
+   },
+   "script_words": 59,
+   "spend_usd": 0.0
+  },
+  {
+   "key": "paint-meme",
+   "niche": "Art class",
+   "style": "meme_hook",
+   "footage": [
+    {
+     "source": "Pexels",
+     "id": "6214405",
+     "url": "https://www.pexels.com/video/6214405/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "7151471",
+     "url": "https://www.pexels.com/video/7151471/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "6957793",
+     "url": "https://www.pexels.com/video/6957793/",
+     "license": "Pexels License"
+    }
+   ],
+   "loop": {
+    "source": "bundled original loop",
+    "file": "block-runner-6.mp4",
+    "license": "first-party"
+   },
+   "voice": {
+    "engine": "edge-tts (free)",
+    "name": "en-IE-EmilyNeural"
+   },
+   "script_words": 56,
+   "spend_usd": 0.0
+  },
+  {
+   "key": "cleaning-before-after",
+   "niche": "Home cleaning",
+   "style": "before_after",
+   "footage": [
+    {
+     "source": "Pexels",
+     "id": "9462882",
+     "url": "https://www.pexels.com/video/9462882/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "9462894",
+     "url": "https://www.pexels.com/video/9462894/",
+     "license": "Pexels License"
+    },
+    {
+     "source": "Pexels",
+     "id": "4684442",
+     "url": "https://www.pexels.com/video/4684442/",
+     "license": "Pexels License"
+    }
+   ],
+   "loop": null,
+   "voice": {
+    "engine": "edge-tts (free)",
+    "name": "en-CA-ClaraNeural"
+   },
+   "script_words": 58,
+   "spend_usd": 0.0
+  },
+  {
+   "key": "menivor-pov",
+   "niche": "Menivor (our product)",
+   "style": "pov_text",
+   "footage": [
+    {
+     "source": "live page recording",
+     "url": "https://menivor.com",
+     "license": "our own product"
+    }
+   ],
+   "loop": {
+    "source": "bundled original loop",
+    "file": "block-runner.mp4",
+    "license": "first-party"
+   },
+   "voice": {
+    "engine": "edge-tts (free)",
+    "name": "en-IN-PrabhatNeural"
+   },
+   "script_words": 60,
+   "spend_usd": 0.0
+  },
+  {
+   "key": "scribase-split",
+   "niche": "Scribase (our product)",
+   "style": "satisfying_split",
+   "footage": [
+    {
+     "source": "live page recording",
+     "url": "https://scribase.com",
+     "license": "our own product"
+    }
+   ],
+   "loop": {
+    "source": "bundled original loop",
+    "file": "sand-slice.mp4",
+    "license": "first-party"
+   },
+   "voice": {
+    "engine": "edge-tts (free)",
+    "name": "en-GB-ThomasNeural"
+   },
+   "script_words": 59,
+   "spend_usd": 0.0
+  }
+ ]
+}

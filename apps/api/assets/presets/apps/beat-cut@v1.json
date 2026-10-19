@@ -1,0 +1,17 @@
+{
+  "id": "beat-cut",
+  "version": 1,
+  "name": "Beat-synced cut",
+  "blurb": "Your clip cut on the beat of a track from our music library.",
+  "input": {
+    "kind": "video_music",
+    "label": "Your clip"
+  },
+  "runner": "local",
+  "local": "beat_cut",
+  "price": {
+    "credit_kind": "standard",
+    "credits": 1
+  },
+  "preview": "presets/apps/beat-cut.mp4"
+}

@@ -1,0 +1,12 @@
+# Ad Clone ingest (apps/api/app/domains/adclone): link download, shot detection, caption OCR.
+# Installed in the API image (the brief route analyses the ad) and the generation worker image.
+# Keep in sync with the `adclone` extra in pyproject.toml. Every import is lazy + guarded, so the
+# app and the test suite still run without these (the feature then reports what is missing).
+#
+# yt-dlp: Unlicense. Platform extractors churn; bump this pin when TikTok/YouTube downloads break.
+yt-dlp==2026.8.19
+# PySceneDetect: BSD-3-Clause. Content-aware cut detection (ffmpeg scene filter is the fallback).
+scenedetect==0.7.1
+# OCR: on Linux images RapidOCR (rapidocr-onnxruntime, already pinned in requirements.txt) reads the
+# burned-in captions; on a Mac, Apple Vision through ocrmac (MIT) is used instead.
+ocrmac==1.0.1; sys_platform == "darwin"

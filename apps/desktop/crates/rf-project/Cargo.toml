@@ -1,0 +1,13 @@
+[package]
+name = "rf-project"
+description = "ReelForge desktop project bundle — the offline .reelforge format (serde)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]
+serde = { workspace = true }
+serde_json = { workspace = true }

@@ -1,0 +1,34 @@
+{
+  "id": "nine-angles",
+  "version": 1,
+  "name": "9 angles",
+  "blurb": "Nine views of the same product or character from one photo.",
+  "input": {
+    "kind": "image",
+    "label": "Photo"
+  },
+  "runner": "image_edit",
+  "edit": {
+    "prompts": [
+      "Show the same subject, unchanged, seen from {angle}. Same lighting and background."
+    ],
+    "angles": [
+      "the front",
+      "the back",
+      "the left side",
+      "the right side",
+      "above",
+      "a low angle",
+      "a three-quarter left view",
+      "a three-quarter right view",
+      "a close-up of the main detail"
+    ]
+  },
+  "price": {
+    "credit_kind": "ai_video",
+    "per_image_usd": 0.04,
+    "source": "https://fal.ai/models/fal-ai/flux-pro/kontext",
+    "date": "2026-09-30"
+  },
+  "preview": "presets/apps/nine-angles.mp4"
+}

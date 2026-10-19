@@ -1,0 +1,16 @@
+{
+ "id": "unboxing-reveal",
+ "version": 1,
+ "kind": "model",
+ "name": "Unboxing reveal",
+ "blurb": "The box opens and your product rises into view.",
+ "credit_kind": "ai_video",
+ "preset_sku": "animate_image",
+ "tier": "draft",
+ "seconds": 5,
+ "inputs": [
+  "subject",
+  "image"
+ ],
+ "prompt_template": "A premium box opens and the {subject} rises into view, soft light spilling out, slow motion"
+}

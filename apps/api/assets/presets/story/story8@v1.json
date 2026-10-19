@@ -1,0 +1,24 @@
+{
+  "id": "story8",
+  "version": 1,
+  "name": "Story in 8 frames",
+  "blurb": "A topic or script becomes eight frames with the same character, voiced and captioned.",
+  "frames": 8,
+  "frame_seconds": 3.5,
+  "size": [720, 1280],
+  "beats": [
+    {"id": "hook", "camera": "push_in", "direction": "an arresting opening image that makes the viewer stop"},
+    {"id": "setup", "camera": "pan_right", "direction": "the everyday world before anything changes"},
+    {"id": "want", "camera": "push_in", "direction": "the main character wanting something clearly"},
+    {"id": "obstacle", "camera": "pull_out", "direction": "the problem standing in the way"},
+    {"id": "attempt", "camera": "pan_left", "direction": "the character trying something bold"},
+    {"id": "turn", "camera": "push_in", "direction": "the surprising turn of events"},
+    {"id": "payoff", "camera": "pull_out", "direction": "the result, shown in one strong image"},
+    {"id": "close", "camera": "push_in", "direction": "a calm closing image that invites the next step"}
+  ],
+  "style": "cinematic still frame, vertical 9:16 composition, consistent lighting and colour palette, same main character in every frame",
+  "negative": ["text", "watermark", "logo", "extra limbs", "different person"],
+  "frame_model": "black-forest-labs/flux-schnell",
+  "frames_standard_credits": 1,
+  "animated": {"seconds_per_shot": 5, "tier": "draft"}
+}

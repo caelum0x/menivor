@@ -1,0 +1,28 @@
+appId: com.reelforge.desktop
+productName: ReelForge
+copyright: Copyright © 2026 ReelForge
+
+directories:
+  output: release
+  buildResources: build
+
+# Bundle the built renderer (dist/) and the compiled main+preload (dist-electron/).
+files:
+  - dist/**
+  - dist-electron/**
+  - package.json
+
+mac:
+  category: public.app-category.video
+  target:
+    - dmg
+    - zip
+
+win:
+  target:
+    - nsis
+
+linux:
+  category: AudioVideo
+  target:
+    - AppImage

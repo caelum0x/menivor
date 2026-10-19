@@ -1,0 +1,119 @@
+{
+  "envelopes": {
+    "experiment.winner_selected": {
+      "dedupe_key": "experiment.winner_selected:evt-2",
+      "id": "evt-2",
+      "occurred_at": "2026-08-18T00:00:00Z",
+      "payload": {
+        "experiment_key": "hook-ab",
+        "winner_variant": "B"
+      },
+      "type": "experiment.winner_selected",
+      "workspace_id": "ws1"
+    },
+    "job.completed": {
+      "dedupe_key": "job.completed:evt-0",
+      "id": "evt-0",
+      "occurred_at": "2026-08-18T00:00:00Z",
+      "payload": {
+        "job_id": "j1",
+        "output_url": "https://cdn/o.mp4"
+      },
+      "type": "job.completed",
+      "workspace_id": "ws1"
+    },
+    "marketplace.payout_paid": {
+      "dedupe_key": "marketplace.payout_paid:evt-3",
+      "id": "evt-3",
+      "occurred_at": "2026-08-18T00:00:00Z",
+      "payload": {
+        "amount_micros": 2500000,
+        "submission_id": "s1"
+      },
+      "type": "marketplace.payout_paid",
+      "workspace_id": "ws1"
+    },
+    "publish.succeeded": {
+      "dedupe_key": "publish.succeeded:evt-1",
+      "id": "evt-1",
+      "occurred_at": "2026-08-18T00:00:00Z",
+      "payload": {
+        "job_id": "j1",
+        "platform": "tiktok",
+        "post_id": "p9"
+      },
+      "type": "publish.succeeded",
+      "workspace_id": "ws1"
+    }
+  },
+  "event_types": [
+    "job.completed",
+    "job.failed",
+    "publish.succeeded",
+    "publish.failed",
+    "retention.ingested",
+    "performance.ingested",
+    "experiment.winner_selected",
+    "gateway.key_spend_exceeded",
+    "gateway.plan_changed",
+    "marketplace.submission_approved",
+    "marketplace.payout_paid"
+  ],
+  "push_map": {
+    "experiment.winner_selected": {
+      "channel": "push",
+      "deep_link": "/experiments/{experiment_key}",
+      "title": "A/B winner picked"
+    },
+    "gateway.key_spend_exceeded": {
+      "channel": "email",
+      "deep_link": "/gateway",
+      "title": "Spend cap reached"
+    },
+    "gateway.plan_changed": {
+      "channel": "in_app",
+      "deep_link": "/plan",
+      "title": "Plan updated"
+    },
+    "job.completed": {
+      "channel": "push",
+      "deep_link": "/jobs/{job_id}",
+      "title": "Your reel is ready"
+    },
+    "job.failed": {
+      "channel": "push",
+      "deep_link": "/jobs/{job_id}",
+      "title": "Reel generation failed"
+    },
+    "marketplace.payout_paid": {
+      "channel": "push",
+      "deep_link": "/wallet",
+      "title": "You got paid"
+    },
+    "marketplace.submission_approved": {
+      "channel": "push",
+      "deep_link": "/clipmarket",
+      "title": "Submission approved"
+    },
+    "performance.ingested": {
+      "channel": "in_app",
+      "deep_link": "/performance/{job_id}",
+      "title": "Performance updated"
+    },
+    "publish.failed": {
+      "channel": "push",
+      "deep_link": "/publish/{job_id}",
+      "title": "Publish failed"
+    },
+    "publish.succeeded": {
+      "channel": "push",
+      "deep_link": "/publish/{job_id}",
+      "title": "Published"
+    },
+    "retention.ingested": {
+      "channel": "in_app",
+      "deep_link": "/insights/{job_id}",
+      "title": "New retention data"
+    }
+  }
+}

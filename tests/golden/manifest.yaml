@@ -1,0 +1,172 @@
+# ReelForge golden-job manifest.
+#
+# 10 reference jobs (5 Turkish + 5 English) that the golden regression suite
+# runs end-to-end when provider keys (Anthropic / ElevenLabs / HeyGen) and a
+# libass-enabled ffmpeg are present. Each spec is self-contained: an
+# `app_context` (what the screen recording shows), a natural-language `prompt`,
+# the `language`, the compose `layout`, and the per-job acceptance thresholds
+# asserted by tests/golden/acceptance.py.
+#
+# Thresholds encode CTO plan §8.1:
+#   resolution        1080x1920
+#   codec             h264 + faststart
+#   min_bitrate_bps   8_000_000 (real renders; the synthetic suite overrides)
+#   caption_drift_ms  <= 50
+#   hook_max_s        <= 2.5
+#   avatar_audio_delta_s <= 0.15
+# duration_window_s is per-job (target_duration_s +/- tolerance).
+
+defaults: &defaults
+  aspect: "9:16"
+  resolution: { width: 1080, height: 1920 }
+  codec: h264
+  faststart: true
+  min_bitrate_bps: 8_000_000
+  caption_drift_ms: 50
+  hook_max_s: 2.5
+  avatar_audio_delta_s: 0.15
+  # duration window tolerance (seconds) applied around target_duration_s.
+  duration_tolerance_s: 6.0
+
+jobs:
+  # ------------------------------------------------------------------ TR --- #
+  - id: tr-01-fitness-tracker
+    language: tr
+    layout: hook_intro
+    app_context: >-
+      A Turkish fitness-tracking mobile app showing a weekly workout streak,
+      calorie ring, and a "start workout" CTA.
+    prompt: >-
+      3 uygulama var ki spor rutinimi tamamen degistirdi — bu birincisi.
+      Haftalik streak ve kalori halkasini goster, hook pattern-interrupt olsun.
+    target_duration_s: 30
+    avatar_id: heygen_tr_female_01
+    voice_name: "elevenlabs:tr_narrator_female"
+    <<: *defaults
+
+  - id: tr-02-banking-app
+    language: tr
+    layout: pip
+    app_context: >-
+      A Turkish neobank app dashboard with instant transfer, spending
+      categories, and a savings goal progress bar.
+    prompt: >-
+      Bunu paylasmayacaktim ama: masraflarimi kategoriye ayiran ve otomatik
+      para biriktiren banka uygulamasi. Tasarrufu ekranda goster.
+    target_duration_s: 35
+    avatar_id: heygen_tr_male_01
+    voice_name: "elevenlabs:tr_narrator_male"
+    <<: *defaults
+
+  - id: tr-03-recipe-app
+    language: tr
+    layout: split
+    app_context: >-
+      A Turkish meal-planning app with a weekly menu, an auto-generated grocery
+      list, and portion scaling.
+    prompt: >-
+      POV: her aksam "ne pisirsem" derdine son. Haftalik menu ve otomatik
+      market listesini goster, sonunda uygulama adiyla CTA.
+    target_duration_s: 40
+    avatar_id: heygen_tr_female_02
+    voice_name: "elevenlabs:tr_narrator_female"
+    <<: *defaults
+
+  - id: tr-04-language-learning
+    language: tr
+    layout: hook_intro
+    app_context: >-
+      A Turkish language-learning app with daily 5-minute lessons, a streak
+      flame, and speaking practice with feedback.
+    prompt: >-
+      Gunde 5 dakikada yeni dil ogreten uygulama. Konusma pratigi ekranini ve
+      streak alevini vurgula. Hook merakli olsun.
+    target_duration_s: 30
+    avatar_id: heygen_tr_male_02
+    voice_name: "elevenlabs:tr_narrator_male"
+    <<: *defaults
+
+  - id: tr-05-productivity
+    language: tr
+    layout: pip
+    app_context: >-
+      A Turkish focus/productivity app with a Pomodoro timer, a distraction
+      blocker, and a daily focus report.
+    prompt: >-
+      Telefonu birakip odaklanmami saglayan uygulama. Pomodoro sayacini ve
+      gunluk odak raporunu goster; net bir CTA ile bitir.
+    target_duration_s: 35
+    avatar_id: heygen_tr_female_01
+    voice_name: "elevenlabs:tr_narrator_female"
+    <<: *defaults
+
+  # ------------------------------------------------------------------ EN --- #
+  - id: en-01-fitness-tracker
+    language: en
+    layout: hook_intro
+    app_context: >-
+      An English fitness-tracking app showing a workout streak, a calorie ring,
+      and a bright "start workout" button.
+    prompt: >-
+      3 apps that quietly fixed my gym routine — starting with this one. Show
+      the streak and calorie ring, open with a pattern-interrupt hook.
+    target_duration_s: 30
+    avatar_id: heygen_en_female_01
+    voice_name: "elevenlabs:en_narrator_female"
+    <<: *defaults
+
+  - id: en-02-banking-app
+    language: en
+    layout: pip
+    app_context: >-
+      An English neobank dashboard with instant transfers, auto-categorised
+      spending, and a savings goal.
+    prompt: >-
+      I wasn't going to share this but this banking app auto-sorts every expense
+      and saves for me. Show the savings goal filling up.
+    target_duration_s: 35
+    avatar_id: heygen_en_male_01
+    voice_name: "elevenlabs:en_narrator_male"
+    <<: *defaults
+
+  - id: en-03-recipe-app
+    language: en
+    layout: split
+    app_context: >-
+      An English meal-planning app with a weekly menu, an auto grocery list, and
+      one-tap portion scaling.
+    prompt: >-
+      POV: you never ask "what's for dinner" again. Show the weekly menu and the
+      auto grocery list, end with the app name CTA.
+    target_duration_s: 40
+    avatar_id: heygen_en_female_02
+    voice_name: "elevenlabs:en_narrator_female"
+    <<: *defaults
+
+  - id: en-04-language-learning
+    language: en
+    layout: hook_intro
+    app_context: >-
+      An English language-learning app with 5-minute daily lessons, a streak
+      flame, and AI speaking feedback.
+    prompt: >-
+      This app taught me more in 5 minutes a day than a year of classes.
+      Highlight the speaking feedback and the streak. Curiosity-gap hook.
+    target_duration_s: 30
+    avatar_id: heygen_en_male_02
+    voice_name: "elevenlabs:en_narrator_male"
+    <<: *defaults
+
+  - id: en-05-productivity
+    language: en
+    layout: pip
+    app_context: >-
+      An English focus app with a Pomodoro timer, a distraction blocker, and a
+      daily focus report.
+    prompt: >-
+      The app that finally got me off my phone and into deep work. Show the
+      Pomodoro timer and the daily focus report, close with a clear CTA.
+    target_duration_s: 35
+    avatar_id: heygen_en_female_01
+    voice_name: "elevenlabs:en_narrator_female"
+    <<: *defaults

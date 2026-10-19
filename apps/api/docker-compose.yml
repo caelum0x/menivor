@@ -1,0 +1,184 @@
+# Self-contained ReelForge API tier for a single-box deployment.
+#
+# Brings up the public FastAPI request tier plus every backing service it needs
+# to run on its own: Postgres (durable job/account state), Redis (Celery broker
+# + task-state store), and MinIO (local S3-compatible object storage stand-in
+# for Cloudflare R2). A single Celery worker services the fast + render queues.
+#
+# This is the artifact that unblocks the Menivor mobile App Store build: it
+# publishes /api/v1 (device sessions, catalogs, jobs, billing metadata, health)
+# at a real URL instead of the mobile Release build's localhost:8080 fallback.
+#
+# All secrets/config are read from apps/api/.env (see .env.example). NOTHING is
+# hardcoded here. Copy the template first:
+#
+#   cd apps/api && cp .env.example .env      # then fill in the values
+#   docker compose up --build                # or: docker-compose up --build
+#
+# The build context is the repository ROOT because apps/api/Dockerfile copies
+# the repo-level requirements.txt and packages/provider-adapter-kit.
+name: reelforge-api
+
+x-api-build: &api-build
+  build:
+    context: ../..
+    dockerfile: apps/api/Dockerfile
+
+# Shared environment for the API + worker. Values in `environment:` always win
+# over `.env`, so the DB/Redis/S3 endpoints are pinned to the compose services
+# regardless of what a stray repo-root .env contains.
+x-api-env: &api-env
+  env_file:
+    - .env
+  environment:
+    PYTHONPATH: /workspace/packages/provider-adapter-kit/python:/workspace/apps/api:/workspace
+    REELFORGE_BACKEND_ROOT: /workspace/apps/api
+    REDIS_HOST: redis
+    REDIS_PORT: "6379"
+    REELFORGE_DATABASE_URL: postgresql+psycopg://reelforge:reelforge@db:5432/reelforge
+
+# Mount the repo so config.toml (repo root) and code are visible; keep runtime
+# scratch (temp GPU inputs / local render outputs pre-upload) on a named volume.
+x-api-volumes: &api-volumes
+  - ../../:/workspace
+  - reelforge-runtime:/workspace/apps/api/runtime/storage
+
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: reelforge
+      POSTGRES_USER: reelforge
+      POSTGRES_PASSWORD: reelforge
+    volumes:
+      - reelforge-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U reelforge -d reelforge"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: ["redis-server", "--appendonly", "yes", "--save", "60", "1"]
+    volumes:
+      - reelforge-redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Local S3-compatible object storage for OFFLINE development only. The live
+  # deployment points R2_* (in .env) at real Cloudflare R2 — MinIO is kept
+  # defined but is OUT of the hot path; nothing in production traffic uses it.
+  # MinIO credentials are deliberately decoupled from R2_* so real R2 secrets
+  # never leak into this container's environment.
+  minio:
+    image: minio/minio:latest
+    restart: unless-stopped
+    command: ["server", "/data", "--console-address", ":9001"]
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-reelforge}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-reelforge-local-secret}
+    ports:
+      # Host-side ports are overridable so the stack can coexist with another
+      # local MinIO (e.g. a different project's compose) without editing this
+      # file. In-network clients always use minio:9000 regardless.
+      - "127.0.0.1:${MINIO_HOST_PORT:-9000}:9000"
+      - "127.0.0.1:${MINIO_CONSOLE_HOST_PORT:-9001}:9001"
+    volumes:
+      - reelforge-minio-data:/data
+    healthcheck:
+      test: ["CMD", "mc", "ready", "local"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # One-shot: create the object-storage bucket the app expects, then exit.
+  minio-setup:
+    image: minio/mc:latest
+    depends_on:
+      minio:
+        condition: service_healthy
+    entrypoint: >
+      /bin/sh -c "
+      mc alias set local http://minio:9000 '${MINIO_ROOT_USER:-reelforge}' '${MINIO_ROOT_PASSWORD:-reelforge-local-secret}' &&
+      mc mb --ignore-existing local/'${MINIO_BUCKET:-reelforge}' &&
+      echo 'bucket ready';
+      "
+    restart: "no"
+
+  # One-shot schema migration. Runs `alembic upgrade head` (repo-root alembic.ini)
+  # against the DB, then exits. The API/worker wait for it to finish so the first
+  # request never hits an unmigrated schema (e.g. POST /api/v1/auth/device, which
+  # reads the `users` table). Re-running is a no-op once the schema is current.
+  migrate:
+    <<: [*api-build, *api-env]
+    working_dir: /workspace
+    command: ["alembic", "upgrade", "head"]
+    volumes: *api-volumes
+    restart: "no"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  api:
+    <<: [*api-build, *api-env]
+    restart: unless-stopped
+    command: ["uvicorn", "app.asgi:app", "--host", "0.0.0.0", "--port", "8080"]
+    ports:
+      # Loopback-only: the API is reached through a reverse proxy (or a local
+      # tunnel) — never exposed directly on all interfaces.
+      - "127.0.0.1:8080:8080"
+    volumes: *api-volumes
+    healthcheck:
+      # Liveness: the process serves HTTP. (/readyz covers full DB+Redis+R2
+      # readiness now that real Cloudflare R2 credentials are configured.)
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/healthz')"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
+
+  worker:
+    <<: [*api-build, *api-env]
+    # `worker` image target = api image + Playwright Chromium (URL captures,
+    # TikTok trends puller). api/migrate keep the browser-free default target.
+    build:
+      context: ../..
+      dockerfile: apps/api/Dockerfile
+      target: worker
+    restart: unless-stopped
+    # `generation` is consumed here too so hosted AI-video (broll_gen via the
+    # Replicate provider — an HTTP-polling task, no local GPU) runs on this box.
+    command: ["celery", "-A", "app.workers.celery_app", "worker", "-Q", "celery,render,generation,housekeeping", "--concurrency=2", "--loglevel=info"]
+    volumes:
+      - ../../:/workspace
+      - reelforge-runtime:/workspace/apps/api/runtime/storage
+      # Persist Whisper / Hugging Face model downloads across container
+      # recreates (faster-whisper falls back to the HF cache under /root/.cache
+      # when no pre-bundled model exists in engine/models).
+      - reelforge-model-cache:/root/.cache
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
+
+volumes:
+  reelforge-db-data:
+  reelforge-redis-data:
+  reelforge-minio-data:
+  reelforge-runtime:
+  reelforge-model-cache:

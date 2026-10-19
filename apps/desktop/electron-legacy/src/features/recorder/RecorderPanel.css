@@ -1,0 +1,123 @@
+/**
+ * RecorderPanel styles — layered on top of the shared design tokens in
+ * src/styles.css (HSL custom properties). Only recorder-specific layout lives
+ * here; primitives like .card, .btn, .source-grid are reused from the app theme.
+ */
+
+.recorder {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.recorder__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.recorder__actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.recorder__divider {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: hsl(var(--muted-foreground));
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.recorder__divider::before,
+.recorder__divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: hsl(var(--border));
+}
+
+.recorder__option {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.85rem;
+  color: hsl(var(--muted-foreground));
+  cursor: pointer;
+}
+
+.recorder__preview {
+  width: 100%;
+  max-height: 58vh;
+  border-radius: calc(var(--radius) - 0.15rem);
+  background: #000;
+  outline: 1px solid hsl(var(--border));
+}
+
+.recorder__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.recorder__stats {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.recorder__stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.recorder__stat-label {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: hsl(var(--muted-foreground));
+}
+
+.recorder__stat-value {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 1.05rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.recorder__controls {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.recorder__status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: hsl(var(--muted-foreground));
+  font-size: 0.9rem;
+}
+
+.recorder__spinner {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 999px;
+  border: 2px solid hsl(var(--muted));
+  border-top-color: hsl(var(--primary));
+  animation: recorder-spin 0.7s linear infinite;
+}
+
+.recorder__paused-dot {
+  background: hsl(var(--accent));
+  animation: none;
+}
+
+@keyframes recorder-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

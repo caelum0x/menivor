@@ -1,0 +1,13 @@
+[package]
+name = "rf-insights"
+description = "ReelForge desktop composite insights — combines rf-growth + rf-trends into post/rework verdicts (pure)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]
+rf-growth = { path = "../rf-growth" }
+rf-trends = { path = "../rf-trends" }

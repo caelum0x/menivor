@@ -1,0 +1,19 @@
+{
+  "id": "hook-score",
+  "version": 1,
+  "name": "Hook score",
+  "blurb": "Upload your first seconds and see how strong the opening is before you post.",
+  "input": {
+    "kind": "video_text",
+    "label": "Your clip",
+    "text_label": "Your opening line (optional)"
+  },
+  "runner": "local",
+  "price": {
+    "credit_kind": "standard",
+    "credits": 0,
+    "daily_cap": 30
+  },
+  "preview": "presets/apps/hook-score.mp4",
+  "local": "hook_score"
+}

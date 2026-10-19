@@ -1,0 +1,16 @@
+{
+ "id": "hero-orbit",
+ "version": 1,
+ "kind": "model",
+ "name": "Hero orbit",
+ "blurb": "A bullet-time orbit around your subject.",
+ "credit_kind": "ai_video",
+ "preset_sku": "animate_image",
+ "tier": "draft",
+ "seconds": 5,
+ "inputs": [
+  "subject",
+  "image"
+ ],
+ "prompt_template": "A bullet-time camera orbit sweeps around the {subject}, time frozen, particles hanging in the air"
+}

@@ -1,0 +1,32 @@
+[package]
+name = "reelforge-desktop"
+description = "ReelForge native desktop app, built with Rust and GPUI"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "reelforge-desktop"
+path = "src/main.rs"
+
+[dependencies]
+base64 = "0.22"
+gpui = { workspace = true }
+ring = "0.17"
+semver = "1.0"
+serde = { workspace = true }
+serde_json = { workspace = true }
+sha2 = "0.10"
+ureq = { workspace = true }
+unicode-segmentation = { workspace = true }
+rf-gateway = { path = "crates/rf-gateway" }
+rf-encode = { path = "crates/rf-encode" }
+rf-project = { path = "crates/rf-project" }
+rf-runtime = { path = "crates/rf-runtime" }
+rf-captions = { path = "crates/rf-captions" }
+rf-effects = { path = "crates/rf-effects" }
+rf-growth = { path = "crates/rf-growth" }
+rf-provider = { path = "crates/rf-provider" }
+rf-shots = { path = "crates/rf-shots" }
+rf-trends = { path = "crates/rf-trends" }
+rf-workflows = { path = "crates/rf-workflows" }

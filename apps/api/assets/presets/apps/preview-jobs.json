@@ -1,0 +1,148 @@
+{
+  "version": 1,
+  "note": "Render jobs only; nothing here has been rendered or uploaded.",
+  "total_cost_usd": 0.48,
+  "jobs": [
+    {
+      "app_id": "beat-cut",
+      "output_key": "presets/apps/beat-cut.mp4",
+      "poster_key": "presets/apps/beat-cut.jpg",
+      "kind": "app_run_then_loop",
+      "inputs": {
+        "video_key": "showcase/barber-meme.mp4",
+        "music_id": "output000"
+      },
+      "cost_usd": 0.0,
+      "lane": "mac or box 1 tier 3",
+      "order": 1
+    },
+    {
+      "app_id": "before-after",
+      "output_key": "presets/apps/before-after.mp4",
+      "poster_key": "presets/apps/before-after.jpg",
+      "kind": "reuse_showcase",
+      "source_key": "showcase/kitchen-before-after.mp4",
+      "cost_usd": 0.0,
+      "lane": "copy",
+      "order": 2
+    },
+    {
+      "app_id": "click-to-ad",
+      "output_key": "presets/apps/click-to-ad.mp4",
+      "poster_key": "presets/apps/click-to-ad.jpg",
+      "kind": "reuse_showcase",
+      "source_key": "showcase/serum-morning.mp4",
+      "cost_usd": 0.0,
+      "lane": "copy",
+      "order": 3
+    },
+    {
+      "app_id": "hook-score",
+      "output_key": "presets/apps/hook-score.mp4",
+      "poster_key": "presets/apps/hook-score.jpg",
+      "kind": "app_run_then_loop",
+      "inputs": {
+        "video_key": "showcase/barber-meme.mp4",
+        "text": "Nobody tells you this about fades"
+      },
+      "cost_usd": 0.0,
+      "lane": "mac or box 1 tier 3",
+      "order": 4
+    },
+    {
+      "app_id": "meme",
+      "output_key": "presets/apps/meme.mp4",
+      "poster_key": "presets/apps/meme.jpg",
+      "kind": "reuse_showcase",
+      "source_key": "showcase/sneaker-meme.mp4",
+      "cost_usd": 0.0,
+      "lane": "copy",
+      "order": 5
+    },
+    {
+      "app_id": "remove-background",
+      "output_key": "presets/apps/remove-background.mp4",
+      "poster_key": "presets/apps/remove-background.jpg",
+      "kind": "app_run_then_loop",
+      "inputs": {
+        "image_key": "showcase/serum-morning-poster.jpg"
+      },
+      "cost_usd": 0.0,
+      "lane": "mac or box 1 tier 3",
+      "order": 6
+    },
+    {
+      "app_id": "transition",
+      "output_key": "presets/apps/transition.mp4",
+      "poster_key": "presets/apps/transition.jpg",
+      "kind": "app_run_then_loop",
+      "inputs": {
+        "image_key": "showcase/serum-morning-poster.jpg",
+        "image_key_2": "showcase/latte-cafe-poster.jpg"
+      },
+      "cost_usd": 0.0,
+      "lane": "mac or box 1 tier 3",
+      "order": 7
+    },
+    {
+      "app_id": "expand",
+      "output_key": "presets/apps/expand.mp4",
+      "poster_key": "presets/apps/expand.jpg",
+      "kind": "app_run_then_loop",
+      "inputs": {
+        "image_key": "showcase/serum-morning-poster.jpg",
+        "text": "a sunlit marble bathroom shelf",
+        "choice": "golden hour"
+      },
+      "images": 1,
+      "cost_usd": 0.04,
+      "lane": "paid (owner promo budget)",
+      "order": 8
+    },
+    {
+      "app_id": "nine-angles",
+      "output_key": "presets/apps/nine-angles.mp4",
+      "poster_key": "presets/apps/nine-angles.jpg",
+      "kind": "app_run_then_loop",
+      "inputs": {
+        "image_key": "showcase/serum-morning-poster.jpg",
+        "text": "a sunlit marble bathroom shelf",
+        "choice": "golden hour"
+      },
+      "images": 9,
+      "cost_usd": 0.36,
+      "lane": "paid (owner promo budget)",
+      "order": 9
+    },
+    {
+      "app_id": "product-in-scene",
+      "output_key": "presets/apps/product-in-scene.mp4",
+      "poster_key": "presets/apps/product-in-scene.jpg",
+      "kind": "app_run_then_loop",
+      "inputs": {
+        "image_key": "showcase/serum-morning-poster.jpg",
+        "text": "a sunlit marble bathroom shelf",
+        "choice": "golden hour"
+      },
+      "images": 1,
+      "cost_usd": 0.04,
+      "lane": "paid (owner promo budget)",
+      "order": 10
+    },
+    {
+      "app_id": "relight",
+      "output_key": "presets/apps/relight.mp4",
+      "poster_key": "presets/apps/relight.jpg",
+      "kind": "app_run_then_loop",
+      "inputs": {
+        "image_key": "showcase/serum-morning-poster.jpg",
+        "text": "a sunlit marble bathroom shelf",
+        "choice": "golden hour"
+      },
+      "images": 1,
+      "cost_usd": 0.04,
+      "lane": "paid (owner promo budget)",
+      "order": 11
+    }
+  ]
+}

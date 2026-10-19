@@ -1,0 +1,13 @@
+[package]
+name = "rf-preflight"
+description = "ReelForge desktop pre-render clearance — composes rf-provider (license/lifecycle) + rf-gateway (cost/wallet) into one gate (pure)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]
+rf-provider = { path = "../rf-provider" }
+rf-gateway = { path = "../rf-gateway" }

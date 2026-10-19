@@ -1,0 +1,42 @@
+Menivor (videogen) — third-party notices
+=========================================
+
+This file records third-party source consulted or adapted into this codebase,
+per each project's license.
+
+gitroomhq/postiz-app (AGPL-3.0-only)
+-------------------------------------
+Repository: https://github.com/gitroomhq/postiz-app
+License:    GNU Affero General Public License v3.0 (AGPL-3.0)
+
+Menivor's own native (TikTok / YouTube / Instagram) and extended
+(Facebook / LinkedIn / X / Threads / Pinterest / Bluesky / Discord / Mastodon /
+Telegram) publishing-connector and OAuth modules
+(apps/api/app/domains/publishing/**) were already built, independently, before
+this review (2026-10-15) and are not a port of Postiz — do not read the
+presence of this NOTICE as "Postiz code ships here" wholesale.
+
+One concrete adaptation was made after comparing both codebases:
+
+* `apps/api/app/domains/publishing/connectors/tiktok.py` — the
+  `_classify_error` table (TikTok Content Posting API `error.code` → a
+  specific, human-readable message + retryable flag) is adapted from the
+  error-code classification table in Postiz's
+  `libraries/nestjs-libraries/src/integrations/social/tiktok.provider.ts`.
+  No literal source lines were copied; the table of TikTok error codes and
+  their meaning was reproduced in this module's own idiom (tuple table +
+  substring match) to fit Menivor's `PublishError(message, retryable)`
+  contract.
+
+AGPL-3.0 obligation (for the record, not yet triggered)
+--------------------------------------------------------
+AGPL-3.0 requires that anyone who interacts with a *modified* AGPL-licensed
+program over a network be offered that program's complete corresponding
+source. Menivor's server does **not** run Postiz (modified or otherwise) —
+it only reused one small, rewritten error-mapping table as described above,
+which is Menivor's own code, not a derivative work requiring AGPL
+source-availability. If a future change vendors a larger, substantive piece
+of Postiz's code into a service Menivor operates and offers over a network,
+that service would need to offer its complete source to users interacting
+with it over the network (see https://www.gnu.org/licenses/agpl-3.0.en.html,
+section 13). Tracked in ~/products/plans/menivor.md under "Built 2026-10-15".

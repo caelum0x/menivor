@@ -1,0 +1,143 @@
+{
+  "validation": {
+    "wan_missing": {
+      "errors": [
+        "missing required input 'image'"
+      ],
+      "slug": "wan-i2v",
+      "values": {
+        "frames": 81
+      }
+    },
+    "wan_ok": {
+      "errors": [],
+      "slug": "wan-i2v",
+      "values": {
+        "frames": 81,
+        "image": "img.png",
+        "steps": 20
+      }
+    },
+    "wan_range": {
+      "errors": [
+        "input 'frames' above max 161"
+      ],
+      "slug": "wan-i2v",
+      "values": {
+        "frames": 999,
+        "image": "i"
+      }
+    }
+  },
+  "workflows": {
+    "flux-first-frame": {
+      "category": "t2i",
+      "descriptor": {
+        "category": "t2i",
+        "description": "FLUX first-frame T2I (schnell).",
+        "inputs": [
+          {
+            "name": "prompt",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "default": 4,
+            "max": 12,
+            "min": 1,
+            "name": "steps",
+            "type": "int"
+          }
+        ],
+        "node_commits": {
+          "ComfyUI": "8f37cf8"
+        },
+        "slug": "flux-first-frame",
+        "weight_refs": [
+          "flux1-schnell.safetensors",
+          "t5xxl_fp8.safetensors"
+        ]
+      },
+      "hash": "3dcf90c3",
+      "inputs": [
+        "prompt",
+        "steps"
+      ]
+    },
+    "lipsync-musetalk": {
+      "category": "lipsync",
+      "descriptor": {
+        "category": "lipsync",
+        "description": "MuseTalk real-time lipsync.",
+        "inputs": [
+          {
+            "name": "video",
+            "required": true,
+            "type": "video"
+          },
+          {
+            "name": "audio",
+            "required": true,
+            "type": "audio"
+          }
+        ],
+        "node_commits": {
+          "ComfyUI-MuseTalk": "c7d8e9f"
+        },
+        "slug": "lipsync-musetalk",
+        "weight_refs": [
+          "musetalk.pth",
+          "sd-vae-ft-mse.safetensors"
+        ]
+      },
+      "hash": "dfe5e633",
+      "inputs": [
+        "video",
+        "audio"
+      ]
+    },
+    "wan-i2v": {
+      "category": "i2v",
+      "descriptor": {
+        "category": "i2v",
+        "description": "Wan 2.2 image-to-video (A14B).",
+        "inputs": [
+          {
+            "name": "image",
+            "required": true,
+            "type": "image"
+          },
+          {
+            "default": 81,
+            "max": 161,
+            "min": 16,
+            "name": "frames",
+            "type": "int"
+          },
+          {
+            "default": 20,
+            "max": 60,
+            "min": 1,
+            "name": "steps",
+            "type": "int"
+          }
+        ],
+        "node_commits": {
+          "ComfyUI-VideoHelperSuite": "e4f5a6b",
+          "WanVideoWrapper": "a1b2c3d"
+        },
+        "slug": "wan-i2v",
+        "weight_refs": [
+          "wan2.2-i2v-a14b.safetensors",
+          "umt5-xxl-enc.safetensors"
+        ]
+      },
+      "hash": "9ea52ffd",
+      "inputs": [
+        "image",
+        "frames",
+        "steps"
+      ]
+    }
+  }
+}

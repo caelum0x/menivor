@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "description": "SHA-256 of each narrator's canonical vector reference sheet (narrator_art.sheet_hash). A change here is a new character look and needs the owner's art approval (O9).",
+  "sheets": {
+    "pip": "4fa2240caf2619e78d4df89866065f3cda274dd5f2313be630dfeb22b7ea6962",
+    "otto": "a7c838c6e8e97c646a9397dce247bc560ea4e1d39196eb7223c946cdc6d72310",
+    "mira": "ce2b12788d5e5a675ac70797633014b7327934e9a402ba6c2ad5bcb67a6ed6bd",
+    "rook": "397507b4cf0ca85a29a6abfde41b99ba1eacd2c283899f596c6b5c8a3513db12",
+    "tansy": "2231416430cfc6d690423afaca3240f63a0227f6d731e2eb9d68896948125465",
+    "cato": "bfccdeb709edb58135aa01cc2c2d119464fb83b237f59058edd84793286c6ae2",
+    "wren": "e4c2b7dc1563dbc9044108b1a6d098f897efd5abb6272e4dbfe10fca353d26ff",
+    "bex": "d0e90f89524e38794435b21c5e13f568534e6d6fd694f6b957bc1a53f852b888"
+  }
+}

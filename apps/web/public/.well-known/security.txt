@@ -1,0 +1,4 @@
+Contact: mailto:subasiarhan3@gmail.com
+Expires: 2027-08-24T00:00:00Z
+Preferred-Languages: en, tr
+Canonical: https://menivor.com/.well-known/security.txt

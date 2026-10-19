@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "reelforge-provider-adapter-kit"
+version = "0.2.0"
+description = "Versioned, persistence-neutral provider execution contract for Menivor"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Proprietary" }
+dependencies = []
+
+[tool.setuptools]
+package-dir = { "" = "python" }
+
+[tool.setuptools.packages.find]
+where = ["python"]
+
+[tool.setuptools.package-data]
+reelforge_provider_adapter = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["test"]
+addopts = "-q"

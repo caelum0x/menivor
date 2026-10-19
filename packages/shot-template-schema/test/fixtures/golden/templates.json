@@ -1,0 +1,1290 @@
+{
+  "presets": {
+    "anime-beat-edit": {
+      "errors": [],
+      "hash": "8b5a46f0",
+      "roles": [
+        "hook",
+        "body",
+        "payoff"
+      ],
+      "template": {
+        "aspect": "9:16",
+        "genre": "edit",
+        "slots": [
+          {
+            "caption_preset": "clean_white",
+            "role": "hook",
+            "t_end_ms": 1600,
+            "t_start_ms": 0,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "clean_white",
+            "role": "body",
+            "t_end_ms": 18400,
+            "t_start_ms": 1600,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "clean_white",
+            "role": "payoff",
+            "t_end_ms": 20000,
+            "t_start_ms": 18400,
+            "transition_out": "cut"
+          }
+        ],
+        "slug": "anime-beat-edit"
+      },
+      "total_ms": 20000,
+      "valid": true
+    },
+    "asmr-satisfying-loop": {
+      "errors": [],
+      "hash": "45c3c437",
+      "roles": [
+        "hook",
+        "body",
+        "seam"
+      ],
+      "template": {
+        "aspect": "9:16",
+        "genre": "asmr",
+        "slots": [
+          {
+            "caption_preset": "clean_white",
+            "role": "hook",
+            "t_end_ms": 1000,
+            "t_start_ms": 0,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "clean_white",
+            "role": "body",
+            "t_end_ms": 4500,
+            "t_start_ms": 1000,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "clean_white",
+            "role": "seam",
+            "t_end_ms": 5000,
+            "t_start_ms": 4500,
+            "transition_out": "cut"
+          }
+        ],
+        "slug": "asmr-satisfying-loop"
+      },
+      "total_ms": 5000,
+      "valid": true
+    },
+    "before-after": {
+      "errors": [],
+      "hash": "7cb6e33d",
+      "roles": [
+        "hook",
+        "setup",
+        "rising",
+        "climax",
+        "cta"
+      ],
+      "template": {
+        "aspect": "9:16",
+        "genre": "marketing",
+        "slots": [
+          {
+            "caption_preset": "karaoke_yellow",
+            "role": "hook",
+            "t_end_ms": 3500,
+            "t_start_ms": 0,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_yellow",
+            "role": "setup",
+            "t_end_ms": 9500,
+            "t_start_ms": 3500,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_yellow",
+            "role": "rising",
+            "t_end_ms": 18500,
+            "t_start_ms": 9500,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_yellow",
+            "role": "climax",
+            "t_end_ms": 22500,
+            "t_start_ms": 18500,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_yellow",
+            "role": "cta",
+            "t_end_ms": 25000,
+            "t_start_ms": 22500,
+            "transition_out": "cut"
+          }
+        ],
+        "slug": "before-after"
+      },
+      "total_ms": 25000,
+      "valid": true
+    },
+    "brainrot-ai-meme": {
+      "errors": [],
+      "hash": "c1043099",
+      "roles": [
+        "hook",
+        "escalation",
+        "payoff"
+      ],
+      "template": {
+        "aspect": "9:16",
+        "genre": "meme",
+        "slots": [
+          {
+            "caption_preset": "bold_violet",
+            "role": "hook",
+            "t_end_ms": 1440,
+            "t_start_ms": 0,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "bold_violet",
+            "role": "escalation",
+            "t_end_ms": 9000,
+            "t_start_ms": 1440,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "bold_violet",
+            "role": "payoff",
+            "t_end_ms": 12000,
+            "t_start_ms": 9000,
+            "transition_out": "cut"
+          }
+        ],
+        "slug": "brainrot-ai-meme"
+      },
+      "total_ms": 12000,
+      "valid": true
+    },
+    "countdown-ranking": {
+      "errors": [],
+      "hash": "ad574785",
+      "roles": [
+        "hook",
+        "rising",
+        "climax",
+        "cta"
+      ],
+      "template": {
+        "aspect": "9:16",
+        "genre": "ranking",
+        "slots": [
+          {
+            "caption_preset": "karaoke_yellow",
+            "role": "hook",
+            "t_end_ms": 3300,
+            "t_start_ms": 0,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_yellow",
+            "role": "rising",
+            "t_end_ms": 23760,
+            "t_start_ms": 3300,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_yellow",
+            "role": "climax",
+            "t_end_ms": 29040,
+            "t_start_ms": 23760,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_yellow",
+            "role": "cta",
+            "t_end_ms": 33000,
+            "t_start_ms": 29040,
+            "transition_out": "cut"
+          }
+        ],
+        "slug": "countdown-ranking"
+      },
+      "total_ms": 33000,
+      "valid": true
+    },
+    "day-in-the-life": {
+      "errors": [],
+      "hash": "d3809da8",
+      "roles": [
+        "hook",
+        "setup",
+        "body",
+        "cta"
+      ],
+      "template": {
+        "aspect": "9:16",
+        "genre": "vlog",
+        "slots": [
+          {
+            "caption_preset": "clean_white",
+            "role": "hook",
+            "t_end_ms": 3600,
+            "t_start_ms": 0,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "clean_white",
+            "role": "setup",
+            "t_end_ms": 9900,
+            "t_start_ms": 3600,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "clean_white",
+            "role": "body",
+            "t_end_ms": 38700,
+            "t_start_ms": 9900,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "clean_white",
+            "role": "cta",
+            "t_end_ms": 45000,
+            "t_start_ms": 38700,
+            "transition_out": "cut"
+          }
+        ],
+        "slug": "day-in-the-life"
+      },
+      "total_ms": 45000,
+      "valid": true
+    },
+    "faceless-facts": {
+      "errors": [],
+      "hash": "4c2a7979",
+      "roles": [
+        "hook",
+        "rising",
+        "payoff",
+        "cta"
+      ],
+      "template": {
+        "aspect": "9:16",
+        "genre": "faceless",
+        "slots": [
+          {
+            "caption_preset": "bold_violet",
+            "role": "hook",
+            "t_end_ms": 3060,
+            "t_start_ms": 0,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "bold_violet",
+            "role": "rising",
+            "t_end_ms": 27200,
+            "t_start_ms": 3060,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "bold_violet",
+            "role": "payoff",
+            "t_end_ms": 30600,
+            "t_start_ms": 27200,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "bold_violet",
+            "role": "cta",
+            "t_end_ms": 34000,
+            "t_start_ms": 30600,
+            "transition_out": "cut"
+          }
+        ],
+        "slug": "faceless-facts"
+      },
+      "total_ms": 34000,
+      "valid": true
+    },
+    "fake-ai-podcast": {
+      "errors": [],
+      "hash": "db9691a8",
+      "roles": [
+        "hook",
+        "exchange",
+        "button"
+      ],
+      "template": {
+        "aspect": "9:16",
+        "genre": "podcast",
+        "slots": [
+          {
+            "caption_preset": "bold_violet",
+            "role": "hook",
+            "t_end_ms": 3000,
+            "t_start_ms": 0,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "bold_violet",
+            "role": "exchange",
+            "t_end_ms": 45000,
+            "t_start_ms": 3000,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "bold_violet",
+            "role": "button",
+            "t_end_ms": 50000,
+            "t_start_ms": 45000,
+            "transition_out": "cut"
+          }
+        ],
+        "slug": "fake-ai-podcast"
+      },
+      "total_ms": 50000,
+      "valid": true
+    },
+    "get-ready-with-me": {
+      "errors": [],
+      "hash": "2b1c2d27",
+      "roles": [
+        "hook",
+        "setup",
+        "body",
+        "cta"
+      ],
+      "template": {
+        "aspect": "9:16",
+        "genre": "lifestyle",
+        "slots": [
+          {
+            "caption_preset": "karaoke_yellow",
+            "role": "hook",
+            "t_end_ms": 3600,
+            "t_start_ms": 0,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_yellow",
+            "role": "setup",
+            "t_end_ms": 10000,
+            "t_start_ms": 3600,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_yellow",
+            "role": "body",
+            "t_end_ms": 34000,
+            "t_start_ms": 10000,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_yellow",
+            "role": "cta",
+            "t_end_ms": 40000,
+            "t_start_ms": 34000,
+            "transition_out": "cut"
+          }
+        ],
+        "slug": "get-ready-with-me"
+      },
+      "total_ms": 40000,
+      "valid": true
+    },
+    "greenscreen-react": {
+      "errors": [],
+      "hash": "02405d69",
+      "roles": [
+        "hook",
+        "body",
+        "payoff",
+        "cta"
+      ],
+      "template": {
+        "aspect": "9:16",
+        "genre": "commentary",
+        "slots": [
+          {
+            "caption_preset": "clean_white",
+            "role": "hook",
+            "t_end_ms": 3900,
+            "t_start_ms": 0,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "clean_white",
+            "role": "body",
+            "t_end_ms": 18600,
+            "t_start_ms": 3900,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "clean_white",
+            "role": "payoff",
+            "t_end_ms": 25800,
+            "t_start_ms": 18600,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "clean_white",
+            "role": "cta",
+            "t_end_ms": 30000,
+            "t_start_ms": 25800,
+            "transition_out": "cut"
+          }
+        ],
+        "slug": "greenscreen-react"
+      },
+      "total_ms": 30000,
+      "valid": true
+    },
+    "listicle": {
+      "errors": [],
+      "hash": "b6c74d79",
+      "roles": [
+        "hook",
+        "rising",
+        "payoff",
+        "cta"
+      ],
+      "template": {
+        "aspect": "9:16",
+        "genre": "edutainment",
+        "slots": [
+          {
+            "caption_preset": "bold_violet",
+            "role": "hook",
+            "t_end_ms": 2800,
+            "t_start_ms": 0,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "bold_violet",
+            "role": "rising",
+            "t_end_ms": 21840,
+            "t_start_ms": 2800,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "bold_violet",
+            "role": "payoff",
+            "t_end_ms": 25200,
+            "t_start_ms": 21840,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "bold_violet",
+            "role": "cta",
+            "t_end_ms": 28000,
+            "t_start_ms": 25200,
+            "transition_out": "cut"
+          }
+        ],
+        "slug": "listicle"
+      },
+      "total_ms": 28000,
+      "valid": true
+    },
+    "meme-explainer": {
+      "errors": [],
+      "hash": "6b18d28c",
+      "roles": [
+        "hook",
+        "setup",
+        "body",
+        "payoff",
+        "cta"
+      ],
+      "template": {
+        "aspect": "9:16",
+        "genre": "explainer",
+        "slots": [
+          {
+            "caption_preset": "bold_violet",
+            "role": "hook",
+            "t_end_ms": 2600,
+            "t_start_ms": 0,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "bold_violet",
+            "role": "setup",
+            "t_end_ms": 7280,
+            "t_start_ms": 2600,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "bold_violet",
+            "role": "body",
+            "t_end_ms": 19500,
+            "t_start_ms": 7280,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "bold_violet",
+            "role": "payoff",
+            "t_end_ms": 23400,
+            "t_start_ms": 19500,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "bold_violet",
+            "role": "cta",
+            "t_end_ms": 26000,
+            "t_start_ms": 23400,
+            "transition_out": "cut"
+          }
+        ],
+        "slug": "meme-explainer"
+      },
+      "total_ms": 26000,
+      "valid": true
+    },
+    "minecraft-reddit-split": {
+      "errors": [],
+      "hash": "7a89050c",
+      "roles": [
+        "hook",
+        "setup",
+        "rising",
+        "climax",
+        "cta"
+      ],
+      "template": {
+        "aspect": "9:16",
+        "genre": "brainrot-split",
+        "slots": [
+          {
+            "caption_preset": "karaoke_yellow",
+            "role": "hook",
+            "t_end_ms": 2025,
+            "t_start_ms": 0,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_yellow",
+            "role": "setup",
+            "t_end_ms": 9900,
+            "t_start_ms": 2025,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_yellow",
+            "role": "rising",
+            "t_end_ms": 31500,
+            "t_start_ms": 9900,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_yellow",
+            "role": "climax",
+            "t_end_ms": 39600,
+            "t_start_ms": 31500,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_yellow",
+            "role": "cta",
+            "t_end_ms": 45000,
+            "t_start_ms": 39600,
+            "transition_out": "cut"
+          }
+        ],
+        "slug": "minecraft-reddit-split"
+      },
+      "total_ms": 45000,
+      "valid": true
+    },
+    "movie-recap": {
+      "errors": [],
+      "hash": "475811c2",
+      "roles": [
+        "hook",
+        "setup",
+        "body",
+        "payoff",
+        "cta"
+      ],
+      "template": {
+        "aspect": "9:16",
+        "genre": "recap",
+        "slots": [
+          {
+            "caption_preset": "karaoke_yellow",
+            "role": "hook",
+            "t_end_ms": 4800,
+            "t_start_ms": 0,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_yellow",
+            "role": "setup",
+            "t_end_ms": 15000,
+            "t_start_ms": 4800,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_yellow",
+            "role": "body",
+            "t_end_ms": 49200,
+            "t_start_ms": 15000,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_yellow",
+            "role": "payoff",
+            "t_end_ms": 56400,
+            "t_start_ms": 49200,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_yellow",
+            "role": "cta",
+            "t_end_ms": 60000,
+            "t_start_ms": 56400,
+            "transition_out": "cut"
+          }
+        ],
+        "slug": "movie-recap"
+      },
+      "total_ms": 60000,
+      "valid": true
+    },
+    "news-brief": {
+      "errors": [],
+      "hash": "9ddea480",
+      "roles": [
+        "hook",
+        "setup",
+        "body",
+        "payoff",
+        "cta"
+      ],
+      "template": {
+        "aspect": "9:16",
+        "genre": "news",
+        "slots": [
+          {
+            "caption_preset": "clean_white",
+            "role": "hook",
+            "t_end_ms": 3500,
+            "t_start_ms": 0,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "clean_white",
+            "role": "setup",
+            "t_end_ms": 9800,
+            "t_start_ms": 3500,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "clean_white",
+            "role": "body",
+            "t_end_ms": 28000,
+            "t_start_ms": 9800,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "clean_white",
+            "role": "payoff",
+            "t_end_ms": 32200,
+            "t_start_ms": 28000,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "clean_white",
+            "role": "cta",
+            "t_end_ms": 35000,
+            "t_start_ms": 32200,
+            "transition_out": "cut"
+          }
+        ],
+        "slug": "news-brief"
+      },
+      "total_ms": 35000,
+      "valid": true
+    },
+    "platform-hook-open": {
+      "errors": [],
+      "hash": "9c1eb469",
+      "roles": [
+        "hook",
+        "setup",
+        "payoff"
+      ],
+      "template": {
+        "aspect": "9:16",
+        "genre": "opener",
+        "slots": [
+          {
+            "caption_preset": "karaoke_yellow",
+            "role": "hook",
+            "t_end_ms": 500,
+            "t_start_ms": 0,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_yellow",
+            "role": "setup",
+            "t_end_ms": 3000,
+            "t_start_ms": 500,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_yellow",
+            "role": "payoff",
+            "t_end_ms": 5000,
+            "t_start_ms": 3000,
+            "transition_out": "cut"
+          }
+        ],
+        "slug": "platform-hook-open"
+      },
+      "total_ms": 5000,
+      "valid": true
+    },
+    "product-demo-ad": {
+      "errors": [],
+      "hash": "675de199",
+      "roles": [
+        "hook",
+        "setup",
+        "rising",
+        "payoff",
+        "cta"
+      ],
+      "template": {
+        "aspect": "9:16",
+        "genre": "marketing",
+        "slots": [
+          {
+            "caption_preset": "karaoke_yellow",
+            "role": "hook",
+            "t_end_ms": 3600,
+            "t_start_ms": 0,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_yellow",
+            "role": "setup",
+            "t_end_ms": 9000,
+            "t_start_ms": 3600,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_yellow",
+            "role": "rising",
+            "t_end_ms": 21600,
+            "t_start_ms": 9000,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_yellow",
+            "role": "payoff",
+            "t_end_ms": 26400,
+            "t_start_ms": 21600,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_yellow",
+            "role": "cta",
+            "t_end_ms": 30000,
+            "t_start_ms": 26400,
+            "transition_out": "cut"
+          }
+        ],
+        "slug": "product-demo-ad"
+      },
+      "total_ms": 30000,
+      "valid": true
+    },
+    "quiz-engagement": {
+      "errors": [],
+      "hash": "3ce7d2fa",
+      "roles": [
+        "hook",
+        "rising",
+        "climax",
+        "cta",
+        "loop"
+      ],
+      "template": {
+        "aspect": "9:16",
+        "genre": "engagement",
+        "slots": [
+          {
+            "caption_preset": "karaoke_green",
+            "role": "hook",
+            "t_end_ms": 2200,
+            "t_start_ms": 0,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_green",
+            "role": "rising",
+            "t_end_ms": 15400,
+            "t_start_ms": 2200,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_green",
+            "role": "climax",
+            "t_end_ms": 18920,
+            "t_start_ms": 15400,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_green",
+            "role": "cta",
+            "t_end_ms": 20900,
+            "t_start_ms": 18920,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_green",
+            "role": "loop",
+            "t_end_ms": 22000,
+            "t_start_ms": 20900,
+            "transition_out": "cut"
+          }
+        ],
+        "slug": "quiz-engagement"
+      },
+      "total_ms": 22000,
+      "valid": true
+    },
+    "quote-motivation": {
+      "errors": [],
+      "hash": "aa177136",
+      "roles": [
+        "hook",
+        "rising",
+        "climax",
+        "cta"
+      ],
+      "template": {
+        "aspect": "9:16",
+        "genre": "motivation",
+        "slots": [
+          {
+            "caption_preset": "clean_white",
+            "role": "hook",
+            "t_end_ms": 3300,
+            "t_start_ms": 0,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "clean_white",
+            "role": "rising",
+            "t_end_ms": 14960,
+            "t_start_ms": 3300,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "clean_white",
+            "role": "climax",
+            "t_end_ms": 19360,
+            "t_start_ms": 14960,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "clean_white",
+            "role": "cta",
+            "t_end_ms": 22000,
+            "t_start_ms": 19360,
+            "transition_out": "cut"
+          }
+        ],
+        "slug": "quote-motivation"
+      },
+      "total_ms": 22000,
+      "valid": true
+    },
+    "recipe-quick": {
+      "errors": [],
+      "hash": "39939a34",
+      "roles": [
+        "hook",
+        "setup",
+        "rising",
+        "payoff",
+        "cta"
+      ],
+      "template": {
+        "aspect": "9:16",
+        "genre": "food",
+        "slots": [
+          {
+            "caption_preset": "bold_violet",
+            "role": "hook",
+            "t_end_ms": 3000,
+            "t_start_ms": 0,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "bold_violet",
+            "role": "setup",
+            "t_end_ms": 7200,
+            "t_start_ms": 3000,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "bold_violet",
+            "role": "rising",
+            "t_end_ms": 24600,
+            "t_start_ms": 7200,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "bold_violet",
+            "role": "payoff",
+            "t_end_ms": 27600,
+            "t_start_ms": 24600,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "bold_violet",
+            "role": "cta",
+            "t_end_ms": 30000,
+            "t_start_ms": 27600,
+            "transition_out": "cut"
+          }
+        ],
+        "slug": "recipe-quick"
+      },
+      "total_ms": 30000,
+      "valid": true
+    },
+    "split-screen-gameplay-story": {
+      "errors": [],
+      "hash": "0152f2bd",
+      "roles": [
+        "hook",
+        "body",
+        "cta"
+      ],
+      "template": {
+        "aspect": "9:16",
+        "genre": "brainrot-split",
+        "slots": [
+          {
+            "caption_preset": "karaoke_green",
+            "role": "hook",
+            "t_end_ms": 2250,
+            "t_start_ms": 0,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_green",
+            "role": "body",
+            "t_end_ms": 40500,
+            "t_start_ms": 2250,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_green",
+            "role": "cta",
+            "t_end_ms": 45000,
+            "t_start_ms": 40500,
+            "transition_out": "cut"
+          }
+        ],
+        "slug": "split-screen-gameplay-story"
+      },
+      "total_ms": 45000,
+      "valid": true
+    },
+    "story-time": {
+      "errors": [],
+      "hash": "3e450d40",
+      "roles": [
+        "hook",
+        "setup",
+        "rising",
+        "climax",
+        "payoff",
+        "cta"
+      ],
+      "template": {
+        "aspect": "9:16",
+        "genre": "story",
+        "slots": [
+          {
+            "caption_preset": "karaoke_yellow",
+            "role": "hook",
+            "t_end_ms": 3600,
+            "t_start_ms": 0,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_yellow",
+            "role": "setup",
+            "t_end_ms": 11250,
+            "t_start_ms": 3600,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_yellow",
+            "role": "rising",
+            "t_end_ms": 27000,
+            "t_start_ms": 11250,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_yellow",
+            "role": "climax",
+            "t_end_ms": 36000,
+            "t_start_ms": 27000,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_yellow",
+            "role": "payoff",
+            "t_end_ms": 41400,
+            "t_start_ms": 36000,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_yellow",
+            "role": "cta",
+            "t_end_ms": 45000,
+            "t_start_ms": 41400,
+            "transition_out": "cut"
+          }
+        ],
+        "slug": "story-time"
+      },
+      "total_ms": 45000,
+      "valid": true
+    },
+    "street-interview": {
+      "errors": [],
+      "hash": "64da6744",
+      "roles": [
+        "hook",
+        "rising",
+        "climax",
+        "cta"
+      ],
+      "template": {
+        "aspect": "9:16",
+        "genre": "interview",
+        "slots": [
+          {
+            "caption_preset": "karaoke_green",
+            "role": "hook",
+            "t_end_ms": 3800,
+            "t_start_ms": 0,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_green",
+            "role": "rising",
+            "t_end_ms": 30400,
+            "t_start_ms": 3800,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_green",
+            "role": "climax",
+            "t_end_ms": 34200,
+            "t_start_ms": 30400,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_green",
+            "role": "cta",
+            "t_end_ms": 38000,
+            "t_start_ms": 34200,
+            "transition_out": "cut"
+          }
+        ],
+        "slug": "street-interview"
+      },
+      "total_ms": 38000,
+      "valid": true
+    },
+    "talking-head-explainer": {
+      "errors": [],
+      "hash": "84dc0e60",
+      "roles": [
+        "hook",
+        "setup",
+        "body",
+        "payoff",
+        "cta"
+      ],
+      "template": {
+        "aspect": "9:16",
+        "genre": "talking-head",
+        "slots": [
+          {
+            "caption_preset": "karaoke_yellow",
+            "role": "hook",
+            "t_end_ms": 4000,
+            "t_start_ms": 0,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_yellow",
+            "role": "setup",
+            "t_end_ms": 10000,
+            "t_start_ms": 4000,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_yellow",
+            "role": "body",
+            "t_end_ms": 32800,
+            "t_start_ms": 10000,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_yellow",
+            "role": "payoff",
+            "t_end_ms": 36800,
+            "t_start_ms": 32800,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_yellow",
+            "role": "cta",
+            "t_end_ms": 40000,
+            "t_start_ms": 36800,
+            "transition_out": "cut"
+          }
+        ],
+        "slug": "talking-head-explainer"
+      },
+      "total_ms": 40000,
+      "valid": true
+    },
+    "testimonial-ad": {
+      "errors": [],
+      "hash": "2d16c915",
+      "roles": [
+        "hook",
+        "setup",
+        "payoff",
+        "cta"
+      ],
+      "template": {
+        "aspect": "9:16",
+        "genre": "marketing",
+        "slots": [
+          {
+            "caption_preset": "clean_white",
+            "role": "hook",
+            "t_end_ms": 3500,
+            "t_start_ms": 0,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "clean_white",
+            "role": "setup",
+            "t_end_ms": 10000,
+            "t_start_ms": 3500,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "clean_white",
+            "role": "payoff",
+            "t_end_ms": 20500,
+            "t_start_ms": 10000,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "clean_white",
+            "role": "cta",
+            "t_end_ms": 25000,
+            "t_start_ms": 20500,
+            "transition_out": "cut"
+          }
+        ],
+        "slug": "testimonial-ad"
+      },
+      "total_ms": 25000,
+      "valid": true
+    },
+    "tutorial-howto": {
+      "errors": [],
+      "hash": "8407eebb",
+      "roles": [
+        "hook",
+        "setup",
+        "rising",
+        "payoff",
+        "cta"
+      ],
+      "template": {
+        "aspect": "9:16",
+        "genre": "tutorial",
+        "slots": [
+          {
+            "caption_preset": "karaoke_green",
+            "role": "hook",
+            "t_end_ms": 4000,
+            "t_start_ms": 0,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_green",
+            "role": "setup",
+            "t_end_ms": 10000,
+            "t_start_ms": 4000,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_green",
+            "role": "rising",
+            "t_end_ms": 42500,
+            "t_start_ms": 10000,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_green",
+            "role": "payoff",
+            "t_end_ms": 46500,
+            "t_start_ms": 42500,
+            "transition_out": "cut"
+          },
+          {
+            "caption_preset": "karaoke_green",
+            "role": "cta",
+            "t_end_ms": 50000,
+            "t_start_ms": 46500,
+            "transition_out": "cut"
+          }
+        ],
+        "slug": "tutorial-howto"
+      },
+      "total_ms": 50000,
+      "valid": true
+    }
+  },
+  "role_order": [
+    "hook",
+    "setup",
+    "proof1",
+    "proof2",
+    "rising",
+    "body",
+    "escalation",
+    "exchange",
+    "climax",
+    "payoff",
+    "button",
+    "cta",
+    "loop",
+    "seam"
+  ]
+}

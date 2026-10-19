@@ -1,0 +1,25 @@
+version: 1
+AppDir:
+  path: ./AppDir
+  app_info:
+    id: dev.reelforge.desktop
+    name: Menivor
+    icon: menivor
+    version: 0.1.0
+    exec: usr/bin/reelforge-desktop
+    exec_args: $@
+  runtime:
+    env:
+      APPDIR_LIBRARY_PATH: $APPDIR/usr/lib
+  files:
+    include:
+      - usr/bin/reelforge-desktop
+      - usr/bin/ffmpeg
+      - usr/bin/ffprobe
+    exclude:
+      - usr/share/man
+      - usr/share/doc/*/README.*
+AppImage:
+  arch: x86_64
+  update-information: guess
+  sign-key: null

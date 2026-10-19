@@ -1,0 +1,15 @@
+{
+ "id": "hyper-motion",
+ "version": 1,
+ "kind": "model",
+ "name": "Hyper motion",
+ "blurb": "Fast cuts and speed ramps around your product.",
+ "credit_kind": "ai_video",
+ "preset_sku": "text_to_video",
+ "tier": "draft",
+ "seconds": 5,
+ "inputs": [
+  "subject"
+ ],
+ "prompt_template": "Fast hyper-motion shot of {subject} with speed ramps, whip pans and dynamic close-ups"
+}

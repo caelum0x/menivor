@@ -1,0 +1,93 @@
+# ---------------------------------------------------------------------------
+# Wan2.2-Fun camera-control provider (routing key: "wan_camera")
+# ---------------------------------------------------------------------------
+# Model-native 3D camera moves (true parallax / orbit / dolly-zoom) rendered by
+# the Wan2.2-Fun-A14B "Control-Camera" model, served through a ComfyUI workflow
+# deployed on comfyui-deploy (https://github.com/BennyKok/comfyui-deploy).
+#
+# License: Wan2.2-Fun ships OPEN WEIGHTS (Apache-2.0) — commercial / paid-safe.
+# The routing license gate classes "wan_camera" as RESTRICTED-but-commercial-OK,
+# so a paying customer's render may use this route (unlike NC/research weights).
+#
+# Credentials are read from the ENVIRONMENT (never checked into config.toml). The
+# adapter registers ONLY when a credential is present, so an unconfigured route
+# can never go live:
+#
+#   COMFY_DEPLOY_TOKEN       # ComfyUI-Deploy API token (Bearer). Preferred key.
+#   WAN_CAMERA_API_KEY       # Alternative/dedicated Wan camera token (fallback).
+#                            # Either one enables the "wan_camera" adapter.
+#
+#   WAN_CAMERA_BASE_URL      # ComfyUI-Deploy base URL for this route.
+#   COMFY_DEPLOY_BASE_URL    # Shared ComfyUI-Deploy base URL (fallback).
+#                            # Default: https://api.comfydeploy.com
+#
+#   WAN_CAMERA_WORKFLOW_ID   # comfyui-deploy deployment_id of the deployed
+#                            # Wan-Fun camera-control graph. May also be supplied
+#                            # per-request via snapshot.workflow_id.
+#
+# Example (shell / .env — do NOT commit real values):
+#   export COMFY_DEPLOY_TOKEN="cd_live_xxx"
+#   export COMFY_DEPLOY_BASE_URL="https://api.comfydeploy.com"
+#   export WAN_CAMERA_WORKFLOW_ID="dep_wan22fun_camera_v1"
+#
+# Metering: usage is billed in SECONDS at 16 fps (round(num_frames / 16)); the
+# wallet/reels layer debits — the provider adapter never touches wallets.
+
+# ---------------------------------------------------------------------------
+# Public-launch release gate (FAIL-CLOSED) — app.core.launch.policy
+# ---------------------------------------------------------------------------
+# Provider credentials only prove a provider *can* be called; they must NEVER by
+# themselves make paid checkout, social publishing, or public signup reachable.
+# The release gate is deliberately configuration-only so the release operator can
+# open (or slam shut) a public surface without a schema migration or code deploy.
+#
+# EVERY key below defaults to its SAFE fail-closed value: the app stays in
+# "internal_pilot" and each paid/public feature stays OFF until BOTH an explicit
+# public mode AND the approval switch are set. Missing/unknown values fail closed.
+#
+# The ENVIRONMENT wins over config.toml for all of these (env override pattern in
+# app/config/config.py). Prefer env vars in production; the [app] keys below exist
+# so the surface is self-documenting and pilotable from a single file.
+#
+#   REELFORGE_LAUNCH_MODE / reelforge_launch_mode
+#       "internal_pilot" (default, safe) or "public". "public" alone is NOT
+#       enough — it must be paired with the approval switch below.
+#
+#   REELFORGE_PUBLIC_LAUNCH_APPROVED / reelforge_public_launch_approved
+#       Master approval owned by the release operator. Must be true AND the mode
+#       must be "public" before launch_mode() resolves to public. Default: false.
+#
+#   Per-feature switches (each ALSO requires the public mode above to take effect):
+#   REELFORGE_CHECKOUT_ENABLED   / reelforge_checkout_enabled    # paid checkout
+#   REELFORGE_PUBLISHING_ENABLED / reelforge_publishing_enabled  # social publishing
+#   REELFORGE_SIGNUP_ENABLED     / reelforge_signup_enabled      # public account creation
+#       All default to false. Truthy set = {1, true, yes, on} (case-insensitive).
+#
+#   Clipping "paste a link -> auto-clip" ingestion (independent of launch mode):
+#   REELFORGE_CLIPPING_PLATFORM_INGEST_ENABLED / reelforge_clipping_platform_ingest_enabled
+#       Accept YouTube/TikTok/Vimeo/Twitch/X links as a clipping source (resolved
+#       via the optional ``yt-dlp`` dependency). Default false; when off a
+#       platform link is rejected at request time. Requires ``yt-dlp`` installed
+#       (see pyproject.toml extra) — absent it degrades to a clean 503.
+#   reelforge_clipping_max_source_duration_s      (default 14400 = 4h) ingest cap
+#   reelforge_clipping_platform_spend_cap_usd     (default 0 = no extra cap)
+#
+# To actually go public the release operator sets (do NOT commit real activation):
+#   export REELFORGE_LAUNCH_MODE="public"
+#   export REELFORGE_PUBLIC_LAUNCH_APPROVED="true"
+#   export REELFORGE_CHECKOUT_ENABLED="true"     # and/or the two below, per phase
+#   export REELFORGE_PUBLISHING_ENABLED="true"
+#   export REELFORGE_SIGNUP_ENABLED="true"
+#
+# The [app] keys below are commented out so this file keeps the fail-closed
+# defaults baked into config.py. Uncomment ONLY in a controlled pilot config.
+#
+# [app]
+# reelforge_launch_mode = "internal_pilot"
+# reelforge_public_launch_approved = false
+# reelforge_checkout_enabled = false
+# reelforge_publishing_enabled = false
+# reelforge_signup_enabled = false
+# reelforge_clipping_platform_ingest_enabled = false
+# reelforge_clipping_max_source_duration_s = 14400
+# reelforge_clipping_platform_spend_cap_usd = 0

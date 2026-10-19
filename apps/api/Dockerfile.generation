@@ -1,0 +1,26 @@
+FROM nvidia/cuda:12.1.1-cudnn8-runtime-ubuntu22.04
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    PYTHONPATH=/workspace/apps/api/engine:/workspace/apps/api:/workspace \
+    REELFORGE_BACKEND_ROOT=/workspace/apps/api \
+    REELFORGE_ENGINE_ROOT=/workspace/apps/api/engine
+
+WORKDIR /workspace
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends software-properties-common ffmpeg libgl1 libglib2.0-0 \
+    && add-apt-repository ppa:deadsnakes/ppa \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends python3.11 python3.11-dev python3.11-venv python3-pip \
+    && ln -sf /usr/bin/python3.11 /usr/local/bin/python \
+    && python -m pip install --no-cache-dir --upgrade pip \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt /tmp/reelforge-requirements.txt
+COPY requirements-adclone.txt /tmp/reelforge-requirements-adclone.txt
+RUN python -m pip install --no-cache-dir -r /tmp/reelforge-requirements.txt -r /tmp/reelforge-requirements-adclone.txt
+
+COPY . .
+RUN python -m pip install --no-cache-dir --no-deps ./apps/api/engine
+
+CMD ["celery", "-A", "app.workers.celery_app", "worker", "-Q", "generation", "--concurrency=1", "--loglevel=info"]

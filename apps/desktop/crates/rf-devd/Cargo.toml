@@ -1,0 +1,22 @@
+[package]
+name = "rf-devd"
+description = "ReelForge on-device MCP daemon (devd) — serves rf-devproto over a Unix socket, driving the real render runtime"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "rf-devd"
+path = "src/main.rs"
+
+[dependencies]
+rf-devproto = { path = "../rf-devproto" }
+rf-runtime = { path = "../rf-runtime" }
+rf-project = { path = "../rf-project" }
+rf-encode = { path = "../rf-encode" }
+rf-clipfarm = { path = "../rf-clipfarm" }
+rf-capture = { path = "../rf-capture" }
+serde = { workspace = true }
+serde_json = { workspace = true }
+sha2 = "0.10"
+libc = "0.2"

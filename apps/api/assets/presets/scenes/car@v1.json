@@ -1,0 +1,11 @@
+{
+  "id": "car",
+  "version": 1,
+  "name": "In the car",
+  "blurb": "Talking from the driver's seat, parked.",
+  "look": "seated in a parked car, dashboard-mounted camera, daylight through the windscreen",
+  "layout": "pip",
+  "aspect": "9:16",
+  "needs_product": false,
+  "disclosure": "This video was created with AI."
+}

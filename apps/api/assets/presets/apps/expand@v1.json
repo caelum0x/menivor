@@ -1,0 +1,23 @@
+{
+  "id": "expand",
+  "version": 1,
+  "name": "Expand",
+  "blurb": "Widen a photo into a full vertical frame, keeping everything in it.",
+  "input": {
+    "kind": "image",
+    "label": "Photo"
+  },
+  "runner": "image_edit",
+  "edit": {
+    "prompts": [
+      "Extend this image outward into a full vertical 9:16 frame. Keep every existing detail exactly as it is and continue the scene naturally at the edges."
+    ]
+  },
+  "price": {
+    "credit_kind": "ai_video",
+    "per_image_usd": 0.04,
+    "source": "https://fal.ai/models/fal-ai/flux-pro/kontext",
+    "date": "2026-09-30"
+  },
+  "preview": "presets/apps/expand.mp4"
+}

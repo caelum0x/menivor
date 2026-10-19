@@ -1,0 +1,11 @@
+[package]
+name = "rf-hardware"
+description = "ReelForge desktop hardware/codec capability probe + encoder selection"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]

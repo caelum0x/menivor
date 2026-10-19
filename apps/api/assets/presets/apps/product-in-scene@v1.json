@@ -1,0 +1,24 @@
+{
+  "id": "product-in-scene",
+  "version": 1,
+  "name": "Product in scene",
+  "blurb": "Your product photo placed into a new setting you describe.",
+  "input": {
+    "kind": "image_text",
+    "label": "Product photo",
+    "text_label": "Where should it be?"
+  },
+  "runner": "image_edit",
+  "edit": {
+    "prompts": [
+      "Place this exact product, unchanged, into this scene: {text}. Photorealistic, natural light, vertical 9:16 framing."
+    ]
+  },
+  "price": {
+    "credit_kind": "ai_video",
+    "per_image_usd": 0.04,
+    "source": "https://fal.ai/models/fal-ai/flux-pro/kontext",
+    "date": "2026-09-30"
+  },
+  "preview": "presets/apps/product-in-scene.mp4"
+}

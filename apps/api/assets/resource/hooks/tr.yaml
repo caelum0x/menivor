@@ -1,0 +1,17 @@
+# ReelForge UGC hook templates — Turkish (native glyphs, NOT translated).
+# Used as few-shot examples in build_ugc_script_prompt. The optional {subject}
+# placeholder is filled with the video subject before being shown to the model.
+language: tr
+hooks:
+  - "Bunu keşke daha önce bilseydim, {subject} hakkında her şey değişirdi."
+  - "3 gün {subject} denedim ve inanamayacaksın neler oldu."
+  - "Kimse sana bunu söylemiyor ama {subject} böyle işliyor."
+  - "Şunu yapmayı bırak, yoksa {subject} asla işe yaramaz."
+  - "Herkes {subject} konusunda yanlış yapıyor, doğrusu şu:"
+  - "Bunu izlemeden {subject} hakkında karar verme sakın."
+  - "Şunu bir dene, {subject} için bana sonra teşekkür edeceksin."
+  - "İşte {subject} hakkında kimsenin bahsetmediği o küçük detay."
+  - "{subject} olayını sana 30 saniyede anlatıyorum, kaçırma."
+  - "Bir haftada {subject} ile nasıl bu sonucu aldığımı göstereyim."
+  - "Dur, {subject} almadan önce bunu mutlaka bilmelisin."
+  - "Bunu gördükten sonra {subject} konusunda bir daha eskisi gibi olmayacaksın."

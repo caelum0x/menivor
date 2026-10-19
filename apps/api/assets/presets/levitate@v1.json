@@ -1,0 +1,16 @@
+{
+ "id": "levitate",
+ "version": 1,
+ "kind": "model",
+ "name": "Levitate",
+ "blurb": "Your subject lifts off and floats in mid-air.",
+ "credit_kind": "ai_video",
+ "preset_sku": "animate_image",
+ "tier": "draft",
+ "seconds": 5,
+ "inputs": [
+  "subject",
+  "image"
+ ],
+ "prompt_template": "The {subject} gently lifts off the surface and floats in mid-air, slow rotation, soft shadow below"
+}

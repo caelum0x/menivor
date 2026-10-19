@@ -1,0 +1,26 @@
+{
+  "//": "Self-contained typecheck config (mirrors expo/tsconfig.base) so `tsc --noEmit` does not hard-fail with 'expo/tsconfig.base not found' when node_modules is only partially installed. The editor/Expo toolchain still uses tsconfig.json (which extends expo/tsconfig.base). Keep the two in sync when upgrading the Expo SDK. See packages/ui-kit/tsconfig.check.json for the same pattern.",
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "jsx": "react-jsx",
+    "lib": ["DOM", "ESNext"],
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "moduleDetection": "force",
+    "isolatedModules": true,
+    "noEmit": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "paths": {
+      "@/*": ["./*"],
+      "react": ["./node_modules/@types/react"],
+      "react/jsx-runtime": ["./node_modules/@types/react/jsx-runtime"]
+    }
+  },
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
+}

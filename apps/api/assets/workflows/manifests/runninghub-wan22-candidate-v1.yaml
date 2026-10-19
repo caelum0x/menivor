@@ -1,0 +1,30 @@
+schema_version: 1
+id: runninghub-wan22-candidate-v1
+status: candidate
+dispatch_enabled: false
+provider: runninghub
+mode: t2v
+workflow_file: ../runninghub/video_wan2.2.json
+workflow_sha256: 0957e71af423670de3bb47f72c590034bcde4b4155ee4a39aa1d46fb2b181ef7
+upstream:
+  project: Wan2.2
+  source_commit: 42bf4cf
+  software_license: Apache-2.0
+  weights_license_review: pending
+inputs:
+  prompt:
+    required: true
+    max_length: 1000
+  seed:
+    required: false
+    type: integer
+outputs:
+  expected_container: mp4
+  video_node: pending-export
+limits:
+  timeout_seconds: 300
+  max_output_bytes: 104857600
+operations:
+  owner: generation-platform
+  approved_at: null
+  note: Provider export is only a workflow pointer; production dispatch stays disabled until the full immutable graph, nodes, model revisions, and weight licenses are reviewed.

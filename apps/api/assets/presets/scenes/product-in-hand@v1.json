@@ -1,0 +1,11 @@
+{
+  "id": "product-in-hand",
+  "version": 1,
+  "name": "Product in hand",
+  "blurb": "Holding your product up to the camera while talking.",
+  "look": "holding a product toward the camera at chest height, clean background, bright light",
+  "layout": "pip",
+  "aspect": "9:16",
+  "needs_product": true,
+  "disclosure": "This video was created with AI."
+}

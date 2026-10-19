@@ -1,0 +1,84 @@
+# =============================================================================
+# ReelForge FULL local run harness — developer/operator Makefile.
+#
+#   make -f Makefile.dev <target>
+#
+# NEW file. Does NOT replace Makefile.reelforge (that one drives the Neon-backed
+# reelforge compose + the golden regression set). This one drives the fully
+# self-contained docker-compose.full.yml stack (postgres + redis + api + worker +
+# beat + web) and the LOCAL QUALITY GATE.
+#
+# Prefers `uv run` when uv is available (matches the repo's uv.lock workflow),
+# otherwise falls back to the bare tool on PATH.
+# =============================================================================
+
+COMPOSE    := docker compose -f docker-compose.full.yml
+CELERY_APP := app.workers.celery_app
+
+UV := $(shell command -v uv 2>/dev/null)
+ifeq ($(UV),)
+RUN :=
+else
+RUN := uv run
+endif
+
+.DEFAULT_GOAL := help
+.PHONY: help up down logs ps gate smoke seed fmt lint test migrate config
+
+help: ## Show this help
+	@grep -hE '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
+		| awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-9s\033[0m %s\n", $$1, $$2}'
+
+up: ## Bring the FULL stack up in the background (postgres, redis, api, worker, beat, web)
+	$(COMPOSE) up -d
+
+down: ## Stop and remove the full-stack containers
+	$(COMPOSE) down
+
+logs: ## Tail logs from all full-stack services (Ctrl-C to stop)
+	$(COMPOSE) logs -f
+
+ps: ## Show full-stack service status + health
+	$(COMPOSE) ps
+
+config: ## Validate docker-compose.full.yml (parse + interpolate) without starting anything
+	$(COMPOSE) config -q && echo "docker-compose.full.yml: OK"
+
+# --------------------------------------------------------------------------- #
+# LOCAL QUALITY GATE — the same checks CI runs, runnable before you push:
+#   1. ruff (fatal rules only: F = pyflakes, E9 = syntax errors)
+#   2. pytest tests/reelforge (the ReelForge suite)
+#   3. alembic upgrade head  (schema applies cleanly)
+#   4. alembic check         (no un-migrated model drift)
+# Needs NEON_DATABASE_URL for the alembic steps (the local stack sets it in
+# .env.full; export it, or run against a throwaway DB).
+# --------------------------------------------------------------------------- #
+gate: ## Run the local quality gate: ruff (F,E9) + pytest tests/reelforge + alembic upgrade/check
+	@echo ">> [1/4] ruff (F,E9 — syntax + undefined names)"
+	$(RUN) ruff check --select F,E9 app tests/reelforge ops
+	@echo ">> [2/4] pytest tests/reelforge"
+	$(RUN) pytest tests/reelforge -q
+	@echo ">> [3/4] alembic upgrade head"
+	$(RUN) alembic upgrade head
+	@echo ">> [4/4] alembic check (model vs migrations drift)"
+	$(RUN) alembic check
+	@echo ">> GATE PASSED"
+
+smoke: ## Smoke-test the running stack end-to-end (redis + api + web [+ celery])
+	$(RUN) python ops/smoke.py
+
+seed: ## Insert idempotent demo data (one demo user + one demo job) into the DB
+	$(RUN) python ops/seed.py
+
+migrate: ## Apply DB migrations to head (alembic) against NEON_DATABASE_URL
+	$(RUN) alembic upgrade head
+
+lint: ## Lint the app with ruff (full ruleset)
+	$(RUN) ruff check app
+
+test: ## Run the ReelForge test suite
+	$(RUN) pytest tests/reelforge -q
+
+fmt: ## Auto-fix lint + format the app and ops scripts with ruff
+	$(RUN) ruff check --fix app ops
+	$(RUN) ruff format app ops

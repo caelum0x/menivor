@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "menivor"
+version = "0.1.0"
+description = "Tiny, standard-library-only Python client for the Menivor /api/v1 platform."
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+authors = [{ name = "Menivor" }]
+keywords = ["menivor", "sdk", "api", "video", "webhooks"]
+classifiers = [
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Intended Audience :: Developers",
+]
+dependencies = []
+
+[project.optional-dependencies]
+# httpx is used automatically when installed (connection pooling); the SDK falls
+# back to the standard-library urllib transport when it is absent.
+httpx = ["httpx>=0.23"]
+
+[project.urls]
+Homepage = "https://menivor.com/developer"
+
+[tool.setuptools.packages.find]
+include = ["menivor*", "reelforge_sdk*"]

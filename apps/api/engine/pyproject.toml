@@ -1,0 +1,13 @@
+[build-system]
+requires = ["hatchling>=1.27.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "reelforge-generation-engine"
+version = "0.1.0"
+description = "Private typed generation boundary for ReelForge GPU workers"
+requires-python = ">=3.11"
+dependencies = ["requests==2.33.1"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["reelforge_engine"]

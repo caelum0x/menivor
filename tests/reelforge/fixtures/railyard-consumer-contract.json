@@ -1,0 +1,36 @@
+{
+ "source": "WAVE-P-PARITY-DISPATCH-2026-09-29 sections 5.3 and 5.4 (Menivor side). Local copy built from the contract text because the PY1.5 fixtures were not published when PM1.5 was built; the P1 verifier replaces this file with the PY1.5 fixtures and re-runs tests/reelforge/test_wp_pm1_5_railyard.py.",
+ "env": ["RELAY_URL", "RELAY_KEY", "RAGO_URL", "RAGO_API_KEY", "MINT_URL", "MINT_API_KEY", "RAILYARD_LIVE"],
+ "meters": {
+  "menivor": [
+   "menivor.reel.rendered",
+   "menivor.preset.render",
+   "menivor.lora.train",
+   "menivor.ott.gb_stored",
+   "menivor.ott.minutes_delivered",
+   "menivor.ott.encode_minutes",
+   "menivor.ai.minutes"
+  ]
+ },
+ "event_example": {
+  "transaction_id": "menivor:reel.rendered:job_123",
+  "external_customer_id": "user_1",
+  "code": "menivor.reel.rendered",
+  "timestamp": 1790000000,
+  "properties": {"job_id": "job_123"}
+ },
+ "rago_events_path": "/api/v1/events",
+ "grant": {
+  "claim": "addon-monthly-reel",
+  "aud": "menivor",
+  "cap": "launch-video",
+  "period_format": "YYYY-MM",
+  "transaction_id_example": "menivor:grant:org_1:2026-10:1",
+  "monthly_reels": 1
+ },
+ "mint_mirror": {
+  "entry_id_example": "menivor:dodo:pay_123",
+  "types": ["payment.succeeded", "refund.succeeded"],
+  "never": ["payout", "mint_deposit"]
+ }
+}

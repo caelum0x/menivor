@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Menivor
+GenericName=Short-form Video Studio
+Comment=Create, clip, and publish short-form videos
+Exec=reelforge-desktop %U
+Icon=menivor
+Terminal=false
+Categories=AudioVideo;Video;AudioVideoEditing;
+Keywords=video;shorts;tiktok;reels;clip;render;
+StartupWMClass=reelforge-desktop
+MimeType=video/mp4;video/quicktime;video/webm;video/x-m4v;

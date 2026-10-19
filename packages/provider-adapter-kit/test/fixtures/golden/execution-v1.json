@@ -1,0 +1,103 @@
+{
+  "completed": {
+    "cost": {
+      "cost_micros": 420000,
+      "currency": "USD",
+      "price_version": "runway-2026-08-01",
+      "quantity_units": 5,
+      "source": "provider_reported",
+      "success": true,
+      "unit": "second"
+    },
+    "error": null,
+    "handle": {
+      "model_ref": "runwayml/gen-4",
+      "opaque": {
+        "poll": {
+          "attempt": 2,
+          "token": "opaque-token"
+        }
+      },
+      "provider_key": "runway",
+      "response_url": "https://api.example/runs/run_123",
+      "run_id": "run_123",
+      "schema": "menivor.provider-handle/v1",
+      "state": "COMPLETED",
+      "status_url": "https://api.example/runs/run_123/status"
+    },
+    "outputs": [
+      {
+        "kind": "video",
+        "media_type": "video/mp4",
+        "reference": "https://cdn.example/outputs/run_123.mp4"
+      }
+    ],
+    "schema": "menivor.provider-result/v1"
+  },
+  "legacy_completed": {
+    "input": {
+      "cost_micros": 90000,
+      "opaque": {
+        "vendor_cursor": "page-7"
+      },
+      "output_url": "https://cdn.example/legacy.mp4",
+      "provider_ref": "legacy-task-1",
+      "response_url": "https://api.example/tasks/legacy-task-1",
+      "status": "succeeded",
+      "status_url": "https://api.example/tasks/legacy-task-1/status",
+      "vendor_region": "eu-west"
+    },
+    "output": {
+      "cost": {
+        "cost_micros": 90000,
+        "currency": "USD",
+        "price_version": "",
+        "quantity_units": 0,
+        "source": "legacy",
+        "success": true,
+        "unit": ""
+      },
+      "error": null,
+      "handle": {
+        "model_ref": "runwayml/gen-4",
+        "opaque": {
+          "legacy_fields": {
+            "vendor_region": "eu-west"
+          },
+          "vendor_cursor": "page-7"
+        },
+        "provider_key": "runway",
+        "response_url": "https://api.example/tasks/legacy-task-1",
+        "run_id": "legacy-task-1",
+        "schema": "menivor.provider-handle/v1",
+        "state": "COMPLETED",
+        "status_url": "https://api.example/tasks/legacy-task-1/status"
+      },
+      "outputs": [
+        {
+          "kind": "file",
+          "media_type": "",
+          "reference": "https://cdn.example/legacy.mp4"
+        }
+      ],
+      "schema": "menivor.provider-result/v1"
+    }
+  },
+  "request": {
+    "aspect_ratio": "9:16",
+    "correlation_id": "corr_123",
+    "duration_seconds": 5,
+    "input_refs": [
+      "https://assets.example/source.png"
+    ],
+    "modality": "video",
+    "model_ref": "runwayml/gen-4",
+    "parameters": {
+      "motion": 7,
+      "seed": 42
+    },
+    "prompt": "A tram crossing Galata Bridge at dawn",
+    "provider_key": "runway",
+    "schema": "menivor.provider-execution/v1"
+  }
+}

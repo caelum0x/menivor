@@ -1,0 +1,16 @@
+{
+ "id": "sketch-to-life",
+ "version": 1,
+ "kind": "model",
+ "name": "Sketch to life",
+ "blurb": "A pencil sketch fills in and comes to life.",
+ "credit_kind": "ai_video",
+ "preset_sku": "animate_image",
+ "tier": "draft",
+ "seconds": 5,
+ "inputs": [
+  "subject",
+  "image"
+ ],
+ "prompt_template": "A pencil sketch of the {subject} fills in with colour and comes to life, paper texture fading away"
+}

@@ -1,0 +1,11 @@
+[project]
+name = "reelforge-api"
+version = "0.1.0"
+requires-python = ">=3.11"
+
+[tool.ruff]
+src = ["."]
+
+[tool.pytest.ini_options]
+testpaths = ["../../tests/reelforge"]
+

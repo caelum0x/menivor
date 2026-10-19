@@ -1,0 +1,18 @@
+{
+  "id": "transition",
+  "version": 1,
+  "name": "Transition",
+  "blurb": "A smooth moving transition between two photos, ready to post.",
+  "input": {
+    "kind": "two_images",
+    "label": "First photo",
+    "second_label": "Second photo"
+  },
+  "runner": "local",
+  "local": "transition",
+  "price": {
+    "credit_kind": "standard",
+    "credits": 1
+  },
+  "preview": "presets/apps/transition.mp4"
+}

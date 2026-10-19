@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Menivor app mark — editorial ink / paper / #FFD93D.
+
+  A bold #FFD93D "M" wordmark initial over a single caption-highlight bar (the
+  signature yellow underline the product renders on captions). Full-bleed ink
+  background, no gradient, no glow, no glass, no sparkle — matches apps/web's
+  identity. Full opacity everywhere so the iOS icon has no alpha.
+-->
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1024" height="1024" fill="#0a0a0b"/>
+  <polyline points="300,612 300,360 512,532 724,360 724,612"
+    fill="none" stroke="#FFD93D" stroke-width="84"
+    stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="360" y="700" width="304" height="52" rx="26" fill="#FFD93D"/>
+</svg>

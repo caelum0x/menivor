@@ -1,0 +1,42 @@
+# Exclude common Python files and directories
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyz
+*.pyw
+*.pyi
+*.egg-info/
+
+# Exclude heavy deps/artifacts (api image is Python-only; web installs its own
+# node_modules; runtime bind-mounts the repo at /workspace anyway).
+node_modules/
+**/node_modules/
+.next/
+target/
+brand/
+openscreen/
+wolfcut/
+
+# Exclude development and local files
+.env
+.env.*
+*.log
+*.db
+.DS_Store
+.pytest_cache/
+.ruff_cache/
+.idea/
+logs/
+
+# Exclude version control system files
+.git/
+.gitignore
+.svn/
+
+storage/
+apps/api/runtime/storage/
+external/
+config.toml

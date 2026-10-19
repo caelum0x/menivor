@@ -1,0 +1,13 @@
+[package]
+name = "rf-plan"
+description = "ReelForge desktop render blueprint — resolves a shot template (rf-shots) + its caption presets (rf-captions) into a concrete plan (pure)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]
+rf-shots = { path = "../rf-shots" }
+rf-captions = { path = "../rf-captions" }
