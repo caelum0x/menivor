@@ -3,6 +3,10 @@
 .env
 .env.*
 !.env.example
+# OpenNext/Cloudflare build output — root cause of the 2026-10-19 secret leak
+# (it inlines .env values into next-env.mjs). Never commit this, ever.
+.open-next/
+**/.open-next/
 !**/.env.example
 !.env.*.example
 !**/.env.*.example
