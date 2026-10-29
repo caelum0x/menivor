@@ -17,6 +17,7 @@ import { useApiToken } from "@/lib/use-api-token";
 import { Button } from "@/components/ui/button";
 import { IconTip } from "@/components/app-shell/PrimaryNav";
 import { ShareButton } from "@/components/share/ShareButton";
+import { ShareToX } from "@/src/features/share-x/ShareToX";
 import {
   CountUp,
   WinCheck,
@@ -33,6 +34,10 @@ export interface ResultHeroProps {
   readonly readyInRun: number;
   /** What the creator typed, to credit them with the result. */
   readonly input?: string;
+  /** Chosen hook, or the planned hook for this variant. Falls back to `job.hook`. */
+  readonly hook?: string;
+  /** Product or page link, when this run started from one. */
+  readonly sourceUrl?: string;
 }
 
 /** Headline for the moment, honest about whether this is the first reel. */
@@ -85,7 +90,7 @@ function useReelTally(refreshKey: number): ReelTally | null {
   return tally;
 }
 
-export function ResultHero({ job, letter, readyInRun, input }: ResultHeroProps) {
+export function ResultHero({ job, letter, readyInRun, input, hook, sourceUrl }: ResultHeroProps) {
   const tally = useReelTally(readyInRun);
   const resultUrl = jobResultUrl(job);
   const poster = jobThumbnailUrl(job);
@@ -144,6 +149,16 @@ export function ResultHero({ job, letter, readyInRun, input }: ResultHeroProps) 
                 <Download className="size-4" aria-hidden /> Download
               </a>
             </Button>
+          )}
+          {resultUrl && (
+            <ShareToX
+              hook={hook || job.hook}
+              hashtags={job.hashtags}
+              sourceUrl={sourceUrl || job.source_url}
+              downloadUrl={resultUrl}
+              downloadFilename={`menivor-reel-${letter.toLowerCase()}.mp4`}
+              size="lg"
+            />
           )}
           <IconTip label="Edit">
             <Button asChild size="lg" variant="ghost">

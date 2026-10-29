@@ -21,6 +21,7 @@ Design notes
 from __future__ import annotations
 
 import dataclasses
+import re
 import uuid
 from typing import Any
 
@@ -804,6 +805,65 @@ def _presign_job_artifacts(
             )
 
 
+_MAX_SHARE_HASHTAGS = 8
+_MAX_SOURCE_URL = 2048
+_HASHTAG_TOKEN = re.compile(r"^[\w]{1,100}$")
+
+
+def _opening_hook(script: str, params: dict) -> str:
+    """First non-empty script line, else the subject. Same rule as the public hook."""
+    hook = next((line.strip() for line in str(script or "").splitlines() if line.strip()), "")
+    if not hook:
+        hook = str(params.get("video_subject") or "").strip()
+    return hook
+
+
+def _share_source_url(params: dict) -> str:
+    """http(s) page the reel was written from, or "" when it is missing or unsafe."""
+    text = str(params.get("source_url") or "").strip()
+    if not text or len(text) > _MAX_SOURCE_URL:
+        return ""
+    if not text.lower().startswith(("http://", "https://")):
+        return ""
+    if any(ch.isspace() for ch in text):
+        return ""
+    return text
+
+
+def _share_hashtags(params: dict) -> list[str]:
+    """Hashtags already stored on the job. Nothing is generated here."""
+    raw: list[object] = []
+    social = params.get("social_metadata")
+    if isinstance(social, dict) and isinstance(social.get("hashtags"), list):
+        raw.extend(social["hashtags"])
+    top = params.get("hashtags")
+    if isinstance(top, list):
+        raw.extend(top)
+    out: list[str] = []
+    seen: set[str] = set()
+    for item in raw:
+        token = str(item or "").strip().lstrip("#")
+        if not token or _HASHTAG_TOKEN.fullmatch(token) is None:
+            continue
+        key = token.casefold()
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append(f"#{token}")
+        if len(out) >= _MAX_SHARE_HASHTAGS:
+            break
+    return out
+
+
+def _attach_share_fields(data: dict, params: dict) -> None:
+    source = _share_source_url(params)
+    if source:
+        data["source_url"] = source
+    tags = _share_hashtags(params)
+    if tags:
+        data["hashtags"] = tags
+
+
 def _job_status(job: Any) -> str:
     """Human status: processing | complete | failed | cancelled."""
     if _is_cancelled(job):
@@ -891,11 +951,10 @@ def _job_public_data(
         or str(params.get("video_script") or "").strip()
         or str(params.get("video_subject") or "").strip()
     )
-    hook = next((line.strip() for line in script.splitlines() if line.strip()), "")
-    if not hook:
-        hook = str(params.get("video_subject") or "").strip()
+    hook = _opening_hook(script, params)
     if hook:
         data["hook"] = hook
+    _attach_share_fields(data, params)
 
     if isinstance(content_gate, dict) and content_gate:
         data["content_gate"] = content_gate
@@ -952,8 +1011,9 @@ def _batch_job_data(
 ) -> dict:
     """Serialise a ``Job`` row to the compact batch-review shape.
 
-    Only the fields a batch-review UI needs: ``{job_id, state, progress}`` plus,
-    when the render has finished (``result_key`` present), a presigned
+    Only the fields a batch-review UI needs: ``{job_id, state, progress}`` plus
+    the opening hook, source link, and any stored hashtags, and, when the
+    render has finished (``result_key`` present), a presigned
     signed result, poster, preview, and cover media when available. Presigning is
     best-effort — a failure is logged and the URL is omitted rather than failing
     the whole batch read.
@@ -969,6 +1029,10 @@ def _batch_job_data(
         "correlation_id": str(params.get("_correlation_id") or request_id),
         "title": str(getattr(job, "title", "") or ""),
     }
+    hook = _opening_hook(getattr(job, "script", ""), params)
+    if hook:
+        data["hook"] = hook
+    _attach_share_fields(data, params)
     _presign_job_artifacts(
         job,
         data,

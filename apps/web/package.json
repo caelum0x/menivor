@@ -41,7 +41,8 @@
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "recharts": "^2.15.4",
-    "tailwind-merge": "^2.6.0"
+    "tailwind-merge": "^2.6.0",
+    "twitter-text": "^3.1.0"
   },
   "devDependencies": {
     "@opennextjs/cloudflare": "1.20.2",

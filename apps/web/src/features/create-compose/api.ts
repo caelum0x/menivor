@@ -46,6 +46,11 @@ export interface JobSnapshot {
   progress?: number;
   result_url?: string;
   error?: string;
+  /** Opening line, when the job payload includes it. */
+  hook?: string;
+  /** http(s) page the reel was written from. */
+  source_url?: string;
+  hashtags?: string[];
 }
 
 /** Optional slot-preview request body for `POST /media/videos`. */

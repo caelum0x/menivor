@@ -6,6 +6,7 @@ import { Download, Loader2, Play, RotateCcw, Trash2, UserRound } from "lucide-re
 import { Badge, type BadgeVariant } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { ShareToX } from "@/src/features/share-x/ShareToX";
 import { safeServerText } from "@/src/shared/errors";
 import type { AdVariant, VariantStatus } from "./api";
 
@@ -30,7 +31,15 @@ export interface VariantActions {
   onStartAvatar: (ad: AdVariant) => Promise<void>;
 }
 
-function VariantCard({ ad, actions }: { ad: AdVariant; actions: VariantActions }) {
+function VariantCard({
+  ad,
+  actions,
+  sourceUrl,
+}: {
+  ad: AdVariant;
+  actions: VariantActions;
+  sourceUrl?: string | null;
+}) {
   const [busy, setBusy] = React.useState(false);
   const run = (fn: (ad: AdVariant) => Promise<void>) => async () => {
     setBusy(true);
@@ -78,6 +87,14 @@ function VariantCard({ ad, actions }: { ad: AdVariant; actions: VariantActions }
               </a>
             </Button>
           ) : null}
+          {ad.status === "done" && ad.download_url ? (
+            <ShareToX
+              hook={ad.hook}
+              sourceUrl={sourceUrl}
+              downloadUrl={ad.download_url}
+              downloadFilename={ad.filename}
+            />
+          ) : null}
           {ad.status === "ready" ? (
             <Button size="sm" onClick={run(actions.onStartAvatar)} disabled={busy}>
               {busy ? <Loader2 className="animate-spin" aria-hidden /> : <UserRound aria-hidden />} Start avatar reel
@@ -106,14 +123,22 @@ function VariantCard({ ad, actions }: { ad: AdVariant; actions: VariantActions }
   );
 }
 
-export function VariantGrid({ variants, actions }: { variants: AdVariant[]; actions: VariantActions }) {
+export function VariantGrid({
+  variants,
+  actions,
+  sourceUrl,
+}: {
+  variants: AdVariant[];
+  actions: VariantActions;
+  sourceUrl?: string | null;
+}) {
   if (variants.length === 0) {
     return <p className="text-sm text-muted-foreground">No ads rendered yet. Pick angles and formats above.</p>;
   }
   return (
     <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
       {variants.map((ad) => (
-        <VariantCard key={ad.id} ad={ad} actions={actions} />
+        <VariantCard key={ad.id} ad={ad} actions={actions} sourceUrl={sourceUrl} />
       ))}
     </div>
   );

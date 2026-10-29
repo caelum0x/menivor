@@ -349,6 +349,13 @@ export const en = {
     useAvatar: "Use avatar",
     useInFilm: "Use in film",
   },
+  shareToX: {
+    button: "Share to X",
+    buttonAria: "Share to X. Opens the post composer in a new tab.",
+    downloadAndShareAria:
+      "Download the MP4 and share to X. Opens the post composer in a new tab.",
+    hint: "X can't attach the video. Download the MP4, then add it in the composer.",
+  },
 } as const;
 
 /**
