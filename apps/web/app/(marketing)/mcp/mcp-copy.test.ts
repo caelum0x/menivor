@@ -32,13 +32,28 @@ function pageUnits(): TextUnit[] {
 }
 
 describe("/mcp page copy", () => {
-  it("lists no posting tool while posting is closed, and keeps them on the server", () => {
-    const shown = listLiveTools().map((tool) => tool.name);
-    for (const name of PUBLISHING_TOOL_NAMES) {
-      expect(shown).not.toContain(name);
-      expect(listTools().map((tool) => tool.name)).toContain(name);
+  it("lists no posting tool on the page or in tools/list while the flag is off", () => {
+    const previous = process.env.MENIVOR_MCP_PUBLISHING_TOOLS;
+    delete process.env.MENIVOR_MCP_PUBLISHING_TOOLS;
+    try {
+      const shown = listLiveTools().map((tool) => tool.name);
+      const served = listTools().map((tool) => tool.name);
+      for (const name of PUBLISHING_TOOL_NAMES) {
+        expect(shown).not.toContain(name);
+        expect(served).not.toContain(name);
+      }
+      // Turning the MCP flag on serves the tools, but the page still does not list them.
+      const enabled = listTools(true);
+      expect(listTools(false)).toEqual(enabled.filter((tool) => !PUBLISHING_TOOL_NAMES.has(tool.name)));
+      for (const name of PUBLISHING_TOOL_NAMES) {
+        expect(enabled.map((tool) => tool.name)).toContain(name);
+        expect(shown).not.toContain(name);
+      }
+      expect(shown).toEqual(expect.arrayContaining(["create_reel", "get_job", "ad_from_url", "generation_quote"]));
+    } finally {
+      if (previous === undefined) delete process.env.MENIVOR_MCP_PUBLISHING_TOOLS;
+      else process.env.MENIVOR_MCP_PUBLISHING_TOOLS = previous;
     }
-    expect(shown).toEqual(expect.arrayContaining(["create_reel", "get_job", "ad_from_url", "generation_quote"]));
   });
 
   it("promises no scheduling or publishing", () => {

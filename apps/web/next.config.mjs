@@ -51,6 +51,8 @@ const nextConfig = {
       { source: "/legal/refunds", destination: "/refunds", permanent: true },
       { source: "/acceptable-use", destination: "/legal/acceptable-use", permanent: true },
       { source: "/aup", destination: "/legal/acceptable-use", permanent: true },
+      // /docs has no page; the MCP documentation lives at /mcp.
+      { source: "/docs", destination: "/mcp", permanent: true },
     ];
   },
   async headers() {

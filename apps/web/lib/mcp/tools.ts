@@ -411,25 +411,77 @@ const TOOLS: readonly Tool[] = [
 
 const BY_NAME: ReadonlyMap<string, Tool> = new Map(TOOLS.map((tool) => [tool.name, tool]));
 
-/** The public tool list for `tools/list` (no handlers). */
-export function listTools(): McpToolDefinition[] {
-  return TOOLS.map(({ run: _run, ...definition }) => definition);
-}
-
 /**
- * Tools that post to social platforms. They stay on the server (the API
- * answers `publishing_closed` while posting is closed), but public pages do
- * not list them as capabilities until posting opens (claims rule 5).
+ * Tools that post to social platforms. Direct publishing is closed
+ * (`features.publishing` is false; `POST /jobs/{id}/schedule` rejects with
+ * `publishing_closed` before a row exists, so the due-runner never posts).
+ * They stay out of `tools/list` and calls are refused until
+ * MENIVOR_MCP_PUBLISHING_TOOLS is explicitly on. Public pages never list
+ * them (claims rule 5) even when the flag is on.
  */
 export const PUBLISHING_TOOL_NAMES: ReadonlySet<string> = new Set(["schedule_publish", "list_scheduled"]);
 
-/** The tools a public page may present as available today. */
-export function listLiveTools(): McpToolDefinition[] {
-  return listTools().filter((tool) => !PUBLISHING_TOOL_NAMES.has(tool.name));
+/**
+ * Server-only switch for the two publishing tools. Unset, blank, or any value
+ * other than `1` / `true` / `yes` / `on` keeps them hidden. On Cloudflare
+ * Workers set the same name as a runtime var so it can be turned on without a
+ * rebuild once posting actually ships.
+ */
+export const MCP_PUBLISHING_TOOLS_ENV = "MENIVOR_MCP_PUBLISHING_TOOLS";
+
+/** Tool-error text when a publishing tool is called while the flag is off. */
+export const PUBLISHING_TOOLS_UNAVAILABLE =
+  "Posting to social platforms is not available yet. Download the finished reel and post it yourself.";
+
+/** True only for an explicit on-switch. Missing or any other value is off. */
+export function publishingToolsEnabled(raw: string | undefined | null): boolean {
+  const value = (raw ?? "").trim().toLowerCase();
+  return value === "1" || value === "true" || value === "yes" || value === "on";
 }
 
-/** Runs one tool; throws ToolError for bad input or an upstream failure. */
-export async function runTool(name: string, args: unknown, apiKey: string): Promise<unknown> {
+/**
+ * Whether this process should expose the publishing tools. A Cloudflare
+ * runtime binding wins when the key is present; otherwise `process.env`.
+ */
+export async function mcpPublishingToolsEnabled(): Promise<boolean> {
+  try {
+    const { getCloudflareContext } = await import("@opennextjs/cloudflare");
+    const { env } = getCloudflareContext();
+    const value = (env as Record<string, unknown> | null | undefined)?.[MCP_PUBLISHING_TOOLS_ENV];
+    if (typeof value === "string") return publishingToolsEnabled(value);
+  } catch {
+    // Not on the Workers runtime (`next dev`, vitest, `next start`).
+  }
+  return publishingToolsEnabled(process.env[MCP_PUBLISHING_TOOLS_ENV]);
+}
+
+function publishingFlagFromEnv(): boolean {
+  return publishingToolsEnabled(process.env[MCP_PUBLISHING_TOOLS_ENV]);
+}
+
+/** The public tool list for `tools/list` (no handlers). Publishing tools are omitted unless the flag is on. */
+export function listTools(publishingEnabled: boolean = publishingFlagFromEnv()): McpToolDefinition[] {
+  const tools = publishingEnabled
+    ? TOOLS
+    : TOOLS.filter((tool) => !PUBLISHING_TOOL_NAMES.has(tool.name));
+  return tools.map(({ run: _run, ...definition }) => definition);
+}
+
+/** The tools a public page may present as available today. Never includes posting tools. */
+export function listLiveTools(): McpToolDefinition[] {
+  return listTools(false);
+}
+
+/** Runs one tool; throws ToolError for bad input, a closed publishing tool, or an upstream failure. */
+export async function runTool(
+  name: string,
+  args: unknown,
+  apiKey: string,
+  publishingEnabled: boolean = publishingFlagFromEnv(),
+): Promise<unknown> {
+  if (!publishingEnabled && PUBLISHING_TOOL_NAMES.has(name)) {
+    throw new ToolError(PUBLISHING_TOOLS_UNAVAILABLE);
+  }
   const tool = BY_NAME.get(name);
   if (!tool) throw new ToolError(`Unknown tool: ${name}`, 404);
   if (args !== undefined && (typeof args !== "object" || args === null || Array.isArray(args))) {
