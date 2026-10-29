@@ -1,5 +1,12 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { ToolError, listTools, runTool } from "@/lib/mcp/tools";
+import {
+  PUBLISHING_TOOL_NAMES,
+  PUBLISHING_TOOLS_UNAVAILABLE,
+  ToolError,
+  listTools,
+  mcpPublishingToolsEnabled,
+  runTool,
+} from "@/lib/mcp/tools";
 
 /**
  * Menivor remote MCP server (Streamable HTTP transport, stateless).
@@ -91,7 +98,11 @@ function toolResult(value: unknown, isError = false) {
   return { content: [{ type: "text", text }], ...structured, isError };
 }
 
-async function dispatch(message: JsonRpcRequest, apiKey: string | null): Promise<unknown> {
+async function dispatch(
+  message: JsonRpcRequest,
+  apiKey: string | null,
+  publishingTools: boolean,
+): Promise<unknown> {
   const params = message.params;
   switch (message.method) {
     case "initialize":
@@ -104,13 +115,17 @@ async function dispatch(message: JsonRpcRequest, apiKey: string | null): Promise
     case "ping":
       return {};
     case "tools/list":
-      return { tools: listTools() };
+      return { tools: listTools(publishingTools) };
     case "tools/call": {
       if (!params || typeof params !== "object") {
         throw new RpcError(INVALID_PARAMS, "tools/call needs a name and arguments");
       }
       const { name, arguments: args } = params as { name?: unknown; arguments?: unknown };
       if (typeof name !== "string") throw new RpcError(INVALID_PARAMS, "tools/call needs a tool name");
+      // Refuse before asking for a key: a key does not unlock posting while it is closed.
+      if (!publishingTools && PUBLISHING_TOOL_NAMES.has(name)) {
+        return toolResult(PUBLISHING_TOOLS_UNAVAILABLE, true);
+      }
       if (!apiKey) {
         throw new RpcError(
           UNAUTHORIZED,
@@ -118,7 +133,7 @@ async function dispatch(message: JsonRpcRequest, apiKey: string | null): Promise
         );
       }
       try {
-        return toolResult(await runTool(name, args, apiKey));
+        return toolResult(await runTool(name, args, apiKey, publishingTools));
       } catch (error) {
         if (error instanceof ToolError && error.status === 404 && error.message.startsWith("Unknown tool")) {
           throw new RpcError(INVALID_PARAMS, error.message);
@@ -138,7 +153,11 @@ async function dispatch(message: JsonRpcRequest, apiKey: string | null): Promise
   }
 }
 
-async function handle(message: unknown, apiKey: string | null): Promise<JsonRpcResponse | null> {
+async function handle(
+  message: unknown,
+  apiKey: string | null,
+  publishingTools: boolean,
+): Promise<JsonRpcResponse | null> {
   if (!message || typeof message !== "object" || Array.isArray(message)) {
     return { jsonrpc: "2.0", id: null, error: { code: INVALID_REQUEST, message: "Invalid request" } };
   }
@@ -154,7 +173,7 @@ async function handle(message: unknown, apiKey: string | null): Promise<JsonRpcR
   // Notifications (no id) and client responses get no reply.
   if (!hasId) return null;
   try {
-    return { jsonrpc: "2.0", id: rpcId, result: await dispatch(request, apiKey) };
+    return { jsonrpc: "2.0", id: rpcId, result: await dispatch(request, apiKey, publishingTools) };
   } catch (error) {
     const rpc =
       error instanceof RpcError ? error : new RpcError(-32603, "Internal error");
@@ -179,6 +198,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
   }
 
   const apiKey = apiKeyFrom(request);
+  const publishingTools = await mcpPublishingToolsEnabled();
   const messages = Array.isArray(body) ? body : [body];
   if (messages.length === 0 || messages.length > MAX_BATCH) {
     return json(
@@ -186,7 +206,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       400,
     );
   }
-  const replies = (await Promise.all(messages.map((message) => handle(message, apiKey)))).filter(
+  const replies = (await Promise.all(messages.map((message) => handle(message, apiKey, publishingTools)))).filter(
     (reply): reply is JsonRpcResponse => reply !== null,
   );
   if (replies.length === 0) return new NextResponse(null, { status: 202, headers: CORS_HEADERS });
