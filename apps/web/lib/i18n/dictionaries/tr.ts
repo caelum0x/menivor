@@ -348,4 +348,11 @@ export const tr: Messages = {
     useAvatar: "Avatarı kullan",
     useInFilm: "Filmde kullan",
   },
+  shareToX: {
+    button: "X'te paylaş",
+    buttonAria: "X'te paylaş. Gönderi kutusunu yeni bir sekmede açar.",
+    downloadAndShareAria:
+      "MP4'ü indir ve X'te paylaş. Gönderi kutusunu yeni bir sekmede açar.",
+    hint: "X videoyu buradan ekleyemez. MP4'ü indir, sonra paylaşım kutusuna ekle.",
+  },
 };

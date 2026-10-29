@@ -232,7 +232,11 @@ export function ProjectView({
       <section className="space-y-3" aria-labelledby="ads-h">
         <h2 id="ads-h" className="text-lg font-semibold">Ads</h2>
         <ExportPanel projectId={projectId} readyCount={readyCount} />
-        <VariantGrid variants={project.variants} actions={actions} />
+        <VariantGrid
+          variants={project.variants}
+          actions={actions}
+          sourceUrl={project.source_url || project.product.url}
+        />
       </section>
 
       <section className="space-y-3" aria-labelledby="test-h">

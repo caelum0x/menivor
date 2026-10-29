@@ -18,6 +18,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select } from "@/components/ui/select";
+import { ShareToX } from "@/src/features/share-x/ShareToX";
 import type { TemplateDetail, TemplateInput } from "@/src/features/templates/api";
 import { jobAssetUrl } from "./api";
 import { useCompile } from "./useCompile";
@@ -228,11 +229,20 @@ export function TemplateComposeForm({ template }: TemplateComposeFormProps) {
                   controls
                   playsInline
                 />
-                <Button asChild variant="outline" size="sm">
-                  <a href={assetUrl} download>
-                    <Download className="mr-1 h-4 w-4" aria-hidden /> Download
-                  </a>
-                </Button>
+                <div className="flex flex-wrap items-start gap-3">
+                  <Button asChild variant="outline" size="sm">
+                    <a href={assetUrl} download>
+                      <Download className="mr-1 h-4 w-4" aria-hidden /> Download
+                    </a>
+                  </Button>
+                  <ShareToX
+                    hook={state.job?.hook}
+                    hashtags={state.job?.hashtags}
+                    sourceUrl={state.job?.source_url}
+                    downloadUrl={assetUrl}
+                    downloadFilename="reel.mp4"
+                  />
+                </div>
               </>
             ) : (
               <p className="text-sm text-muted-foreground">

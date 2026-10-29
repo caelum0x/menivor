@@ -348,4 +348,11 @@ export const es: Messages = {
     useAvatar: "Usar avatar",
     useInFilm: "Usar en película",
   },
+  shareToX: {
+    button: "Compartir en X",
+    buttonAria: "Compartir en X. Abre el compositor en una pestaña nueva.",
+    downloadAndShareAria:
+      "Descarga el MP4 y compártelo en X. Abre el compositor en una pestaña nueva.",
+    hint: "X no puede adjuntar el video desde aquí. Descarga el MP4 y añádelo en el compositor.",
+  },
 };

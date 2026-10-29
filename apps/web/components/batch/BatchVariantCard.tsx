@@ -12,6 +12,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { JobPoster, JobStatusBadge } from "@/src/features/jobs-library";
 import { jobPosterUrl, jobResultUrl } from "@/lib/job-media";
+import { ShareToX } from "@/src/features/share-x/ShareToX";
 import { JobState, type BatchJob } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
@@ -100,6 +101,15 @@ export function BatchVariantCard({
               <Download aria-hidden /> Download
             </a>
           </Button>
+        )}
+        {isComplete && resultUrl && (
+          <ShareToX
+            hook={job.hook}
+            hashtags={job.hashtags}
+            sourceUrl={job.source_url}
+            downloadUrl={resultUrl}
+            downloadFilename={`variant-${index}.mp4`}
+          />
         )}
       </CardFooter>
     </Card>

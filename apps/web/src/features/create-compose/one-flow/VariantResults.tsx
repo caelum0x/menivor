@@ -27,6 +27,7 @@ import { formatLockOf, formatLockedMessage, isCreditShortfall } from "@/src/shar
 import { BuyCredits } from "@/src/shared/access";
 import { PlanUpsell } from "@/src/features/plans";
 import { PaywallMoment } from "@/src/features/paywall-moment";
+import { ShareToX } from "@/src/features/share-x/ShareToX";
 
 /**
  * A retry re-checks the format before any credit is debited, so a 402 is
@@ -302,6 +303,8 @@ export function VariantResults({ jobIds }: VariantResultsProps) {
           letter={VARIANT_LETTERS[jobIds.indexOf(heroJob.job_id)] ?? ""}
           readyInRun={readyCount}
           input={meta?.input}
+          hook={hookFor(meta, heroJob.job_id, heroJob)}
+          sourceUrl={meta?.source === "link" ? meta.input : heroJob.source_url}
         />
       )}
 
@@ -321,6 +324,7 @@ export function VariantResults({ jobIds }: VariantResultsProps) {
               hook={hookFor(meta, id, variants[id]?.job)}
               picked={picked === id}
               retrying={retrying === id}
+              sourceUrl={meta?.source === "link" ? meta.input : variants[id]?.job?.source_url}
               onPick={() => handlePick(id)}
               onRetry={() => void handleRetry(id)}
             />
@@ -359,6 +363,7 @@ interface VariantCardProps {
   readonly hook: string;
   readonly picked: boolean;
   readonly retrying: boolean;
+  readonly sourceUrl?: string;
   readonly onPick: () => void;
   readonly onRetry: () => void;
 }
@@ -371,6 +376,7 @@ function VariantCard({
   hook,
   picked,
   retrying,
+  sourceUrl,
   onPick,
   onRetry,
 }: VariantCardProps) {
@@ -475,6 +481,16 @@ function VariantCard({
                   <Download className="size-4" aria-hidden /> Download MP4
                 </a>
               </Button>
+            )}
+            {resultUrl && (
+              <ShareToX
+                className="col-span-2"
+                hook={hook}
+                hashtags={job?.hashtags}
+                sourceUrl={sourceUrl || job?.source_url}
+                downloadUrl={resultUrl}
+                downloadFilename={`menivor-variant-${letter.toLowerCase()}.mp4`}
+              />
             )}
           </div>
         )}

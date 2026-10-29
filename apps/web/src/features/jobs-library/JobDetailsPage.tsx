@@ -55,6 +55,7 @@ import { CoverEditor } from "@/components/cover/CoverEditor";
 import { BrollPanel } from "@/components/broll/BrollPanel";
 import { SocialPanel } from "@/components/social/SocialPanel";
 import { ShareButton } from "@/components/share/ShareButton";
+import { ShareToX } from "@/src/features/share-x/ShareToX";
 import { ReelActions } from "@/src/features/reels-library/components/ReelActions";
 import { useReelActions } from "@/src/features/reels-library/use-reel-actions";
 import { MenivorMark } from "@/components/brand/MenivorMark";
@@ -353,6 +354,9 @@ export function JobDetailsPage() {
                 publishHref={`/publish?job=${encodeURIComponent(job.job_id)}`}
                 jobId={job.job_id}
                 desktopReady={isComplete && hasGeneratedClip(job)}
+                hook={job.hook}
+                hashtags={job.hashtags}
+                sourceUrl={job.source_url}
               />
             )}
 
@@ -400,6 +404,9 @@ function VideoPreview({
   publishHref,
   jobId,
   desktopReady,
+  hook,
+  hashtags,
+  sourceUrl,
 }: Readonly<{
   url: string;
   posterUrl?: string;
@@ -408,6 +415,9 @@ function VideoPreview({
   jobId: string;
   /** The reel carries a desktop-editor clip descriptor. */
   desktopReady: boolean;
+  hook?: string;
+  hashtags?: readonly string[];
+  sourceUrl?: string;
 }>) {
   // "launching": the link fired, waiting to see if the app took focus.
   // "help": the app did not respond (or the person asked how it works).
@@ -461,6 +471,13 @@ function VideoPreview({
               <Download className="size-4" aria-hidden /> Download
             </a>
           </Button>
+          <ShareToX
+            hook={hook}
+            hashtags={hashtags}
+            sourceUrl={sourceUrl}
+            downloadUrl={url}
+            downloadFilename="reel.mp4"
+          />
         </div>
       </CardHeader>
       <CardContent className="space-y-4">

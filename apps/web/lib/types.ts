@@ -117,6 +117,13 @@ export interface Job extends ReelJobSnapshot {
    */
   hook?: string;
   /**
+   * http(s) page the reel was written from (`params.source_url`).
+   * Present when the creator pasted a product or page link.
+   */
+  source_url?: string;
+  /** Hashtags already stored on the reel. Each entry is `#`-prefixed. */
+  hashtags?: string[];
+  /**
    * Creator-chosen display name (PATCH /jobs/{id} `{ title }`). Additive:
    * absent until the reel is renamed; the UI falls back to the hook / id.
    */
@@ -183,6 +190,12 @@ export interface BatchJob extends ReelBatchJob {
   poster_key?: string;
   /** R2 key for a short preview clip, when available. */
   preview_key?: string;
+  /** Opening line, when the batch payload includes the script hook. */
+  hook?: string;
+  /** http(s) page this variant was written from. */
+  source_url?: string;
+  /** Hashtags already stored on the variant. */
+  hashtags?: string[];
 }
 
 /**
