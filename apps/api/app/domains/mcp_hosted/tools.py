@@ -280,6 +280,52 @@ def _launch_mark_step(ctx: ToolContext, args: dict[str, Any]) -> Any:
         raise ToolError(exc.message) from exc
 
 
+def _scheduler_live() -> bool:
+    from app.domains.x_scheduler.flag import enabled
+
+    return enabled()
+
+
+def _scheduler_targets(ctx: ToolContext, args: dict[str, Any]) -> Any:
+    from app.domains.x_scheduler.errors import SchedulerError
+    from app.domains.x_scheduler.service import list_targets
+
+    provider = str(args.get("provider") or "").strip()
+    try:
+        return list_targets(ctx.session, ctx.user_id, provider)
+    except SchedulerError as exc:
+        raise ToolError(exc.message) from exc
+
+
+def _scheduler_post(ctx: ToolContext, args: dict[str, Any]) -> Any:
+    from datetime import datetime
+
+    from app.domains.x_scheduler.errors import SchedulerError
+    from app.domains.x_scheduler.service import schedule_post
+
+    raw_when = args.get("scheduled_at")
+    scheduled_at = None
+    if raw_when not in (None, ""):
+        try:
+            scheduled_at = datetime.fromisoformat(str(raw_when).replace("Z", "+00:00"))
+        except ValueError as exc:
+            raise ToolError("scheduled_at must be an ISO-8601 time") from exc
+    try:
+        return schedule_post(
+            ctx.session,
+            ctx.user_id,
+            provider=str(args.get("provider") or ""),
+            target_id=str(args.get("target_id") or ""),
+            source=str(args.get("source") or ""),
+            source_id=str(args.get("source_id") or ""),
+            caption=str(args.get("caption") or ""),
+            when=str(args.get("when") or ""),
+            scheduled_at=scheduled_at,
+        )
+    except SchedulerError as exc:
+        raise ToolError(exc.message) from exc
+
+
 def _presets_live() -> bool:
     from app.mcp import presets_tools
 
@@ -383,6 +429,24 @@ TOOLS: tuple[Tool, ...] = (
          {**_OBJ, "properties": {"preset_id": {"type": "string"}, "item_id": {"type": "string"},
                                  "subject": {"type": "string"}, "image_key": {"type": "string"}},
           "required": ["subject"]}, "read", _presets_call("presets.recreate"), enabled=_presets_live),
+    Tool("list_scheduler_accounts",
+         "List X accounts on the caller's own Buffer or Typefully connection. Menivor does not call the X API.",
+         {**_OBJ, "properties": {"provider": {"type": "string", "enum": ["buffer", "typefully"]}},
+          "required": ["provider"]}, "read", _scheduler_targets, enabled=_scheduler_live),
+    Tool("schedule_to_buffer_or_typefully",
+         "Send one finished Menivor render (reel, render, or media image/video) to the caller's Buffer or "
+         "Typefully account as an X post. when is now, queue (next free slot), or schedule (scheduled_at). "
+         "Uses their key, already saved in Menivor. Menivor does not call the X API.",
+         {**_OBJ, "properties": {
+             "provider": {"type": "string", "enum": ["buffer", "typefully"]},
+             "target_id": {"type": "string", "description": "Buffer channel id or Typefully social set id"},
+             "source": {"type": "string", "enum": ["reel", "render", "media"]},
+             "source_id": {"type": "string"},
+             "caption": {"type": "string", "maxLength": 280},
+             "when": {"type": "string", "enum": ["now", "queue", "schedule"]},
+             "scheduled_at": {"type": "string", "description": "ISO-8601 time, required when when=schedule"},
+         }, "required": ["provider", "target_id", "source", "source_id", "when"]},
+         "write", _scheduler_post, enabled=_scheduler_live),
 )
 BY_NAME = {t.name: t for t in TOOLS}
 

@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { NextRequest } from "next/server";
 import nextConfig from "../../../next.config.mjs";
-import { PUBLISHING_TOOLS_UNAVAILABLE, publishingToolsEnabled } from "@/lib/mcp/tools";
+import { PUBLISHING_TOOLS_UNAVAILABLE, SCHEDULER_TOOLS_UNAVAILABLE, publishingToolsEnabled } from "@/lib/mcp/tools";
 import { POST } from "./route";
 
 const LIVE_TOOLS = [
@@ -192,5 +192,74 @@ describe("POST /api/mcp", () => {
       new NextRequest("https://menivor.com/api/mcp", { method: "POST", body: "{not json" }),
     );
     expect(bad.status).toBe(400);
+  });
+});
+
+describe("scheduler tools flag", () => {
+  it("hides Buffer and Typefully tools and refuses them without calling the API", async () => {
+    const listed = await POST(rpc({ jsonrpc: "2.0", id: 20, method: "tools/list" }));
+    const names = (await listed.json()).result.tools.map((tool: { name: string }) => tool.name);
+    expect(names).not.toContain("schedule_to_buffer_or_typefully");
+    expect(names).not.toContain("list_scheduler_accounts");
+
+    const fetchMock = vi.fn();
+    vi.stubGlobal("fetch", fetchMock);
+    const res = await POST(
+      rpc(
+        {
+          jsonrpc: "2.0",
+          id: 21,
+          method: "tools/call",
+          params: { name: "schedule_to_buffer_or_typefully", arguments: { provider: "buffer" } },
+        },
+        { authorization: "Bearer mk_test_123" },
+      ),
+    );
+    const body = await res.json();
+    expect(body.result.isError).toBe(true);
+    expect(body.result.content[0].text).toBe(SCHEDULER_TOOLS_UNAVAILABLE);
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it("lists and forwards schedule_to_buffer_or_typefully only when MENIVOR_MCP_SCHEDULER_TOOLS is on", async () => {
+    vi.stubEnv("MENIVOR_MCP_SCHEDULER_TOOLS", "on");
+    const listed = await POST(rpc({ jsonrpc: "2.0", id: 22, method: "tools/list" }));
+    const names = (await listed.json()).result.tools.map((tool: { name: string }) => tool.name);
+    expect(names).toContain("schedule_to_buffer_or_typefully");
+    expect(names).toContain("list_scheduler_accounts");
+    expect(names).not.toContain("schedule_publish");
+
+    const fetchMock = vi.fn(async () =>
+      new Response(JSON.stringify({ status: 200, data: { external_id: "post_1", status: "queued" } }), { status: 200 }),
+    );
+    vi.stubGlobal("fetch", fetchMock);
+    const res = await POST(
+      rpc(
+        {
+          jsonrpc: "2.0",
+          id: 23,
+          method: "tools/call",
+          params: {
+            name: "schedule_to_buffer_or_typefully",
+            arguments: {
+              provider: "typefully",
+              target_id: "9",
+              source: "reel",
+              source_id: "job_1",
+              caption: "Hello",
+              when: "queue",
+            },
+          },
+        },
+        { authorization: "Bearer mk_test_123" },
+      ),
+    );
+    const body = await res.json();
+    expect(body.result.isError).toBe(false);
+    expect(body.result.structuredContent).toEqual({ external_id: "post_1", status: "queued" });
+    const [url, init] = fetchMock.mock.calls[0] as unknown as [string, RequestInit];
+    expect(url).toMatch(/\/scheduler\/posts$/);
+    expect(init.method).toBe("POST");
+    expect((init.headers as Record<string, string>)["x-api-key"]).toBe("mk_test_123");
   });
 });

@@ -22,6 +22,7 @@ import { ShareToX } from "@/src/features/share-x/ShareToX";
 import type { TemplateDetail, TemplateInput } from "@/src/features/templates/api";
 import { jobAssetUrl } from "./api";
 import { useCompile } from "./useCompile";
+import { ShareActions } from "@/src/features/share-actions/ShareActions";
 
 interface TemplateComposeFormProps {
   template: TemplateDetail;
@@ -249,6 +250,9 @@ export function TemplateComposeForm({ template }: TemplateComposeFormProps) {
                 Rendered, but no downloadable asset was returned yet.
               </p>
             )}
+            {state.job?.job_id && assetUrl ? (
+              <ShareActions source="reel" sourceId={state.job.job_id} kind="video" />
+            ) : null}
             {state.job?.job_id && (
               <JobHandoffLinks jobId={state.job.job_id} ready />
             )}

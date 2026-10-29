@@ -42,6 +42,7 @@ export function retryErrorMessage(err: unknown): string {
 import type { Job } from "@/lib/types";
 import { isTerminalState } from "@/lib/types";
 import { jobResultUrl, jobThumbnailUrl } from "@/lib/job-media";
+import { ShareActions } from "@/src/features/share-actions/ShareActions";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -454,6 +455,7 @@ function VariantCard({
 
         {phase === "ready" && (
           <div className="mt-auto grid grid-cols-2 gap-2">
+            {job?.job_id ? <ShareActions className="col-span-2" source="reel" sourceId={job.job_id} kind="video" /> : null}
             <Button
               type="button"
               size="sm"

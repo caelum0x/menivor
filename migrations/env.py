@@ -54,6 +54,7 @@ from app.domains.ott import roles as ott_roles_model  # noqa: F401  (registers o
 from app.domains.ott_ai import models as ott_ai_model  # noqa: F401  (registers ott_ai_outputs)
 from app.domains.ott_discovery import models as ott_discovery_model  # noqa: F401  (registers ott_title_embeddings)
 from app.domains.ott import upload_check as ott_upload_check_model  # noqa: F401  (registers ott_upload_checks)
+from app.domains.x_scheduler import models as x_scheduler_model  # noqa: F401  (registers scheduler_connections)
 
 # Alembic Config object (values from alembic.ini).
 config = context.config

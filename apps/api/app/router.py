@@ -30,6 +30,7 @@ from app.domains.mcp_hosted.router import router as mcp_hosted_router
 from app.domains.broll import router as broll_studio
 from app.domains.billing import router as billing_router
 from app.domains.byok import router as byok_router
+from app.domains.x_scheduler import router as x_scheduler_router
 from app.domains.canon import router as canon_router
 from app.domains.captions import router as captions_router
 from app.domains.characters import router as characters_router
@@ -203,6 +204,8 @@ def build_full_router() -> APIRouter:
     router.include_router(wallet_router)
     # BYOK: customer-owned provider credentials (encrypted at rest; secrets never returned).
     router.include_router(byok_router)
+    # Buffer / Typefully: the caller's own key, encrypted at rest, posts to X via their account.
+    router.include_router(x_scheduler_router)
     # Repurposing engine: long video -> transcript -> ranked highlight clips.
     router.include_router(repurpose_router)
     # Auto-clipping: long recording -> vertical caption-burned short clips.

@@ -2,9 +2,12 @@ import { NextResponse, type NextRequest } from "next/server";
 import {
   PUBLISHING_TOOL_NAMES,
   PUBLISHING_TOOLS_UNAVAILABLE,
+  SCHEDULER_TOOL_NAMES,
+  SCHEDULER_TOOLS_UNAVAILABLE,
   ToolError,
   listTools,
   mcpPublishingToolsEnabled,
+  mcpSchedulerToolsEnabled,
   runTool,
 } from "@/lib/mcp/tools";
 
@@ -102,6 +105,7 @@ async function dispatch(
   message: JsonRpcRequest,
   apiKey: string | null,
   publishingTools: boolean,
+  schedulerTools: boolean,
 ): Promise<unknown> {
   const params = message.params;
   switch (message.method) {
@@ -115,7 +119,7 @@ async function dispatch(
     case "ping":
       return {};
     case "tools/list":
-      return { tools: listTools(publishingTools) };
+      return { tools: listTools(publishingTools, schedulerTools) };
     case "tools/call": {
       if (!params || typeof params !== "object") {
         throw new RpcError(INVALID_PARAMS, "tools/call needs a name and arguments");
@@ -126,6 +130,9 @@ async function dispatch(
       if (!publishingTools && PUBLISHING_TOOL_NAMES.has(name)) {
         return toolResult(PUBLISHING_TOOLS_UNAVAILABLE, true);
       }
+      if (!schedulerTools && SCHEDULER_TOOL_NAMES.has(name)) {
+        return toolResult(SCHEDULER_TOOLS_UNAVAILABLE, true);
+      }
       if (!apiKey) {
         throw new RpcError(
           UNAUTHORIZED,
@@ -133,7 +140,7 @@ async function dispatch(
         );
       }
       try {
-        return toolResult(await runTool(name, args, apiKey, publishingTools));
+        return toolResult(await runTool(name, args, apiKey, publishingTools, schedulerTools));
       } catch (error) {
         if (error instanceof ToolError && error.status === 404 && error.message.startsWith("Unknown tool")) {
           throw new RpcError(INVALID_PARAMS, error.message);
@@ -157,6 +164,7 @@ async function handle(
   message: unknown,
   apiKey: string | null,
   publishingTools: boolean,
+  schedulerTools: boolean,
 ): Promise<JsonRpcResponse | null> {
   if (!message || typeof message !== "object" || Array.isArray(message)) {
     return { jsonrpc: "2.0", id: null, error: { code: INVALID_REQUEST, message: "Invalid request" } };
@@ -173,7 +181,7 @@ async function handle(
   // Notifications (no id) and client responses get no reply.
   if (!hasId) return null;
   try {
-    return { jsonrpc: "2.0", id: rpcId, result: await dispatch(request, apiKey, publishingTools) };
+    return { jsonrpc: "2.0", id: rpcId, result: await dispatch(request, apiKey, publishingTools, schedulerTools) };
   } catch (error) {
     const rpc =
       error instanceof RpcError ? error : new RpcError(-32603, "Internal error");
@@ -199,6 +207,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
 
   const apiKey = apiKeyFrom(request);
   const publishingTools = await mcpPublishingToolsEnabled();
+  const schedulerTools = await mcpSchedulerToolsEnabled();
   const messages = Array.isArray(body) ? body : [body];
   if (messages.length === 0 || messages.length > MAX_BATCH) {
     return json(
@@ -206,7 +215,9 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       400,
     );
   }
-  const replies = (await Promise.all(messages.map((message) => handle(message, apiKey, publishingTools)))).filter(
+  const replies = (
+    await Promise.all(messages.map((message) => handle(message, apiKey, publishingTools, schedulerTools)))
+  ).filter(
     (reply): reply is JsonRpcResponse => reply !== null,
   );
   if (replies.length === 0) return new NextResponse(null, { status: 202, headers: CORS_HEADERS });

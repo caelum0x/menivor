@@ -38,6 +38,7 @@ import {
 } from "./api";
 import { friendlyErrorMessage } from "@/src/shared/errors/friendly";
 import { safeServerText } from "@/src/shared/errors/friendly";
+import { ShareActions } from "@/src/features/share-actions/ShareActions";
 
 const POLL_MS = 5_000;
 const TITLE_MAX = 200;
@@ -508,6 +509,9 @@ function ShotCard({
                 <Download className="mr-1 h-4 w-4" aria-hidden /> Download shot
               </a>
             </Button>
+            {shot.render_job_id ? (
+              <ShareActions source="render" sourceId={shot.render_job_id} kind="video" />
+            ) : null}
           </div>
         )}
         {done && urls.length === 0 && (shot.unusable_output_refs ?? 0) > 0 && (
