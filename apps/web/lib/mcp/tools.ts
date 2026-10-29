@@ -407,6 +407,70 @@ const TOOLS: readonly Tool[] = [
       return callApi(apiKey, `/media/models${modality ? `?modality=${modality}` : ""}`);
     },
   },
+  {
+    name: "list_scheduler_accounts",
+    title: "List Buffer and Typefully X accounts",
+    description:
+      "List X accounts on the caller's own Buffer or Typefully connection. The caller saves that key in Menivor settings. Menivor does not call the X API.",
+    inputSchema: {
+      type: "object",
+      properties: { provider: { type: "string", enum: ["buffer", "typefully"] } },
+      required: ["provider"],
+      additionalProperties: false,
+    },
+    annotations: { readOnlyHint: true, openWorldHint: true },
+    run: (args, apiKey) => {
+      const provider = oneOf(args, "provider", ["buffer", "typefully"] as const);
+      if (!provider) throw new ToolError('"provider" is required');
+      return callApi(apiKey, `/scheduler/connections/${provider}/targets`);
+    },
+  },
+  {
+    name: "schedule_to_buffer_or_typefully",
+    title: "Schedule a render to Buffer or Typefully",
+    description:
+      "Send one finished Menivor render to the caller's Buffer or Typefully account as an X post. when is now, queue (next free slot), or schedule (requires scheduled_at). Uses their saved key. Menivor does not call the X API.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        provider: { type: "string", enum: ["buffer", "typefully"] },
+        target_id: { type: "string", description: "Buffer channel id or Typefully social set id", maxLength: 128 },
+        source: { type: "string", enum: ["reel", "render", "media"] },
+        source_id: { type: "string", description: "Finished reel, render, or media job id" },
+        caption: { type: "string", maxLength: 280 },
+        when: { type: "string", enum: ["now", "queue", "schedule"] },
+        scheduled_at: { type: "string", description: "ISO-8601 time, required when when is schedule" },
+      },
+      required: ["provider", "target_id", "source", "source_id", "when"],
+      additionalProperties: false,
+    },
+    annotations: { openWorldHint: true },
+    run: (args, apiKey) => {
+      const provider = oneOf(args, "provider", ["buffer", "typefully"] as const);
+      const source = oneOf(args, "source", ["reel", "render", "media"] as const);
+      const when = oneOf(args, "when", ["now", "queue", "schedule"] as const);
+      if (!provider || !source || !when) throw new ToolError('"provider", "source" and "when" are required');
+      const targetId = str(args, "target_id", { required: true, max: 128 }) as string;
+      const scheduledAt = str(args, "scheduled_at", { max: 64 });
+      if (when === "schedule") {
+        if (!scheduledAt || Number.isNaN(Date.parse(scheduledAt))) {
+          throw new ToolError('"scheduled_at" must be an ISO-8601 time when when is schedule');
+        }
+      }
+      return callApi(apiKey, "/scheduler/posts", {
+        method: "POST",
+        body: compact({
+          provider,
+          target_id: targetId,
+          source,
+          source_id: id(args, "source_id"),
+          caption: str(args, "caption", { max: 280 }) ?? "",
+          when,
+          scheduled_at: when === "schedule" ? scheduledAt : undefined,
+        }),
+      });
+    },
+  },
 ];
 
 const BY_NAME: ReadonlyMap<string, Tool> = new Map(TOOLS.map((tool) => [tool.name, tool]));
@@ -420,6 +484,22 @@ const BY_NAME: ReadonlyMap<string, Tool> = new Map(TOOLS.map((tool) => [tool.nam
  * them (claims rule 5) even when the flag is on.
  */
 export const PUBLISHING_TOOL_NAMES: ReadonlySet<string> = new Set(["schedule_publish", "list_scheduled"]);
+
+/**
+ * Buffer / Typefully tools. Off unless MENIVOR_MCP_SCHEDULER_TOOLS is an
+ * explicit on-switch, same rule as MENIVOR_MCP_PUBLISHING_TOOLS. A separate
+ * flag so enabling these does not re-list the closed native posting tools.
+ * Public pages never list them.
+ */
+export const SCHEDULER_TOOL_NAMES: ReadonlySet<string> = new Set([
+  "list_scheduler_accounts",
+  "schedule_to_buffer_or_typefully",
+]);
+
+export const MCP_SCHEDULER_TOOLS_ENV = "MENIVOR_MCP_SCHEDULER_TOOLS";
+
+export const SCHEDULER_TOOLS_UNAVAILABLE =
+  "Scheduling finished renders to Buffer or Typefully is not enabled on this server.";
 
 /**
  * Server-only switch for the two publishing tools. Unset, blank, or any value
@@ -459,28 +539,61 @@ function publishingFlagFromEnv(): boolean {
   return publishingToolsEnabled(process.env[MCP_PUBLISHING_TOOLS_ENV]);
 }
 
-/** The public tool list for `tools/list` (no handlers). Publishing tools are omitted unless the flag is on. */
-export function listTools(publishingEnabled: boolean = publishingFlagFromEnv()): McpToolDefinition[] {
-  const tools = publishingEnabled
-    ? TOOLS
-    : TOOLS.filter((tool) => !PUBLISHING_TOOL_NAMES.has(tool.name));
-  return tools.map(({ run: _run, ...definition }) => definition);
+/** Same on-switch as the publishing tools. */
+export function schedulerToolsEnabled(raw: string | undefined | null): boolean {
+  return publishingToolsEnabled(raw);
 }
 
-/** The tools a public page may present as available today. Never includes posting tools. */
+export async function mcpSchedulerToolsEnabled(): Promise<boolean> {
+  try {
+    const { getCloudflareContext } = await import("@opennextjs/cloudflare");
+    const { env } = getCloudflareContext();
+    const value = (env as Record<string, unknown> | null | undefined)?.[MCP_SCHEDULER_TOOLS_ENV];
+    if (typeof value === "string") return schedulerToolsEnabled(value);
+  } catch {
+    // Not on the Workers runtime (`next dev`, vitest, `next start`).
+  }
+  return schedulerToolsEnabled(process.env[MCP_SCHEDULER_TOOLS_ENV]);
+}
+
+function schedulerFlagFromEnv(): boolean {
+  return schedulerToolsEnabled(process.env[MCP_SCHEDULER_TOOLS_ENV]);
+}
+
+function visibleTools(publishingEnabled: boolean, schedulerEnabled: boolean): readonly Tool[] {
+  return TOOLS.filter((tool) => {
+    if (!publishingEnabled && PUBLISHING_TOOL_NAMES.has(tool.name)) return false;
+    if (!schedulerEnabled && SCHEDULER_TOOL_NAMES.has(tool.name)) return false;
+    return true;
+  });
+}
+
+/** The public tool list for `tools/list` (no handlers). Gated tools are omitted unless their flag is on. */
+export function listTools(
+  publishingEnabled: boolean = publishingFlagFromEnv(),
+  schedulerEnabled: boolean = schedulerFlagFromEnv(),
+): McpToolDefinition[] {
+  return visibleTools(publishingEnabled, schedulerEnabled).map(({ run: _run, ...definition }) => definition);
+}
+
+/** The tools a public page may present as available today. Never includes posting or scheduler tools. */
 export function listLiveTools(): McpToolDefinition[] {
-  return listTools(false);
+  return listTools(false, false);
 }
 
-/** Runs one tool; throws ToolError for bad input, a closed publishing tool, or an upstream failure. */
+/** Runs one tool; throws ToolError for bad input, a closed tool, or an upstream failure. */
 export async function runTool(
   name: string,
   args: unknown,
   apiKey: string,
   publishingEnabled: boolean = publishingFlagFromEnv(),
+  schedulerEnabled: boolean = schedulerFlagFromEnv(),
 ): Promise<unknown> {
   if (!publishingEnabled && PUBLISHING_TOOL_NAMES.has(name)) {
     throw new ToolError(PUBLISHING_TOOLS_UNAVAILABLE);
+  }
+  if (!schedulerEnabled && SCHEDULER_TOOL_NAMES.has(name)) {
+    throw new ToolError(SCHEDULER_TOOLS_UNAVAILABLE);
   }
   const tool = BY_NAME.get(name);
   if (!tool) throw new ToolError(`Unknown tool: ${name}`, 404);

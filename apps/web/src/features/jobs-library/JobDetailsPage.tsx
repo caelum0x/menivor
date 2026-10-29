@@ -58,6 +58,7 @@ import { ShareButton } from "@/components/share/ShareButton";
 import { ReelActions } from "@/src/features/reels-library/components/ReelActions";
 import { useReelActions } from "@/src/features/reels-library/use-reel-actions";
 import { MenivorMark } from "@/components/brand/MenivorMark";
+import { ShareActions } from "@/src/features/share-actions/ShareActions";
 import { friendlyErrorMessage } from "@/src/shared/errors/friendly";
 import { safeServerText } from "@/src/shared/errors/friendly";
 
@@ -456,6 +457,7 @@ function VideoPreview({
             </Link>
           </Button>
           <ShareButton jobId={jobId} />
+          <ShareActions source="reel" sourceId={jobId} kind="video" />
           <Button asChild variant="outline" size="sm">
             <a href={url} download target="_blank" rel="noopener noreferrer">
               <Download className="size-4" aria-hidden /> Download

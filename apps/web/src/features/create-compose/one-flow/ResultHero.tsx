@@ -25,6 +25,7 @@ import {
   tallyFinishedReels,
   type ReelTally,
 } from "@/src/shared/wins";
+import { ShareActions } from "@/src/features/share-actions/ShareActions";
 
 export interface ResultHeroProps {
   readonly job: Job;
@@ -131,6 +132,7 @@ export function ResultHero({ job, letter, readyInRun, input }: ResultHeroProps) 
         </div>
 
         <div className="flex flex-wrap gap-2">
+          {resultUrl ? <ShareActions source="reel" sourceId={jobId} kind="video" /> : null}
           {/* First reel: sharing is the one big action; afterwards Publish leads. */}
           <Button asChild size="lg" variant={firstReel ? "outline" : "default"}>
             <Link href={`/publish?job=${encodeURIComponent(jobId)}`}>

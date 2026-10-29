@@ -35,6 +35,7 @@ import { GenerationHistory, type HistoryEntry } from "./GenerationHistory";
 import { downloadJson, downloadUrl, generationFilename } from "./download";
 import { pollUntilTerminal } from "./poll";
 import { friendlyErrorMessage } from "@/src/shared/errors/friendly";
+import { ShareActions } from "@/src/features/share-actions/ShareActions";
 
 const isTerminal = (v: { status: string }) => v.status === "completed" || v.status === "failed";
 
@@ -55,6 +56,8 @@ export function Playground() {
   const [videoUrl, setVideoUrl] = React.useState("");
   const [audioUrl, setAudioUrl] = React.useState("");
   const [cost, setCost] = React.useState<number | null>(null);
+  const [resultId, setResultId] = React.useState("");
+  const [resultKind, setResultKind] = React.useState<"image" | "video">("image");
   const [history, setHistory] = React.useState<HistoryEntry[]>([]);
   const [identities, setIdentities] = React.useState<IdentityOption[]>([]);
   const [identityKey, setIdentityKey] = React.useState("");
@@ -92,6 +95,10 @@ export function Playground() {
       }
     }
     setInspectedEntry(current);
+    if (current.modality === "image" || current.modality === "video") {
+      setResultId(current.id);
+      setResultKind(current.modality);
+    }
     setImageUrl(current.modality === "image" ? current.output_url || "" : "");
     setVideoUrl(current.modality === "video" ? current.output_url || "" : "");
     setAudioUrl(current.modality === "audio" ? current.output_url || "" : "");
@@ -159,6 +166,7 @@ export function Playground() {
     setAudioUrl("");
     setVideoStatus("");
     setCost(null);
+    setResultId("");
   };
 
   const onGenerateImage = React.useCallback(async () => {
@@ -168,6 +176,8 @@ export function Playground() {
       const token = (await getToken()) ?? undefined;
       const result = await createImage({ model, prompt: prompt.trim() }, { token });
       setImageUrl(result.url);
+      setResultId(result.id);
+      setResultKind("image");
       setCost(result.cost_micros);
       void refreshCredits(); // reflect the debit
     } catch (err) {
@@ -211,6 +221,8 @@ export function Playground() {
         setError("Still processing — it'll appear in your jobs when ready.");
       } else if (current.status === "completed") {
         setVideoUrl(current.url);
+        setResultId(job.id);
+        setResultKind("video");
         setCost(current.cost_micros);
       } else {
         setError(current.error || "Generation failed.");
@@ -490,6 +502,7 @@ export function Playground() {
               cost={cost}
               onDownload={() => downloadUrl(imageUrl, generationFilename("image", model))}
               onAnimate={() => animateImage(imageUrl)}
+              scheduler={resultId && resultKind === "image" ? { sourceId: resultId, kind: "image" } : undefined}
             />
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={imageUrl} alt="Generated" className="max-h-[70vh] w-auto rounded-lg" />
@@ -500,7 +513,11 @@ export function Playground() {
       {videoUrl ? (
         <Card>
           <CardContent className="space-y-2 py-4">
-            <ResultActions cost={cost} onDownload={() => downloadUrl(videoUrl, generationFilename("video", model))} />
+            <ResultActions
+              cost={cost}
+              onDownload={() => downloadUrl(videoUrl, generationFilename("video", model))}
+              scheduler={resultId && resultKind === "video" ? { sourceId: resultId, kind: "video" } : undefined}
+            />
             <video src={videoUrl} controls className="max-h-[70vh] w-auto rounded-lg" />
           </CardContent>
         </Card>
@@ -585,15 +602,17 @@ function ResultActions({
   cost,
   onDownload,
   onAnimate,
+  scheduler,
 }: {
   cost: number | null;
   onDownload: () => void;
   onAnimate?: () => void;
+  scheduler?: { sourceId: string; kind: "image" | "video" };
 }) {
   return (
-    <div className="flex items-center justify-between">
+    <div className="flex flex-wrap items-center justify-between gap-2">
       {cost !== null ? <Badge variant="secondary">{formatUsdMicros(cost)}</Badge> : <span />}
-      <div className="flex items-center gap-2">
+      <div className="flex flex-wrap items-center gap-2">
         {onAnimate ? (
           <Button size="sm" onClick={onAnimate}>
             <Play className="mr-1 h-4 w-4" /> Animate image
@@ -602,6 +621,7 @@ function ResultActions({
         <Button size="sm" variant="outline" onClick={onDownload}>
           <Download className="mr-1 h-4 w-4" /> Save
         </Button>
+        {scheduler ? <ShareActions source="media" sourceId={scheduler.sourceId} kind={scheduler.kind} /> : null}
       </div>
     </div>
   );

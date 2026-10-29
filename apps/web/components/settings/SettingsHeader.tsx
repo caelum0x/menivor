@@ -17,6 +17,7 @@ const TABS = withoutHiddenSso([
   { href: "/settings/seo", label: "SEO" },
   { href: "/settings/ad-campaigns", label: "Ad campaigns" },
   { href: "/settings/provider-keys", label: "Provider keys" },
+  { href: "/settings/scheduler", label: "Buffer / Typefully" },
   { href: "/settings/privacy", label: "Privacy" },
 ] as const);
 

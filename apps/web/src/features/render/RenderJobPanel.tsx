@@ -23,6 +23,8 @@ import {
 } from "./api";
 import { friendlyErrorMessage } from "@/src/shared/errors/friendly";
 import { safeServerText } from "@/src/shared/errors/friendly";
+import { ShareActions } from "@/src/features/share-actions/ShareActions";
+import { mediaKindFromUrl } from "@/src/features/x-scheduler/api";
 
 /** GPU backend used for product renders (hosted serverless workers). */
 const RENDER_BACKEND = "runpod";
@@ -480,6 +482,9 @@ function RenderResultCard({
               </li>
             ))}
           </ul>
+        )}
+        {urls.length > 0 && (
+          <ShareActions source="render" sourceId={job.id} kind={mediaKindFromUrl(urls[0] ?? "")} />
         )}
         {completed && hiddenOutputs > 0 && urls.length === 0 && (
           <p className="text-sm text-muted-foreground">

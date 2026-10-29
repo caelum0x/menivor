@@ -7,6 +7,7 @@ import { Badge, type BadgeVariant } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { safeServerText } from "@/src/shared/errors";
+import { ShareActions } from "@/src/features/share-actions/ShareActions";
 import type { AdVariant, VariantStatus } from "./api";
 
 const STATUS: Record<VariantStatus, { label: string; variant: BadgeVariant }> = {
@@ -93,6 +94,7 @@ function VariantCard({ ad, actions }: { ad: AdVariant; actions: VariantActions }
               <Trash2 aria-hidden />
             </Button>
           ) : null}
+          {ad.status === "done" && ad.job_id ? <ShareActions source="reel" sourceId={ad.job_id} kind="video" /> : null}
         </div>
         <details className="text-xs text-muted-foreground">
           <summary className="cursor-pointer select-none">

@@ -14,6 +14,7 @@ import { JobPoster, JobStatusBadge } from "@/src/features/jobs-library";
 import { jobPosterUrl, jobResultUrl } from "@/lib/job-media";
 import { JobState, type BatchJob } from "@/lib/types";
 import { cn } from "@/lib/utils";
+import { ShareActions } from "@/src/features/share-actions/ShareActions";
 
 /**
  * One variant tile in the batch-review grid: poster preview, per-variant status
@@ -80,6 +81,7 @@ export function BatchVariantCard({
       </CardContent>
 
       <CardFooter className="mt-auto flex-wrap justify-end gap-2">
+        {isComplete && resultUrl ? <ShareActions source="reel" sourceId={job.job_id} kind="video" /> : null}
         <Button asChild variant="ghost" size="sm">
           <Link
             href={`/jobs/${job.job_id}`}
